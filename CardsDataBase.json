@@ -1,0 +1,88 @@
+[
+{
+"Story" : "Intro" [
+  {
+    "Part" : 1,
+    "Speacker" : "BossDetective",
+    "WhatSpeack" : "Hello my friend, Today some lady come to out Office. She Told that her husband miss",
+    "Name" : "Albert, the Boss",
+    "AnswerLeft" : "Let's see what I can do",
+    "AnswerRight" : "Thats right! I'm miss about job",
+    "AnswerLeftLuck" : +10,
+    "AnswerLeftIntuition" : -10,
+    "AnswerLeftHealth" : +10,
+    "AnswerLeftLaw" : -10,
+    "AnswerRightLuck" : -10,
+    "AnswerRightIntuition" : +10,
+    "AnswerRightHealth" : -10,
+    "AnswerRightLaw" : +10
+  },
+
+  {
+    "Part" : 2,
+    "Speacker" : "Prostitute",
+    "WhatSpeack" : "I've missed my husband in a bar, last night. He didn't came back after drink with collegs. I worried about him.",
+    "Name" : "Josephine",
+    "AnswerLeft" : "I'm going to this bar",
+    "AnswerRight" : "Maby we should forget about him? Lets go eat pizza!",
+    "AnswerLeftLuck" : +10,
+    "AnswerLeftIntuition" : -10,
+    "AnswerLeftHealth" : +10,
+    "AnswerLeftLaw" : -10,
+    "AnswerRightLuck" : -10,
+    "AnswerRightIntuition" : +10,
+    "AnswerRightHealth" : -10,
+    "AnswerRightLaw" : +10
+  },
+
+{
+  "Part" : 3,
+  "Speacker" : "Witness",
+  "WhatSpeack" : "Hello, I've seen her husband in 10 o'clock after bar, he was talking with some Ambal",
+  "Name" : "Robert",
+  "AnswerLeft" : "Okay, I will speack with him",
+  "AnswerRight" : "Time to kick somebody ass",
+  "AnswerLeftLuck" : +10,
+  "AnswerLeftIntuition" : -10,
+  "AnswerLeftHealth" : +10,
+  "AnswerLeftLaw" : -10,
+  "AnswerRightLuck" : -10,
+  "AnswerRightIntuition" : +10,
+  "AnswerRightHealth" : -10,
+  "AnswerRightLaw" : +10
+},
+
+{
+  "Part" : 4,
+  "Speacker" : "Ambal",
+  "WhatSpeack" : "No i've never seen this guy before",
+  "Name" : "Patrick",
+  "AnswerLeft" : "You are lie. (kick his ass)",
+  "AnswerRight" : "Maby this money will help ypu tp remember him",
+  "AnswerLeftLuck" : +10,
+  "AnswerLeftIntuition" : -10,
+  "AnswerLeftHealth" : +10,
+  "AnswerLeftLaw" : -10,
+  "AnswerRightLuck" : -10,
+  "AnswerRightIntuition" : +10,
+  "AnswerRightHealth" : -10,
+  "AnswerRightLaw" : +10
+},
+
+{
+  "Part" : 5,
+  "Speacker" : "Prisoner",
+  "WhatSpeack" : "Hey, I'm her husband. Police got me when",
+  "Name" : "Jerod",
+  "AnswerLeft" : "I finally fond you",
+  "AnswerRight" : "I fucked you wife",
+  "AnswerLeftLuck" : +10,
+  "AnswerLeftIntuition" : -10,
+  "AnswerLeftHealth" : +10,
+  "AnswerLeftLaw" : -10,
+  "AnswerRightLuck" : -10,
+  "AnswerRightIntuition" : +10,
+  "AnswerRightHealth" : -10,
+  "AnswerRightLaw" : +10
+}
+]

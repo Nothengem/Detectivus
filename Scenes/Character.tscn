@@ -1,0 +1,208 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Resources/GFX/CharacterPortraits/BossDetective.png" type="Texture" id=1]
+[ext_resource path="res://Resources/GFX/CharacterCardBG.png" type="Texture" id=2]
+[ext_resource path="res://Resources/GFX/Interface/Font/Font.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Scenes/TouchScreenButton.gd" type="Script" id=4]
+[ext_resource path="res://Resources/GFX/TextBack.png" type="Texture" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 100
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "Appearance"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("../..:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -200 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "LChooseTextBack"
+length = 0.2
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("LeftChooseRect/LChooseText:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.14 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("LeftChooseRect:rect_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1380, 0 ), Vector2( 1380, 700 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "RChooseTextBack"
+length = 0.2
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("RightChooseRect:rect_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1380, 0 ), Vector2( 1380, 700 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("RightChooseRect/RChooseText:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.14 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[node name="Character" type="Sprite" groups=[
+"CharacterCard",
+]]
+position = Vector2( 500, 300 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CharacterControl" type="TouchScreenButton" parent="." groups=[
+"CharacterCard",
+]]
+position = Vector2( 0, -200 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="RightPosition" type="Position2D" parent="CharacterControl"]
+position = Vector2( 7, 0 )
+
+[node name="LeftPosition" type="Position2D" parent="CharacterControl"]
+position = Vector2( -7, 0 )
+
+[node name="MiddlePosition" type="Position2D" parent="CharacterControl"]
+
+[node name="LeftChoose" type="Position2D" parent="CharacterControl"]
+position = Vector2( -150, 150 )
+
+[node name="RightChoose" type="Position2D" parent="CharacterControl"]
+position = Vector2( 150, 150 )
+
+[node name="Tween" type="Tween" parent="CharacterControl"]
+
+[node name="CharacterCard" type="Sprite" parent="CharacterControl"]
+scale = Vector2( 0.032, 0.022 )
+texture = ExtResource( 2 )
+
+[node name="CharacterPortrait" type="Sprite" parent="CharacterControl/CharacterCard"]
+scale = Vector2( 5, 7.27273 )
+texture = ExtResource( 1 )
+
+[node name="Control" type="Control" parent="CharacterControl/CharacterCard"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -1422.0
+margin_top = -1000.0
+margin_bottom = 1000.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LeftChooseRect" type="NinePatchRect" parent="CharacterControl/CharacterCard/Control"]
+margin_left = 36.459
+margin_top = 43.624
+margin_right = 1416.46
+margin_bottom = 43.624
+rect_scale = Vector2( 0.981259, 0.990671 )
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LChooseText" type="Label" parent="CharacterControl/CharacterCard/Control/LeftChooseRect"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -650.0
+margin_top = -180.0
+margin_right = 650.0
+margin_bottom = 690.0
+rect_min_size = Vector2( 1300, 0 )
+rect_scale = Vector2( 0.994066, 0.970817 )
+custom_fonts/font = SubResource( 1 )
+text = "wdsdfs"
+align = 2
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RightChooseRect" type="NinePatchRect" parent="CharacterControl/CharacterCard/Control"]
+margin_left = 36.459
+margin_top = 43.624
+margin_right = 1416.46
+margin_bottom = 43.624
+rect_scale = Vector2( 0.981259, 0.990671 )
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RChooseText" type="Label" parent="CharacterControl/CharacterCard/Control/RightChooseRect"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -650.0
+margin_top = -180.0
+margin_right = 650.0
+margin_bottom = 690.0
+rect_min_size = Vector2( 1300, 0 )
+rect_scale = Vector2( 0.994066, 0.970817 )
+custom_fonts/font = SubResource( 1 )
+text = "wdsdfs"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterControl/CharacterCard/Control"]
+anims/Appearance = SubResource( 4 )
+anims/LChooseText = SubResource( 3 )
+anims/RChooseText = SubResource( 2 )
+
+[node name="Timer" type="Timer" parent="CharacterControl/CharacterCard"]
+wait_time = 2.0
+one_shot = true
+[connection signal="timeout" from="CharacterControl/CharacterCard/Timer" to="CharacterControl" method="_on_Timer_timeout"]

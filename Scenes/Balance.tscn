@@ -1,0 +1,139 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Resources/GFX/BackGroundBalance.png" type="Texture" id=1]
+[ext_resource path="res://Resources/GFX/Health.png" type="Texture" id=2]
+[ext_resource path="res://Resources/GFX/Luck.png" type="Texture" id=3]
+[ext_resource path="res://Resources/GFX/Law.png" type="Texture" id=4]
+[ext_resource path="res://Resources/GFX/Banditism.png" type="Texture" id=5]
+[ext_resource path="res://Resources/GFX/Luck Back.png" type="Texture" id=6]
+[ext_resource path="res://Resources/GFX/Banditism Back.png" type="Texture" id=7]
+[ext_resource path="res://Resources/GFX/Law Back.png" type="Texture" id=8]
+[ext_resource path="res://Resources/GFX/Health Back.png" type="Texture" id=9]
+[ext_resource path="res://Resources/GFX/NoItem.png" type="Texture" id=10]
+
+[node name="BalanceGUI" type="Control"]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control2" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -145.0
+margin_top = -300.0
+margin_right = 145.0
+margin_bottom = 300.0
+rect_pivot_offset = Vector2( 145, 300 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="IndicatorBox" type="CenterContainer" parent="Control2/NinePatchRect"]
+anchor_right = 1.0
+margin_top = 20.0
+margin_bottom = 62.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control2/NinePatchRect/IndicatorBox"]
+margin_left = 15.0
+margin_right = 275.0
+margin_bottom = 62.0
+
+[node name="HealthProgress" type="TextureProgress" parent="Control2/NinePatchRect/IndicatorBox/HBoxContainer"]
+margin_right = 62.0
+margin_bottom = 62.0
+value = 50.0
+texture_under = ExtResource( 9 )
+texture_progress = ExtResource( 2 )
+fill_mode = 3
+
+[node name="LawProgress" type="TextureProgress" parent="Control2/NinePatchRect/IndicatorBox/HBoxContainer"]
+margin_left = 66.0
+margin_right = 128.0
+margin_bottom = 62.0
+value = 50.0
+texture_under = ExtResource( 8 )
+texture_progress = ExtResource( 4 )
+fill_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BanditismProgress" type="TextureProgress" parent="Control2/NinePatchRect/IndicatorBox/HBoxContainer"]
+margin_left = 132.0
+margin_right = 194.0
+margin_bottom = 62.0
+value = 50.0
+texture_under = ExtResource( 7 )
+texture_progress = ExtResource( 5 )
+fill_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LuckProgress" type="TextureProgress" parent="Control2/NinePatchRect/IndicatorBox/HBoxContainer"]
+margin_left = 198.0
+margin_right = 260.0
+margin_bottom = 62.0
+value = 50.0
+texture_under = ExtResource( 6 )
+texture_progress = ExtResource( 3 )
+fill_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="IventStatusBox" type="CenterContainer" parent="Control2/NinePatchRect"]
+anchor_left = 0.5
+anchor_top = 0.864558
+anchor_right = 0.5
+anchor_bottom = 0.967892
+margin_left = -145.0
+margin_right = 145.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control2/NinePatchRect/IventStatusBox"]
+margin_left = 15.0
+margin_right = 275.0
+margin_bottom = 62.0
+
+[node name="IventStatus1" type="NinePatchRect" parent="Control2/NinePatchRect/IventStatusBox/HBoxContainer"]
+margin_right = 62.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 62, 62 )
+texture = ExtResource( 10 )
+
+[node name="IventStatus2" type="NinePatchRect" parent="Control2/NinePatchRect/IventStatusBox/HBoxContainer"]
+margin_left = 66.0
+margin_right = 128.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 62, 62 )
+texture = ExtResource( 10 )
+
+[node name="IventStatus3" type="NinePatchRect" parent="Control2/NinePatchRect/IventStatusBox/HBoxContainer"]
+margin_left = 132.0
+margin_right = 194.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 62, 62 )
+texture = ExtResource( 10 )
+
+[node name="IventStatus4" type="NinePatchRect" parent="Control2/NinePatchRect/IventStatusBox/HBoxContainer"]
+margin_left = 198.0
+margin_right = 260.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 62, 62 )
+texture = ExtResource( 10 )
