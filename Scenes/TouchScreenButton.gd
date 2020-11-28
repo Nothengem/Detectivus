@@ -114,10 +114,10 @@ func choosedone ():
 		spawn()
 		
 func spawn():
-	var scene = load("res://Scenes/Character.tscn")
-	var card = scene.instance()
-	add_child(card)
-	Global.randomcard()
+#	var scene = load("res://Scenes/Character.tscn")
+#	var card = scene.instance()
+#	add_child(card)
+	Global.spawn()
 
 func _on_Timer_timeout():
 	timeout = false

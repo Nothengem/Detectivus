@@ -11,7 +11,7 @@ size = 100
 use_filter = true
 font_data = ExtResource( 3 )
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 resource_name = "Appearance"
 length = 0.5
 tracks/0/type = "value"
@@ -56,8 +56,7 @@ tracks/1/keys = {
 "values": [ Vector2( 1380, 0 ), Vector2( 1380, 700 ) ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "RChooseTextBack"
+[sub_resource type="Animation" id=4]
 length = 0.2
 step = 0.01
 tracks/0/type = "value"
@@ -198,9 +197,9 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterControl/CharacterCard/Control"]
-anims/Appearance = SubResource( 4 )
+anims/Appearance = SubResource( 2 )
 anims/LChooseText = SubResource( 3 )
-anims/RChooseText = SubResource( 2 )
+anims/RChooseText = SubResource( 4 )
 
 [node name="Timer" type="Timer" parent="CharacterControl/CharacterCard"]
 wait_time = 2.0
