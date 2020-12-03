@@ -159,13 +159,17 @@ __meta__ = {
 scale = Vector2( 0.714286, 0.714286 )
 
 [node name="LeftPosition" type="Position2D" parent="."]
+position = Vector2( -70, 0 )
 scale = Vector2( 0.714286, 0.714286 )
 
 [node name="RightPosition" type="Position2D" parent="."]
+position = Vector2( 70, 0 )
 scale = Vector2( 0.714286, 0.714286 )
 
 [node name="RightChoose" type="Position2D" parent="."]
+position = Vector2( 500, 150 )
 scale = Vector2( 0.714286, 0.714286 )
 
 [node name="LeftChoose" type="Position2D" parent="."]
+position = Vector2( -500, 150 )
 scale = Vector2( 0.714286, 0.714286 )

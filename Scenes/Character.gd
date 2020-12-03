@@ -22,26 +22,27 @@ func _ready():
 	start_positionY = position.y
 	$AnimationPlayer.play("Appearance")
 	print("chenibyd'")
-	calibration_point()
+#	calibration_point()
 
 func _process(delta):
 	choosedone()
 
-func calibration_point():
-	$MiddlePosition.position.x == 0
-	$MiddlePosition.position.y == 0
-	$LeftPosition.position.x == start_positionX -70
-	$LeftPosition.position.y == 0
-	$RightPosition.position.x == start_positionX +70
-	$RightPosition.position.y == 0
-	$RightChoose.position.x == start_positionX +500
-	$RightChoose.position.y == position.y +150
-	$LeftChoose.position.x == start_positionX -500
-	$LeftChoose.position.y == position.y +150
+#func calibration_point():
+#	$MiddlePosition.position.x == 0
+#	$MiddlePosition.position.y == 0
+#	$LeftPosition.position.x == start_positionX -70
+#	$LeftPosition.position.y == 0
+#	$RightPosition.position.x == start_positionX +70
+#	$RightPosition.position.y == 0
+#	$RightChoose.position.x == start_positionX +500
+#	$RightChoose.position.y == position.y +150
+#	$LeftChoose.position.x == start_positionX -500
+#	$LeftChoose.position.y == position.y +150
+#	print($MiddlePosition.position, $LeftPosition.position)
 
 func _get_button_pos(): #нужна для получения позиции карты
 	return position
-#
+
 func _input(event): # если мы касаемся экрана или тянем карту и пока палец нажат, работает поворот и анимация влево-вправо
 	if event is InputEventScreenDrag or (event is InputEventScreenTouch and event.is_pressed()):
 		global_position = event.position
