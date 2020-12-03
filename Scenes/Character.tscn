@@ -1,38 +1,17 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Resources/GFX/CharacterPortraits/BossDetective.png" type="Texture" id=1]
 [ext_resource path="res://Resources/GFX/CharacterCardBG.png" type="Texture" id=2]
 [ext_resource path="res://Resources/GFX/Interface/Font/Font.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://Scenes/TouchScreenButton.gd" type="Script" id=4]
 [ext_resource path="res://Resources/GFX/TextBack.png" type="Texture" id=5]
-
-[sub_resource type="DynamicFont" id=1]
-size = 100
-use_filter = true
-font_data = ExtResource( 3 )
+[ext_resource path="res://Scenes/Character.gd" type="Script" id=6]
 
 [sub_resource type="Animation" id=2]
-resource_name = "Appearance"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/path = NodePath("../..:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, -200 ), Vector2( 0, 0 ) ]
-}
-
-[sub_resource type="Animation" id=3]
 resource_name = "LChooseTextBack"
 length = 0.2
 step = 0.01
 tracks/0/type = "value"
-tracks/0/path = NodePath("LeftChooseRect/LChooseText:visible")
+tracks/0/path = NodePath("CharacterCard/Control/LeftChooseRect/LChooseText:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -44,7 +23,7 @@ tracks/0/keys = {
 "values": [ false, true ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("LeftChooseRect:rect_size")
+tracks/1/path = NodePath("CharacterCard/Control/LeftChooseRect:rect_size")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -53,155 +32,140 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1380, 0 ), Vector2( 1380, 700 ) ]
+"values": [ Vector2( 294, 0 ), Vector2( 294, 150 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
+resource_name = "RChooseText"
 length = 0.2
 step = 0.01
 tracks/0/type = "value"
-tracks/0/path = NodePath("RightChooseRect:rect_size")
+tracks/0/path = NodePath("CharacterCard/Control/RightChooseRect/RChooseText:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1380, 0 ), Vector2( 1380, 700 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("RightChooseRect/RChooseText:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
 "times": PoolRealArray( 0, 0.14 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("CharacterCard/Control/RightChooseRect:rect_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 294, 0 ), Vector2( 294, 150 ) ]
+}
 
-[node name="Character" type="Sprite" groups=[
-"CharacterCard",
-]]
-position = Vector2( 500, 300 )
+[sub_resource type="DynamicFont" id=4]
+size = 24
+use_filter = true
+font_data = ExtResource( 3 )
+
+[node name="Character" type="TouchScreenButton"]
+position = Vector2( 288, 560 )
+scale = Vector2( 1.4, 1.4 )
+script = ExtResource( 6 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="CharacterControl" type="TouchScreenButton" parent="." groups=[
-"CharacterCard",
-]]
-position = Vector2( 0, -200 )
-script = ExtResource( 4 )
-__meta__ = {
-"_edit_group_": true
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/LChooseText = SubResource( 2 )
+anims/RChooseText = SubResource( 3 )
 
-[node name="RightPosition" type="Position2D" parent="CharacterControl"]
-position = Vector2( 7, 0 )
+[node name="Tween" type="Tween" parent="."]
 
-[node name="LeftPosition" type="Position2D" parent="CharacterControl"]
-position = Vector2( -7, 0 )
-
-[node name="MiddlePosition" type="Position2D" parent="CharacterControl"]
-
-[node name="LeftChoose" type="Position2D" parent="CharacterControl"]
-position = Vector2( -150, 150 )
-
-[node name="RightChoose" type="Position2D" parent="CharacterControl"]
-position = Vector2( 150, 150 )
-
-[node name="Tween" type="Tween" parent="CharacterControl"]
-
-[node name="CharacterCard" type="Sprite" parent="CharacterControl"]
-scale = Vector2( 0.032, 0.022 )
+[node name="CharacterCard" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 
-[node name="CharacterPortrait" type="Sprite" parent="CharacterControl/CharacterCard"]
-scale = Vector2( 5, 7.27273 )
+[node name="CharacterPortrait" type="Sprite" parent="CharacterCard"]
 texture = ExtResource( 1 )
 
-[node name="Control" type="Control" parent="CharacterControl/CharacterCard"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -1422.0
-margin_top = -1000.0
-margin_bottom = 1000.0
+[node name="Control" type="Control" parent="CharacterCard"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -157.0
+margin_top = -157.0
+margin_right = -157.0
+margin_bottom = -157.0
+rect_pivot_offset = Vector2( 157, 157 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LeftChooseRect" type="NinePatchRect" parent="CharacterControl/CharacterCard/Control"]
-margin_left = 36.459
-margin_top = 43.624
-margin_right = 1416.46
-margin_bottom = 43.624
+[node name="LeftChooseRect" type="NinePatchRect" parent="CharacterCard/Control"]
+anchor_left = 0.0318471
+anchor_top = 0.0318471
+anchor_right = 0.950606
+anchor_bottom = 0.0318471
+margin_right = 5.5097
 rect_scale = Vector2( 0.981259, 0.990671 )
 texture = ExtResource( 5 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
 }
 
-[node name="LChooseText" type="Label" parent="CharacterControl/CharacterCard/Control/LeftChooseRect"]
+[node name="LChooseText" type="Label" parent="CharacterCard/Control/LeftChooseRect"]
 visible = false
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -650.0
-margin_top = -180.0
-margin_right = 650.0
-margin_bottom = 690.0
-rect_min_size = Vector2( 1300, 0 )
-rect_scale = Vector2( 0.994066, 0.970817 )
-custom_fonts/font = SubResource( 1 )
-text = "wdsdfs"
+anchor_left = 0.0680272
+anchor_top = 0.0666667
+anchor_right = 0.931973
+anchor_bottom = 0.933333
+margin_top = -9.53674e-07
+custom_fonts/font = SubResource( 4 )
+text = "Text of character"
 align = 2
 autowrap = true
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
 }
 
-[node name="RightChooseRect" type="NinePatchRect" parent="CharacterControl/CharacterCard/Control"]
-margin_left = 36.459
-margin_top = 43.624
-margin_right = 1416.46
-margin_bottom = 43.624
+[node name="RightChooseRect" type="NinePatchRect" parent="CharacterCard/Control"]
+anchor_left = 0.0318471
+anchor_top = 0.0318471
+anchor_right = 0.950606
+anchor_bottom = 0.0318471
+margin_right = 5.5097
 rect_scale = Vector2( 0.981259, 0.990671 )
 texture = ExtResource( 5 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
 }
 
-[node name="RChooseText" type="Label" parent="CharacterControl/CharacterCard/Control/RightChooseRect"]
+[node name="RChooseText" type="Label" parent="CharacterCard/Control/RightChooseRect"]
 visible = false
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -650.0
-margin_top = -180.0
-margin_right = 650.0
-margin_bottom = 690.0
-rect_min_size = Vector2( 1300, 0 )
-rect_scale = Vector2( 0.994066, 0.970817 )
-custom_fonts/font = SubResource( 1 )
-text = "wdsdfs"
+anchor_left = 0.0680272
+anchor_top = 0.0666667
+anchor_right = 0.931973
+anchor_bottom = 0.933333
+margin_top = -9.53674e-07
+margin_bottom = -101.0
+custom_fonts/font = SubResource( 4 )
+text = "Text of character"
 autowrap = true
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
 }
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterControl/CharacterCard/Control"]
-anims/Appearance = SubResource( 2 )
-anims/LChooseText = SubResource( 3 )
-anims/RChooseText = SubResource( 4 )
+[node name="MiddlePosition" type="Position2D" parent="."]
+scale = Vector2( 0.714286, 0.714286 )
 
-[node name="Timer" type="Timer" parent="CharacterControl/CharacterCard"]
-wait_time = 2.0
-one_shot = true
-[connection signal="timeout" from="CharacterControl/CharacterCard/Timer" to="CharacterControl" method="_on_Timer_timeout"]
+[node name="LeftPosition" type="Position2D" parent="."]
+scale = Vector2( 0.714286, 0.714286 )
+
+[node name="RightPosition" type="Position2D" parent="."]
+scale = Vector2( 0.714286, 0.714286 )
+
+[node name="RightChoose" type="Position2D" parent="."]
+scale = Vector2( 0.714286, 0.714286 )
+
+[node name="LeftChoose" type="Position2D" parent="."]
+scale = Vector2( 0.714286, 0.714286 )

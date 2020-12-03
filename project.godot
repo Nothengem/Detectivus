@@ -16,12 +16,21 @@ _global_script_class_icons={
 [application]
 
 config/name="Detectivus"
-run/main_scene="res://Scenes/GameScene.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 Global="*res://Global.gd"
+
+[display]
+
+window/size/width=576
+window/size/height=1024
+window/size/test_width=288
+window/size/test_height=512
+window/handheld/orientation="portrait"
+window/stretch/mode="2d"
+window/stretch/aspect="expand"
 
 [input]
 

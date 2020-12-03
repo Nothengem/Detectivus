@@ -25,6 +25,7 @@ func randomcard():
 	CardText = CardInfo[2] #Ввели в переменную текстовое значение текста карты из массива БД
 	CardRAnswer = CardInfo[5] #левый ответ из БД
 	CardLAnswer = CardInfo[4] #Правый ответ из БД
+	return CardInfo
 	
 	
 func get_event():
@@ -33,13 +34,7 @@ func get_event():
 	
 func generate_event():
 	pass
-	
-func spawn():
-	var scene = load("res://Scenes/Character.tscn")
-	var card = scene.instance()
-	add_child(card)
-	CardOnScreen = true
-	randomcard()
+
 
 #func choosedone():
 #	if $CharacterCard.position == $LeftChoose.position:

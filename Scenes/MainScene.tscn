@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/IventCard.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Resources/GFX/Background.jpg" type="Texture" id=2]
-[ext_resource path="res://Scenes/Character.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Balance.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/MainScene.gd" type="Script" id=6]
 
@@ -10,14 +9,9 @@
 script = ExtResource( 6 )
 
 [node name="Control" type="Control" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -512.0
-margin_top = -300.0
-margin_right = 512.0
-margin_bottom = 300.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 288, 512 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -25,48 +19,19 @@ __meta__ = {
 [node name="GameBackGround" type="NinePatchRect" parent="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -386.812
-margin_top = -252.269
-margin_right = -386.813
-margin_bottom = -252.269
-rect_scale = Vector2( 1.87781, 1.92182 )
+rect_pivot_offset = Vector2( 540, 960 )
 texture = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Balance" parent="Control" instance=ExtResource( 5 )]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
 
 [node name="CardTemplate" parent="Control" groups=[
 "IventCard",
 ] instance=ExtResource( 1 )]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -147.5
 margin_top = -182.539
-margin_right = 147.5
 margin_bottom = 217.461
 
-[node name="Character" parent="Control" groups=[
-"IventCard",
-] instance=ExtResource( 3 )]
-position = Vector2( 513.947, 333.642 )
-scale = Vector2( 5.5, 5.5 )
-
-[node name="LeftChoosePosition" type="Position2D" parent="Control/Character"]
-position = Vector2( -150, 149.998 )
-scale = Vector2( 0.181818, 0.181818 )
-
-[node name="RightChoosePosition" type="Position2D" parent="Control/Character"]
-position = Vector2( 150.001, 150.005 )
-scale = Vector2( 0.181818, 0.181818 )
-
-[node name="Tween" type="Tween" parent="Control/Character"]
-
-[node name="ChoosePositions" type="Node" parent="."]
+[node name="Position2D" type="Position2D" parent="Control"]
+position = Vector2( 288, 560 )

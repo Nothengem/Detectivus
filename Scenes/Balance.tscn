@@ -12,6 +12,9 @@
 [ext_resource path="res://Resources/GFX/NoItem.png" type="Texture" id=10]
 
 [node name="BalanceGUI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 288, 512 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -19,51 +22,53 @@ __meta__ = {
 [node name="Control2" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 288, 512 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Control2"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -145.0
-margin_top = -300.0
-margin_right = 145.0
-margin_bottom = 300.0
-rect_pivot_offset = Vector2( 145, 300 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 540, 960 )
 texture = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="IndicatorBox" type="CenterContainer" parent="Control2/NinePatchRect"]
-anchor_right = 1.0
-margin_top = 20.0
-margin_bottom = 62.0
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -448.5
+margin_right = 448.5
+margin_bottom = 204.0
+rect_scale = Vector2( 0.6, 0.6 )
+rect_pivot_offset = Vector2( 440, 100 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control2/NinePatchRect/IndicatorBox"]
-margin_left = 15.0
-margin_right = 275.0
-margin_bottom = 62.0
+margin_right = 897.0
+margin_bottom = 204.0
+rect_pivot_offset = Vector2( 450, 102 )
+custom_constants/separation = 27
 
 [node name="HealthProgress" type="TextureProgress" parent="Control2/NinePatchRect/IndicatorBox/HBoxContainer"]
-margin_right = 62.0
-margin_bottom = 62.0
+margin_right = 204.0
+margin_bottom = 204.0
+rect_pivot_offset = Vector2( 102, 102 )
 value = 50.0
 texture_under = ExtResource( 9 )
 texture_progress = ExtResource( 2 )
 fill_mode = 3
 
 [node name="LawProgress" type="TextureProgress" parent="Control2/NinePatchRect/IndicatorBox/HBoxContainer"]
-margin_left = 66.0
-margin_right = 128.0
-margin_bottom = 62.0
-value = 50.0
+margin_left = 231.0
+margin_right = 435.0
+margin_bottom = 204.0
+rect_pivot_offset = Vector2( 102, 102 )
+value = 100.0
 texture_under = ExtResource( 8 )
 texture_progress = ExtResource( 4 )
 fill_mode = 3
@@ -72,9 +77,10 @@ __meta__ = {
 }
 
 [node name="BanditismProgress" type="TextureProgress" parent="Control2/NinePatchRect/IndicatorBox/HBoxContainer"]
-margin_left = 132.0
-margin_right = 194.0
-margin_bottom = 62.0
+margin_left = 462.0
+margin_right = 666.0
+margin_bottom = 204.0
+rect_pivot_offset = Vector2( 102, 102 )
 value = 50.0
 texture_under = ExtResource( 7 )
 texture_progress = ExtResource( 5 )
@@ -84,9 +90,10 @@ __meta__ = {
 }
 
 [node name="LuckProgress" type="TextureProgress" parent="Control2/NinePatchRect/IndicatorBox/HBoxContainer"]
-margin_left = 198.0
-margin_right = 260.0
-margin_bottom = 62.0
+margin_left = 693.0
+margin_right = 897.0
+margin_bottom = 204.0
+rect_pivot_offset = Vector2( 102, 102 )
 value = 50.0
 texture_under = ExtResource( 6 )
 texture_progress = ExtResource( 3 )
@@ -96,44 +103,50 @@ __meta__ = {
 }
 
 [node name="IventStatusBox" type="CenterContainer" parent="Control2/NinePatchRect"]
-anchor_left = 0.5
-anchor_top = 0.864558
-anchor_right = 0.5
-anchor_bottom = 0.967892
-margin_left = -145.0
-margin_right = 145.0
+anchor_left = 0.0868056
+anchor_top = 0.902344
+anchor_right = 0.913194
+anchor_bottom = 0.962891
+margin_bottom = -12.0
+rect_pivot_offset = Vector2( 238, 31 )
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control2/NinePatchRect/IventStatusBox"]
-margin_left = 15.0
-margin_right = 275.0
+margin_left = 24.0
+margin_right = 452.0
 margin_bottom = 62.0
+rect_pivot_offset = Vector2( 214, 31 )
+custom_constants/separation = 60
 
 [node name="IventStatus1" type="NinePatchRect" parent="Control2/NinePatchRect/IventStatusBox/HBoxContainer"]
 margin_right = 62.0
 margin_bottom = 62.0
 rect_min_size = Vector2( 62, 62 )
+rect_pivot_offset = Vector2( 31, 31 )
 texture = ExtResource( 10 )
 
 [node name="IventStatus2" type="NinePatchRect" parent="Control2/NinePatchRect/IventStatusBox/HBoxContainer"]
-margin_left = 66.0
-margin_right = 128.0
+margin_left = 122.0
+margin_right = 184.0
 margin_bottom = 62.0
 rect_min_size = Vector2( 62, 62 )
+rect_pivot_offset = Vector2( 31, 31 )
 texture = ExtResource( 10 )
 
 [node name="IventStatus3" type="NinePatchRect" parent="Control2/NinePatchRect/IventStatusBox/HBoxContainer"]
-margin_left = 132.0
-margin_right = 194.0
+margin_left = 244.0
+margin_right = 306.0
 margin_bottom = 62.0
 rect_min_size = Vector2( 62, 62 )
+rect_pivot_offset = Vector2( 31, 31 )
 texture = ExtResource( 10 )
 
 [node name="IventStatus4" type="NinePatchRect" parent="Control2/NinePatchRect/IventStatusBox/HBoxContainer"]
-margin_left = 198.0
-margin_right = 260.0
+margin_left = 366.0
+margin_right = 428.0
 margin_bottom = 62.0
 rect_min_size = Vector2( 62, 62 )
+rect_pivot_offset = Vector2( 31, 31 )
 texture = ExtResource( 10 )

@@ -16,8 +16,16 @@ use_filter = true
 font_data = ExtResource( 3 )
 
 [node name="CardTemplate" type="NinePatchRect"]
-margin_right = 295.0
-margin_bottom = 400.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -150.0
+margin_top = -200.0
+margin_right = 150.0
+margin_bottom = 200.0
+rect_scale = Vector2( 1.8, 1.8 )
+rect_pivot_offset = Vector2( 150, 200 )
 texture = ExtResource( 1 )
 script = ExtResource( 4 )
 __meta__ = {
