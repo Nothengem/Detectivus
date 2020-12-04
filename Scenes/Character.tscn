@@ -70,12 +70,8 @@ use_filter = true
 font_data = ExtResource( 3 )
 
 [node name="Character" type="TouchScreenButton"]
-position = Vector2( 288, 560 )
-scale = Vector2( 1.4, 1.4 )
+position = Vector2( 300, 560 )
 script = ExtResource( 6 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/LChooseText = SubResource( 2 )
@@ -162,10 +158,6 @@ scale = Vector2( 0.714286, 0.714286 )
 position = Vector2( -70, 0 )
 scale = Vector2( 0.714286, 0.714286 )
 
-[node name="RightPosition" type="Position2D" parent="."]
-position = Vector2( 70, 0 )
-scale = Vector2( 0.714286, 0.714286 )
-
 [node name="RightChoose" type="Position2D" parent="."]
 position = Vector2( 500, 150 )
 scale = Vector2( 0.714286, 0.714286 )
@@ -173,3 +165,7 @@ scale = Vector2( 0.714286, 0.714286 )
 [node name="LeftChoose" type="Position2D" parent="."]
 position = Vector2( -500, 150 )
 scale = Vector2( 0.714286, 0.714286 )
+
+[node name="RightPosition" type="Position2D" parent="."]
+position = Vector2( 70, 0 )
+scale = Vector2( 0.714285, 0.714285 )
