@@ -1,17 +1,35 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/IventCard.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Resources/GFX/Background.jpg" type="Texture" id=2]
+[ext_resource path="res://Resources/GFX/card_bg_01.PNG" type="Texture" id=3]
+[ext_resource path="res://Resources/GFX/MainSceneCharacterBackGround2.png" type="Texture" id=4]
 [ext_resource path="res://Scenes/Balance.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/MainScene.gd" type="Script" id=6]
+[ext_resource path="res://Resources/GFX/Interface/Font/IventCard.tres" type="Theme" id=7]
+[ext_resource path="res://Resources/GFX/Interface/Font/TextGame.tres" type="DynamicFont" id=8]
+[ext_resource path="res://Resources/GFX/Interface/Font/JetBrainsMono-VariableFont_wght.ttf" type="DynamicFontData" id=9]
 
-[node name="MainScene" type="Node"]
+[sub_resource type="DynamicFont" id=1]
+size = 23
+font_data = ExtResource( 9 )
+
+[node name="MainScene" type="Control" groups=[
+"MainScene",
+]]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 512, 300 )
 script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Control" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 288, 512 )
+rect_pivot_offset = Vector2( 512, 330 )
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -19,19 +37,80 @@ __meta__ = {
 [node name="GameBackGround" type="NinePatchRect" parent="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 540, 960 )
 texture = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Balance" parent="Control" instance=ExtResource( 5 )]
+anchor_right = 1.0
+anchor_bottom = 1.0
 
 [node name="CardTemplate" parent="Control" groups=[
 "IventCard",
 ] instance=ExtResource( 1 )]
-margin_top = -182.539
-margin_bottom = 217.461
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -147.5
+margin_top = -200.0
+margin_right = 147.5
+margin_bottom = 200.0
 
-[node name="Position2D" type="Position2D" parent="Control"]
-position = Vector2( 288, 560 )
+[node name="IventCard" type="NinePatchRect" parent="Control"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -147.5
+margin_top = -200.0
+margin_right = 147.5
+margin_bottom = 200.0
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/IventCard"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -127.5
+margin_top = -190.0
+margin_right = 127.5
+margin_bottom = 180.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CardText" type="Label" parent="Control/IventCard/VBoxContainer"]
+margin_right = 256.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 255, 75 )
+theme = ExtResource( 7 )
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+align = 1
+autowrap = true
+
+[node name="CharacterBackground" type="TextureRect" parent="Control/IventCard/VBoxContainer"]
+margin_top = 79.0
+margin_right = 256.0
+margin_bottom = 335.0
+rect_min_size = Vector2( 255, 236 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CharacterName" type="Label" parent="Control/IventCard/VBoxContainer"]
+margin_top = 339.0
+margin_right = 256.0
+margin_bottom = 374.0
+rect_min_size = Vector2( 255, 35 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+align = 1

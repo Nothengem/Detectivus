@@ -1,5 +1,7 @@
 extends NinePatchRect
 
-func _ready():
-	$CardTextCont/CardText.text = Global.CardText
-	$CharNameCont/CharacterName.text = Global.CardName
+func cardupdate():
+	print(MainScene.CardText)
+	print(MainScene.CardName)
+	$CardTextCont/CardText.text = MainScene.CardText
+	$CharNameCont/CharacterName.text = MainScene.CardName

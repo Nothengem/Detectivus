@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Resources/GFX/BackGroundBalance.png" type="Texture" id=1]
 [ext_resource path="res://Resources/GFX/Health.png" type="Texture" id=2]
@@ -10,11 +10,147 @@
 [ext_resource path="res://Resources/GFX/Law Back.png" type="Texture" id=8]
 [ext_resource path="res://Resources/GFX/Health Back.png" type="Texture" id=9]
 [ext_resource path="res://Resources/GFX/NoItem.png" type="Texture" id=10]
+[ext_resource path="res://Scenes/Balance.gd" type="Script" id=11]
 
-[node name="BalanceGUI" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 288, 512 )
+[sub_resource type="Animation" id=1]
+resource_name = "HealthMinus"
+length = 0.5
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Control2/NinePatchRect/IndicatorBox/HBoxContainer/HealthProgress:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.45, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.5
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Control2/NinePatchRect/IndicatorBox/HBoxContainer/HealthProgress:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.45, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 1, 0.203922, 1 ), Color( 0, 1, 0.203922, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "LawMinus"
+length = 0.5
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Control2/NinePatchRect/IndicatorBox/HBoxContainer/LawProgress:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.45, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "LawPlus"
+length = 0.5
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Control2/NinePatchRect/IndicatorBox/HBoxContainer/LawProgress:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.45, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 1, 0.203922, 1 ), Color( 0, 1, 0.203922, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "BanditismMinus"
+length = 0.5
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Control2/NinePatchRect/IndicatorBox/HBoxContainer/BanditismProgress:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.45, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "BanditismPlus"
+length = 0.5
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Control2/NinePatchRect/IndicatorBox/HBoxContainer/BanditismProgress:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.45, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 1, 0.203922, 1 ), Color( 0, 1, 0.203922, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "LuckMinus"
+length = 0.5
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Control2/NinePatchRect/IndicatorBox/HBoxContainer/LuckProgress:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.45, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "LuckPlus"
+length = 0.5
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Control2/NinePatchRect/IndicatorBox/HBoxContainer/LuckProgress:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.45, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 1, 0.203922, 1 ), Color( 0, 1, 0.203922, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="BalanceGUI" type="Control" groups=[
+"BalanceGUI",
+]]
+script = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -22,53 +158,51 @@ __meta__ = {
 [node name="Control2" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 288, 512 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Control2"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 540, 960 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -145.0
+margin_top = -300.0
+margin_right = 145.0
+margin_bottom = 300.0
+rect_pivot_offset = Vector2( 145, 300 )
 texture = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="IndicatorBox" type="CenterContainer" parent="Control2/NinePatchRect"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -448.5
-margin_right = 448.5
-margin_bottom = 204.0
-rect_scale = Vector2( 0.6, 0.6 )
-rect_pivot_offset = Vector2( 440, 100 )
+anchor_right = 1.0
+margin_top = 20.0
+margin_bottom = 62.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control2/NinePatchRect/IndicatorBox"]
-margin_right = 897.0
-margin_bottom = 204.0
-rect_pivot_offset = Vector2( 450, 102 )
-custom_constants/separation = 27
+margin_left = 15.0
+margin_right = 275.0
+margin_bottom = 62.0
 
 [node name="HealthProgress" type="TextureProgress" parent="Control2/NinePatchRect/IndicatorBox/HBoxContainer"]
-margin_right = 204.0
-margin_bottom = 204.0
-rect_pivot_offset = Vector2( 102, 102 )
+margin_right = 62.0
+margin_bottom = 62.0
 value = 50.0
 texture_under = ExtResource( 9 )
 texture_progress = ExtResource( 2 )
 fill_mode = 3
 
 [node name="LawProgress" type="TextureProgress" parent="Control2/NinePatchRect/IndicatorBox/HBoxContainer"]
-margin_left = 231.0
-margin_right = 435.0
-margin_bottom = 204.0
-rect_pivot_offset = Vector2( 102, 102 )
-value = 100.0
+margin_left = 66.0
+margin_right = 128.0
+margin_bottom = 62.0
+value = 50.0
 texture_under = ExtResource( 8 )
 texture_progress = ExtResource( 4 )
 fill_mode = 3
@@ -77,10 +211,9 @@ __meta__ = {
 }
 
 [node name="BanditismProgress" type="TextureProgress" parent="Control2/NinePatchRect/IndicatorBox/HBoxContainer"]
-margin_left = 462.0
-margin_right = 666.0
-margin_bottom = 204.0
-rect_pivot_offset = Vector2( 102, 102 )
+margin_left = 132.0
+margin_right = 194.0
+margin_bottom = 62.0
 value = 50.0
 texture_under = ExtResource( 7 )
 texture_progress = ExtResource( 5 )
@@ -90,10 +223,9 @@ __meta__ = {
 }
 
 [node name="LuckProgress" type="TextureProgress" parent="Control2/NinePatchRect/IndicatorBox/HBoxContainer"]
-margin_left = 693.0
-margin_right = 897.0
-margin_bottom = 204.0
-rect_pivot_offset = Vector2( 102, 102 )
+margin_left = 198.0
+margin_right = 260.0
+margin_bottom = 62.0
 value = 50.0
 texture_under = ExtResource( 6 )
 texture_progress = ExtResource( 3 )
@@ -103,50 +235,62 @@ __meta__ = {
 }
 
 [node name="IventStatusBox" type="CenterContainer" parent="Control2/NinePatchRect"]
-anchor_left = 0.0868056
-anchor_top = 0.902344
-anchor_right = 0.913194
-anchor_bottom = 0.962891
-margin_bottom = -12.0
-rect_pivot_offset = Vector2( 238, 31 )
+anchor_left = 0.5
+anchor_top = 0.864558
+anchor_right = 0.5
+anchor_bottom = 0.967892
+margin_left = -145.0
+margin_right = 145.0
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control2/NinePatchRect/IventStatusBox"]
-margin_left = 24.0
-margin_right = 452.0
+margin_left = 15.0
+margin_right = 275.0
 margin_bottom = 62.0
-rect_pivot_offset = Vector2( 214, 31 )
-custom_constants/separation = 60
 
 [node name="IventStatus1" type="NinePatchRect" parent="Control2/NinePatchRect/IventStatusBox/HBoxContainer"]
 margin_right = 62.0
 margin_bottom = 62.0
 rect_min_size = Vector2( 62, 62 )
-rect_pivot_offset = Vector2( 31, 31 )
 texture = ExtResource( 10 )
 
 [node name="IventStatus2" type="NinePatchRect" parent="Control2/NinePatchRect/IventStatusBox/HBoxContainer"]
-margin_left = 122.0
-margin_right = 184.0
+margin_left = 66.0
+margin_right = 128.0
 margin_bottom = 62.0
 rect_min_size = Vector2( 62, 62 )
-rect_pivot_offset = Vector2( 31, 31 )
 texture = ExtResource( 10 )
 
 [node name="IventStatus3" type="NinePatchRect" parent="Control2/NinePatchRect/IventStatusBox/HBoxContainer"]
-margin_left = 244.0
-margin_right = 306.0
+margin_left = 132.0
+margin_right = 194.0
 margin_bottom = 62.0
 rect_min_size = Vector2( 62, 62 )
-rect_pivot_offset = Vector2( 31, 31 )
 texture = ExtResource( 10 )
 
 [node name="IventStatus4" type="NinePatchRect" parent="Control2/NinePatchRect/IventStatusBox/HBoxContainer"]
-margin_left = 366.0
-margin_right = 428.0
+margin_left = 198.0
+margin_right = 260.0
 margin_bottom = 62.0
 rect_min_size = Vector2( 62, 62 )
-rect_pivot_offset = Vector2( 31, 31 )
 texture = ExtResource( 10 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="AnimPlayerHealth" type="AnimationPlayer" parent="."]
+anims/HealthMinus = SubResource( 1 )
+anims/HealthPlus = SubResource( 2 )
+
+[node name="AnimPlayerLaw" type="AnimationPlayer" parent="."]
+anims/LawMinus = SubResource( 3 )
+anims/LawPlus = SubResource( 4 )
+
+[node name="AnimPlayerBanditism" type="AnimationPlayer" parent="."]
+anims/BanditismMinus = SubResource( 5 )
+anims/BanditismPlus = SubResource( 6 )
+
+[node name="AnimPlayerLuck" type="AnimationPlayer" parent="."]
+anims/LuckMinus = SubResource( 7 )
+anims/LuckPlus = SubResource( 8 )
