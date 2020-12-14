@@ -12,6 +12,7 @@ var LeftChoosePosition # используем
 var RightChoosePosition 
 var fingerseek #переменная для срабатывания анимации шторки ответа
 var timeout = false #переменная для таймера
+var two = 10
 
 func _ready():
 	start_positionX = position.x
@@ -21,23 +22,24 @@ func _ready():
 	MiddlePosition = $MiddlePosition
 	LeftChoosePosition = $LeftChoose
 	RightChoosePosition = $RightChoose
-	MainScene.randomcard()
+	Scriptwriter.randomcard()
 
 func _process(delta):
 	choosedone()
 	
-	
 func card_generation():
+	two = two +1
+	print("Сработал CardGeneration")
 	$CharacterCard/Control/AnimationPlayer.play("Appearance")
-	$CharacterCard/CharacterPortrait.texture = load(MainScene.CardImage)
-	$CharacterCard/Control/RightChooseRect/RChooseText.text = MainScene.CardRAnswer
-	$CharacterCard/Control/LeftChooseRect/LChooseText.text = MainScene.CardLAnswer
+	$CharacterCard/CharacterPortrait.texture = load(Scriptwriter.CardImage)
+	$CharacterCard/Control/RightChooseRect/RChooseText.text = Scriptwriter.CardRAnswer
+	$CharacterCard/Control/LeftChooseRect/LChooseText.text = Scriptwriter.CardLAnswer
 
 func _get_button_pos(): #нужна для получения позиции карты
 	return position
 
 func _input(event): # если мы касаемся экрана или тянем карту и пока палец нажат, работает поворот и анимация влево-вправо
-	if event is InputEventScreenDrag or (event is InputEventScreenTouch and event.is_pressed()):
+	if (event is InputEventScreenTouch and event.is_pressed()): #event is InputEventScreenDrag or
 		global_position = event.position
 		rotationos()
 		_leftrightanimation()
@@ -111,6 +113,7 @@ func choosedone():
 		get_tree().call_group("BalanceGUI", "change_proportions_right")
 
 func choosedonepart2():
-		queue_free()
-		MainScene.randomcard()
+		print("сработал choosedonepart2")
+		Scriptwriter.randomcard()
 		get_tree().call_group("MainScene", "spawn")
+		$"..".queue_free()

@@ -11,27 +11,28 @@ var Banditism_var = 50
 var Luck_var = 50
 var maximum_value = 100
 
-	
+
 func change_proportions_right():
-	Heath_var = Heath_var + MainScene.HealthRightChoose
+	Heath_var = Heath_var + Scriptwriter.HealthRightChoose
 	animate_value_health(HealthProgress.value, Heath_var)	
-	Law_var = Law_var + MainScene.LawRightChoose
+	Law_var = Law_var + Scriptwriter.LawRightChoose
 	animate_value_law(LawProgress.value, Law_var)		
-	Banditism_var = Banditism_var + MainScene.BanditismRightChoose
+	Banditism_var = Banditism_var + Scriptwriter.BanditismRightChoose
 	animate_value_banditism(BanditismProgress.value, Banditism_var)
-	Luck_var = Luck_var + MainScene.LuckRightChoose
+	Luck_var = Luck_var + Scriptwriter.LuckRightChoose
+	Luck_var = Luck_var + Scriptwriter.LuckRightChoose
 	animate_value_luck(LuckProgress.value, Luck_var)
 
 func change_proportions_left():
-	Heath_var = Heath_var + MainScene.HealthLeftChoose
+	Heath_var = Heath_var + Scriptwriter.HealthLeftChoose
 	animate_value_health(HealthProgress.value, Heath_var)
-	Law_var = Law_var + MainScene.LawLeftChoose
+	Law_var = Law_var + Scriptwriter.LawLeftChoose
 	animate_value_law(LawProgress.value, Law_var)
-	Banditism_var = Banditism_var + MainScene.BanditismLeftChoose
+	Banditism_var = Banditism_var + Scriptwriter.BanditismLeftChoose
 	animate_value_banditism(BanditismProgress.value, Banditism_var)
-	Luck_var = Luck_var + MainScene.LuckLeftChoose
+	Luck_var = Luck_var + Scriptwriter.LuckLeftChoose
 	animate_value_luck(LuckProgress.value, Luck_var)
-	
+
 func animate_value_health(start, end):
 	if HealthProgress.value > Heath_var:
 		$AnimPlayerHealth.play("HealthMinus")
@@ -39,8 +40,8 @@ func animate_value_health(start, end):
 		$AnimPlayerHealth.play("HealthPlus")
 	$Tween.interpolate_property($Control2/NinePatchRect/IndicatorBox/HBoxContainer/HealthProgress, "value", start, end, 2.5, Tween.TRANS_ELASTIC, Tween.EASE_OUT)
 	$Tween.start()
-	
-	
+
+
 func animate_value_law(start, end):
 	if LawProgress.value > Law_var:
 		$AnimPlayerLaw.play("LawMinus")
@@ -48,7 +49,7 @@ func animate_value_law(start, end):
 		$AnimPlayerLaw.play("LawPlus")
 	$Tween.interpolate_property($Control2/NinePatchRect/IndicatorBox/HBoxContainer/LawProgress, "value", start, end, 2.5, Tween.TRANS_ELASTIC, Tween.EASE_OUT)
 	$Tween.start()
-	
+
 func animate_value_banditism(start, end):
 	if BanditismProgress.value > Banditism_var:
 		$AnimPlayerBanditism.play("BanditismMinus")
@@ -56,7 +57,7 @@ func animate_value_banditism(start, end):
 		$AnimPlayerBanditism.play("BanditismPlus")
 	$Tween.interpolate_property($Control2/NinePatchRect/IndicatorBox/HBoxContainer/BanditismProgress, "value", start, end, 2.5, Tween.TRANS_ELASTIC, Tween.EASE_OUT)
 	$Tween.start()
-	
+
 func animate_value_luck(start, end):
 	if LuckProgress.value > Luck_var:
 		$AnimPlayerLuck.play("LuckMinus")

@@ -16,12 +16,12 @@ _global_script_class_icons={
 [application]
 
 config/name="Detectivus"
-run/main_scene="res://Scenes/MainScene.tscn"
+run/main_scene="res://Scenes/StartMenu.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
-MainScene="*res://Scenes/MainScene.tscn"
+Scriptwriter="*res://Scenes/Scriptwriter.tscn"
 
 [input]
 
