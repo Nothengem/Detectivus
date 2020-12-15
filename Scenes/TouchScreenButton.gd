@@ -22,14 +22,18 @@ func _ready():
 	MiddlePosition = $MiddlePosition
 	LeftChoosePosition = $LeftChoose
 	RightChoosePosition = $RightChoose
-	Scriptwriter.randomcard()
+	if Scriptwriter.Heath_var != 0 and Scriptwriter.Law_var != 0 and Scriptwriter.Banditism_var != 0 and Scriptwriter.Luck_var != 0 and Scriptwriter.Heath_var != 100 and Scriptwriter.Law_var != 100 and Scriptwriter.Banditism_var != 100 and Scriptwriter.Luck_var != 100:
+		Scriptwriter.randomcard()
+		print("randomcard")
+	elif Scriptwriter.Heath_var <= 0 or Scriptwriter.Law_var <= 0 or Scriptwriter.Banditism_var <= 0 or Scriptwriter.Luck_var <= 0 or Scriptwriter.Heath_var >= 100 or Scriptwriter.Law_var >= 100 or Scriptwriter.Banditism_var >= 100 or Scriptwriter.Luck_var >= 100:
+		Scriptwriter.losecard()
+		get_tree().call_group("MainScene", "background_fade")
+		print ("losecard")
 
 func _process(delta):
 	choosedone()
 	
 func card_generation():
-	two = two +1
-	print("Сработал CardGeneration")
 	$CharacterCard/Control/AnimationPlayer.play("Appearance")
 	$CharacterCard/CharacterPortrait.texture = load(Scriptwriter.CardImage)
 	$CharacterCard/Control/RightChooseRect/RChooseText.text = Scriptwriter.CardRAnswer
@@ -39,12 +43,13 @@ func _get_button_pos(): #нужна для получения позиции к�
 	return position
 
 func _input(event): # если мы касаемся экрана или тянем карту и пока палец нажат, работает поворот и анимация влево-вправо
-	if (event is InputEventScreenTouch and event.is_pressed()): #event is InputEventScreenDrag or
+	if event is InputEventScreenDrag or (event is InputEventScreenTouch and event.is_pressed()):
 		global_position = event.position
 		rotationos()
 		_leftrightanimation()
-		chooseanimationRight()
-		chooseanimationLeft()
+		if Scriptwriter.CardInfo[0] == "Characters":
+			chooseanimationRight()
+			chooseanimationLeft()
 
 		if _get_button_pos().length() > boundary:
 			set_position(_get_button_pos().normalized() * boundary)
@@ -105,15 +110,26 @@ func chooseanimationLeft():
 
 func choosedone():
 	if $CharacterCard.position == $LeftChoose.position:
-		choosedonepart2()
-		get_tree().call_group("BalanceGUI", "change_proportions_left")
+		if Scriptwriter.CardInfo[0] == "Characters":
+			choosedone_next_card()
+			get_tree().call_group("BalanceGUI", "change_proportions_left")
+		elif Scriptwriter.CardInfo[0] == "LooseScreen":
+			choosedone_loose()
 
 	if $CharacterCard.position == $RightChoose.position:
-		choosedonepart2()
-		get_tree().call_group("BalanceGUI", "change_proportions_right")
+		if Scriptwriter.CardInfo[0] == "Characters":
+			choosedone_next_card()
+			get_tree().call_group("BalanceGUI", "change_proportions_right")
+		elif Scriptwriter.CardInfo[0] == "LooseScreen":
+			choosedone_loose()
 
-func choosedonepart2():
-		print("сработал choosedonepart2")
-		Scriptwriter.randomcard()
+func choosedone_next_card():
 		get_tree().call_group("MainScene", "spawn")
 		$"..".queue_free()
+		
+func choosedone_loose():
+		get_tree().call_group("MainScene", "restart_game")
+		$"..".queue_free()
+		
+func dark_theme_card():
+	$CharacterCard/Control/DarkTheme.play("DarkThemeCard")

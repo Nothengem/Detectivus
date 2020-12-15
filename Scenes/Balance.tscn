@@ -14,7 +14,7 @@
 
 [sub_resource type="Animation" id=1]
 resource_name = "HealthMinus"
-length = 0.5
+length = 0.4
 step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Control2/NinePatchRect/IndicatorBox/HBoxContainer/HealthProgress:modulate")
@@ -23,14 +23,14 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.05, 0.45, 0.5 ),
+"times": PoolRealArray( 0, 0.05, 0.35, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=2]
-length = 0.5
+length = 0.4
 step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Control2/NinePatchRect/IndicatorBox/HBoxContainer/HealthProgress:modulate")
@@ -39,7 +39,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.05, 0.45, 0.5 ),
+"times": PoolRealArray( 0, 0.05, 0.35, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 0, 1, 0.203922, 1 ), Color( 0, 1, 0.203922, 1 ), Color( 1, 1, 1, 1 ) ]
@@ -47,7 +47,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=3]
 resource_name = "LawMinus"
-length = 0.5
+length = 0.4
 step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Control2/NinePatchRect/IndicatorBox/HBoxContainer/LawProgress:modulate")
@@ -56,7 +56,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.05, 0.45, 0.5 ),
+"times": PoolRealArray( 0, 0.05, 0.35, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
@@ -64,7 +64,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=4]
 resource_name = "LawPlus"
-length = 0.5
+length = 0.4
 step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Control2/NinePatchRect/IndicatorBox/HBoxContainer/LawProgress:modulate")
@@ -73,7 +73,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.05, 0.45, 0.5 ),
+"times": PoolRealArray( 0, 0.05, 0.35, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 0, 1, 0.203922, 1 ), Color( 0, 1, 0.203922, 1 ), Color( 1, 1, 1, 1 ) ]
@@ -81,7 +81,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=5]
 resource_name = "BanditismMinus"
-length = 0.5
+length = 0.4
 step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Control2/NinePatchRect/IndicatorBox/HBoxContainer/BanditismProgress:modulate")
@@ -90,7 +90,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.05, 0.45, 0.5 ),
+"times": PoolRealArray( 0, 0.05, 0.35, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
@@ -98,7 +98,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=6]
 resource_name = "BanditismPlus"
-length = 0.5
+length = 0.4
 step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Control2/NinePatchRect/IndicatorBox/HBoxContainer/BanditismProgress:modulate")
@@ -107,7 +107,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.05, 0.45, 0.5 ),
+"times": PoolRealArray( 0, 0.05, 0.35, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 0, 1, 0.203922, 1 ), Color( 0, 1, 0.203922, 1 ), Color( 1, 1, 1, 1 ) ]
@@ -115,7 +115,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=7]
 resource_name = "LuckMinus"
-length = 0.5
+length = 0.4
 step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Control2/NinePatchRect/IndicatorBox/HBoxContainer/LuckProgress:modulate")
@@ -124,7 +124,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.05, 0.45, 0.5 ),
+"times": PoolRealArray( 0, 0.05, 0.35, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
@@ -132,7 +132,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=8]
 resource_name = "LuckPlus"
-length = 0.5
+length = 0.4
 step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Control2/NinePatchRect/IndicatorBox/HBoxContainer/LuckProgress:modulate")
@@ -141,7 +141,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.05, 0.45, 0.5 ),
+"times": PoolRealArray( 0, 0.05, 0.35, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 0, 1, 0.203922, 1 ), Color( 0, 1, 0.203922, 1 ), Color( 1, 1, 1, 1 ) ]

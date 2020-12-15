@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Resources/GFX/CharacterPortraits/BossDetective.png" type="Texture" id=1]
 [ext_resource path="res://Resources/GFX/CharacterCardBG.png" type="Texture" id=2]
@@ -53,7 +53,22 @@ tracks/2/keys = {
 }
 
 [sub_resource type="Animation" id=2]
-resource_name = "LChooseTextBack"
+resource_name = "DarkThemeCard"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
 length = 0.2
 step = 0.01
 tracks/0/type = "value"
@@ -81,8 +96,7 @@ tracks/1/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "RChooseText"
+[sub_resource type="Animation" id=4]
 length = 0.2
 step = 0.01
 tracks/0/type = "value"
@@ -110,6 +124,22 @@ tracks/1/keys = {
 "values": [ false, true ]
 }
 
+[sub_resource type="Animation" id=5]
+resource_name = "DarkThemeCard"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ) ]
+}
+
 [node name="Character" type="Control" groups=[
 "CharacterCard",
 ]]
@@ -124,9 +154,9 @@ __meta__ = {
 }
 
 [node name="CharacterControl" type="TouchScreenButton" parent="." groups=[
-"CharacterCard",
+"CharacterControl",
 ]]
-position = Vector2( 0, 740 )
+position = Vector2( 0, 800 )
 scale = Vector2( 0.85, 0.85 )
 script = ExtResource( 4 )
 __meta__ = {
@@ -219,5 +249,9 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterControl/CharacterCard/Control"]
 anims/Appearance = SubResource( 1 )
-anims/LChooseText = SubResource( 2 )
-anims/RChooseText = SubResource( 3 )
+anims/DarkThemeCard = SubResource( 2 )
+anims/LChooseText = SubResource( 3 )
+anims/RChooseText = SubResource( 4 )
+
+[node name="DarkTheme" type="AnimationPlayer" parent="CharacterControl/CharacterCard/Control"]
+anims/DarkThemeCard = SubResource( 5 )

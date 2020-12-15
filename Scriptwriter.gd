@@ -1,5 +1,6 @@
 extends Node
 
+#переменные для формирования карты
 var CardChoose
 var CardInfo #переменная хранящая данные из выбранной карты
 var CardImage #переменная хранящая путь до карты
@@ -7,7 +8,8 @@ var CardName #переменная хранящая название карты
 var CardText #переменная хранщая текст карты
 var CardRAnswer #переменная для правого ответа
 var CardLAnswer #переменная для левого ответа
-onready var CardDataBase = preload ("res://CardDataBase.gd")
+
+#переменные выбора на карточке влияющие на баланс
 var HealthLeftChoose
 var LawLeftChoose
 var BanditismLeftChoose
@@ -16,16 +18,51 @@ var HealthRightChoose
 var LawRightChoose
 var BanditismRightChoose
 var LuckRightChoose
-var one = 0
 
-func _ready():
-	pass
+#переменные баланса
+var Heath_var
+var Law_var
+var Banditism_var
+var Luck_var
+var maximum_value = 100
+
+#предзагрузка БД карт
+onready var CardDataBase = preload ("res://CardDataBase.gd")
 
 func randomcard():
 	var rng = RandomNumberGenerator.new() #ввели переменную, в которой запихнули функцию рандомайзера числа
 	rng.randomize() #опять тоже самое, что и строкой выше
 	var my_random_number = int(rng.randf_range(1, 5)) #указали диапазон чисел
 	CardChoose = "Intro" + str(my_random_number) #сгененировали название карты из Интро и числа
+	card_var_generator()
+	
+func losecard():
+	if Scriptwriter.Heath_var <= 0:
+		CardChoose = "LooseBottomHealth"
+		card_var_generator()
+	elif Scriptwriter.Law_var <= 0:
+		CardChoose = "LooseBottomLaw"
+		card_var_generator()
+	elif Scriptwriter.Banditism_var <= 0:
+		CardChoose = "LooseBottomBanditism"
+		card_var_generator()
+	elif Scriptwriter.Luck_var <= 0:
+		CardChoose = "LooseBottomLuck"
+		card_var_generator()
+	elif Scriptwriter.Heath_var >= 100:
+		CardChoose = "LooseTopHealth"
+		card_var_generator()
+	elif Scriptwriter.Law_var >= 100:
+		CardChoose = "LooseTopLaw"
+		card_var_generator()
+	elif Scriptwriter.Banditism_var >= 100:
+		CardChoose = "LooseTopBanditism"
+		card_var_generator()
+	elif Scriptwriter.Luck_var >= 100:
+		CardChoose = "LooseTopLuck"
+		card_var_generator()
+
+func card_var_generator():
 	CardInfo = CardDataBase.DATA[CardDataBase.get(CardChoose)] #применили к переменной кардинфо все данные карты из базы данных
 	CardImage = str ("res://Resources/GFX/CharacterPortraits", "/", CardInfo[1], ".png") #сгенерировали путь в проекте до портрета персонажа
 	CardName = CardInfo[3] #Ввели в переменную текстовое значение имени карты из массива БД
@@ -40,7 +77,8 @@ func randomcard():
 	LawRightChoose = CardInfo[11]
 	BanditismRightChoose = CardInfo[12]
 	LuckRightChoose = CardInfo[13]
-	one = one +1
-	print("Сработал randomcard")
-	get_tree().call_group("CharacterCard", "card_generation")
+	get_tree().call_group("CharacterControl", "card_generation")
 	get_tree().call_group("IventCard", "cardupdate")
+	print(CardInfo[1])
+	if CardInfo[0] == "LooseScreen":
+		get_tree().call_group("CharacterControl", "dark_theme_card")
