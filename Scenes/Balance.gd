@@ -6,6 +6,7 @@ onready var BanditismProgress = get_node("Control2/NinePatchRect/IndicatorBox/HB
 onready var LuckProgress = get_node("Control2/NinePatchRect/IndicatorBox/HBoxContainer/LuckProgress")
 
 func _ready():
+	victory_count_update()
 	Scriptwriter.Heath_var = 50
 	Scriptwriter.Law_var = 50
 	Scriptwriter.Banditism_var = 50
@@ -62,3 +63,6 @@ func animate_value_luck(start, end):
 		$AnimPlayerLuck.play("LuckPlus")
 	$Tween.interpolate_property($Control2/NinePatchRect/IndicatorBox/HBoxContainer/LuckProgress, "value", start, end, 1, Tween.TRANS_ELASTIC, Tween.EASE_OUT)
 	$Tween.start()
+
+func victory_count_update():
+	$Control2/NinePatchRect/Victory_count.text = "Количество клиентов:" + str(Scriptwriter.victory_count) + "/" + str(Scriptwriter.count_to_victory)

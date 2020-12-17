@@ -18,6 +18,8 @@ var HealthRightChoose
 var LawRightChoose
 var BanditismRightChoose
 var LuckRightChoose
+var NextCardRight
+var NextCardLeft
 
 #переменные баланса
 var Heath_var
@@ -26,8 +28,12 @@ var Banditism_var
 var Luck_var
 var maximum_value = 100
 
-#переменная обслуженных клиентов
-var victory_count
+#переменная обслуженных клиентов и лимит для достижения победы
+var victory_count = 0
+var count_to_victory = 20
+
+#переменная для запуска первой карты
+var FirstCard = true
 
 #предзагрузка БД карт
 onready var CardDataBase = preload ("res://CardDataBase.gd")
@@ -36,7 +42,12 @@ func randomcard():
 	var rng = RandomNumberGenerator.new() #ввели переменную, в которой запихнули функцию рандомайзера числа
 	rng.randomize() #опять тоже самое, что и строкой выше
 	var my_random_number = int(rng.randf_range(1, 5)) #указали диапазон чисел
-	CardChoose = "Intro" + str(my_random_number) #сгененировали название карты из Интро и числа
+	CardChoose = "Random" + str(my_random_number) #сгененировали название карты из Интро и числа
+	card_var_generator()
+	
+func next_card():
+	CardChoose = CardInfo[14]
+	CardChoose = CardInfo[15]
 	card_var_generator()
 	
 func losecard():
@@ -80,8 +91,13 @@ func card_var_generator():
 	LawRightChoose = CardInfo[11]
 	BanditismRightChoose = CardInfo[12]
 	LuckRightChoose = CardInfo[13]
+	NextCardLeft = CardInfo[14]
+	NextCardRight = CardInfo[15]
+
+	print ("2. сработало присваивание переменных")
 	get_tree().call_group("CharacterControl", "card_generation")
+	print ("3. сработал запуск генерации карты")
 	get_tree().call_group("IventCard", "cardupdate")
-	print(CardInfo[1])
+	print ("4. обновились данные в карте")
 	if CardInfo[0] == "LooseScreen":
 		get_tree().call_group("CharacterControl", "dark_theme_card")

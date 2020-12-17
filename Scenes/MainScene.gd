@@ -14,3 +14,6 @@ func background_fade():
 
 func restart_game():
 	get_tree().change_scene("res://Scenes/StartMenu.tscn")
+	
+func win_the_game():
+	get_tree().change_scene("res://Scenes/WinScene.tscn")

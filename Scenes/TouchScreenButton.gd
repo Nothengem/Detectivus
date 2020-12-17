@@ -11,8 +11,6 @@ var IsInTouch = false #используем, чтобы игра понимал�
 var LeftChoosePosition # используем 
 var RightChoosePosition 
 var fingerseek #переменная для срабатывания анимации шторки ответа
-var timeout = false #переменная для таймера
-var two = 10
 
 func _ready():
 	start_positionX = position.x
@@ -23,12 +21,25 @@ func _ready():
 	LeftChoosePosition = $LeftChoose
 	RightChoosePosition = $RightChoose
 	if Scriptwriter.Heath_var != 0 and Scriptwriter.Law_var != 0 and Scriptwriter.Banditism_var != 0 and Scriptwriter.Luck_var != 0 and Scriptwriter.Heath_var != 100 and Scriptwriter.Law_var != 100 and Scriptwriter.Banditism_var != 100 and Scriptwriter.Luck_var != 100:
-		Scriptwriter.randomcard()
-		print("randomcard")
+		
+		if Scriptwriter.FirstCard == true:
+			print("1. Первая карта сработала")
+			Scriptwriter.CardChoose = "Tutorial1"
+			Scriptwriter.card_var_generator()
+			Scriptwriter.FirstCard = false
+			print("5. В значение первой карты записали ", Scriptwriter.FirstCard)
+			
+		elif !Scriptwriter.FirstCard and Scriptwriter.CardChoose != "Random":
+			print("6. сработала проверка, что это не первая карта и следующая не равна рандому")
+			Scriptwriter.card_var_generator()
+			
+		elif !Scriptwriter.FirstCard and Scriptwriter.CardChoose == "Random":
+			print("6.1 сработала проверка, что это не первая карта и следующая равна рандому")
+			Scriptwriter.randomcard()
+			
 	elif Scriptwriter.Heath_var <= 0 or Scriptwriter.Law_var <= 0 or Scriptwriter.Banditism_var <= 0 or Scriptwriter.Luck_var <= 0 or Scriptwriter.Heath_var >= 100 or Scriptwriter.Law_var >= 100 or Scriptwriter.Banditism_var >= 100 or Scriptwriter.Luck_var >= 100:
 		Scriptwriter.losecard()
 		get_tree().call_group("MainScene", "background_fade")
-		print ("losecard")
 
 func _process(delta):
 	choosedone()
@@ -47,7 +58,7 @@ func _input(event): # если мы касаемся экрана или тян�
 		global_position = event.position
 		rotationos()
 		_leftrightanimation()
-		if Scriptwriter.CardInfo[0] == "Characters":
+		if Scriptwriter.CardInfo[0] == "Characters" or Scriptwriter.CardInfo[0] == "Tutorial":
 			chooseanimationRight()
 			chooseanimationLeft()
 
@@ -110,26 +121,37 @@ func chooseanimationLeft():
 
 func choosedone():
 	if $CharacterCard.position == $LeftChoose.position:
-		if Scriptwriter.CardInfo[0] == "Characters":
+		if Scriptwriter.CardInfo[0] == "Characters" or "Tutorial":
 			choosedone_next_card()
+			Scriptwriter.victory_count += 1
+			Scriptwriter.CardChoose = Scriptwriter.NextCardLeft
+			get_tree().call_group("BalanceGUI", "victory_count_update")
 			get_tree().call_group("BalanceGUI", "change_proportions_left")
 		elif Scriptwriter.CardInfo[0] == "LooseScreen":
 			choosedone_loose()
 
 	if $CharacterCard.position == $RightChoose.position:
-		if Scriptwriter.CardInfo[0] == "Characters":
+		if Scriptwriter.CardInfo[0] == "Characters" or "Tutorial":
 			choosedone_next_card()
+			Scriptwriter.victory_count += 1
+			Scriptwriter.CardChoose = Scriptwriter.NextCardRight
+			get_tree().call_group("BalanceGUI", "victory_count_update")
 			get_tree().call_group("BalanceGUI", "change_proportions_right")
 		elif Scriptwriter.CardInfo[0] == "LooseScreen":
 			choosedone_loose()
 
 func choosedone_next_card():
+	print("7. Сработала выбор следующей карт")
+	if Scriptwriter.victory_count < Scriptwriter.count_to_victory:
 		get_tree().call_group("MainScene", "spawn")
-		$"..".queue_free()
+	elif Scriptwriter.victory_count == Scriptwriter.count_to_victory:
+		get_tree().call_group("MainScene", "win_the_game")
+	$"..".queue_free()
 		
 func choosedone_loose():
 		get_tree().call_group("MainScene", "restart_game")
 		$"..".queue_free()
+		Scriptwriter.victory_count = 0
 		
 func dark_theme_card():
 	$CharacterCard/Control/DarkTheme.play("DarkThemeCard")

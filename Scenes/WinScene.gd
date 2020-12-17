@@ -2,6 +2,7 @@ extends Control
 
 func _ready():
 	$AnimationPlayer.play("PressTapTextSlow")
+	Scriptwriter.victory_count = 0
 
 func _on_Button_pressed():
 	button_restart()
