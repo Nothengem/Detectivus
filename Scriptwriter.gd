@@ -26,6 +26,9 @@ var Banditism_var
 var Luck_var
 var maximum_value = 100
 
+#переменная обслуженных клиентов
+var victory_count
+
 #предзагрузка БД карт
 onready var CardDataBase = preload ("res://CardDataBase.gd")
 

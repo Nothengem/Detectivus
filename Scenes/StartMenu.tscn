@@ -14,7 +14,7 @@ use_filter = true
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 21
+size = 18
 use_filter = true
 font_data = ExtResource( 2 )
 

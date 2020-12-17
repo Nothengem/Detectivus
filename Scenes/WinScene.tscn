@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/StartMenu.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/WinScene.gd" type="Script" id=2]
+[ext_resource path="res://Resources/GFX/Interface/Font/TextGame.tres" type="DynamicFont" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "PressTapTextSlow"
+length = 0.5
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("LabelBack/PressTapText:custom_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.698039, 0.678431, 0.678431, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="StartMenu" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="GameName" parent="LabelBack" index="0"]
+margin_top = -110.0
+margin_bottom = -48.0
+text = "0QS48"
+
+[node name="Key" parent="LabelBack" index="1"]
+margin_top = 60.0
+margin_bottom = -420.0
+
+[node name="PressTapText" parent="LabelBack" index="2"]
+margin_left = 1.23978e-05
+margin_top = -140.0
+margin_bottom = 84.9998
+text = "Поздравляю! 
+Вы прошли игру. Это ваш прокомод на скидку в 3'000 р. при получении кредита в Ренессанс Кредит Банк"
+
+[node name="Button" type="Button" parent="LabelBack" index="3"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -66.0
+margin_top = -100.0
+margin_right = 66.0
+margin_bottom = -40.0
+custom_fonts/font = ExtResource( 3 )
+text = "Перезапуск"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" parent="." index="3"]
+anims/PressTapTextSlow = SubResource( 1 )
+[connection signal="pressed" from="LabelBack/Button" to="." method="_on_Button_pressed"]
