@@ -13,6 +13,7 @@ func background_fade():
 	$AnimationPlayer.play("FadeBackGround")
 
 func restart_game():
+	Scriptwriter.FirstCard = true
 	get_tree().change_scene("res://Scenes/StartMenu.tscn")
 	
 func win_the_game():

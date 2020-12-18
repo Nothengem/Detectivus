@@ -23,6 +23,13 @@ config/icon="res://icon.png"
 
 Scriptwriter="*res://Scenes/Scriptwriter.tscn"
 
+[display]
+
+window/size/width=290
+window/handheld/orientation="portrait"
+window/stretch/mode="viewport"
+window/stretch/aspect="keep_width"
+
 [input]
 
 ui_touch={

@@ -172,10 +172,10 @@ position = Vector2( -70, 0 )
 [node name="MiddlePosition" type="Position2D" parent="CharacterControl"]
 
 [node name="LeftChoose" type="Position2D" parent="CharacterControl"]
-position = Vector2( -450, 450 )
+position = Vector2( -450, 0 )
 
 [node name="RightChoose" type="Position2D" parent="CharacterControl"]
-position = Vector2( 450, 450 )
+position = Vector2( 450, 0 )
 
 [node name="Tween" type="Tween" parent="CharacterControl"]
 

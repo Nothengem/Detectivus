@@ -1,6 +1,7 @@
 extends Node
 
 #переменные для формирования карты
+var CardType
 var CardChoose
 var CardInfo #переменная хранящая данные из выбранной карты
 var CardImage #переменная хранящая путь до карты
@@ -42,13 +43,9 @@ func randomcard():
 	var rng = RandomNumberGenerator.new() #ввели переменную, в которой запихнули функцию рандомайзера числа
 	rng.randomize() #опять тоже самое, что и строкой выше
 	var my_random_number = int(rng.randf_range(1, 5)) #указали диапазон чисел
-	CardChoose = "Random" + str(my_random_number) #сгененировали название карты из Интро и числа
+	CardChoose = str(CardChoose) + str(my_random_number) #сгененировали название карты из Интро и числа
 	card_var_generator()
 	
-func next_card():
-	CardChoose = CardInfo[14]
-	CardChoose = CardInfo[15]
-	card_var_generator()
 	
 func losecard():
 	if Scriptwriter.Heath_var <= 0:
@@ -77,8 +74,11 @@ func losecard():
 		card_var_generator()
 
 func card_var_generator():
+	if CardChoose == "Random":
+		randomcard()
 	CardInfo = CardDataBase.DATA[CardDataBase.get(CardChoose)] #применили к переменной кардинфо все данные карты из базы данных
 	CardImage = str ("res://Resources/GFX/CharacterPortraits", "/", CardInfo[1], ".png") #сгенерировали путь в проекте до портрета персонажа
+	CardType = CardInfo[0]
 	CardName = CardInfo[3] #Ввели в переменную текстовое значение имени карты из массива БД
 	CardText = CardInfo[2] #Ввели в переменную текстовое значение текста карты из массива БД
 	CardRAnswer = CardInfo[5] #левый ответ из БД
@@ -93,11 +93,7 @@ func card_var_generator():
 	LuckRightChoose = CardInfo[13]
 	NextCardLeft = CardInfo[14]
 	NextCardRight = CardInfo[15]
-
-	print ("2. сработало присваивание переменных")
 	get_tree().call_group("CharacterControl", "card_generation")
-	print ("3. сработал запуск генерации карты")
 	get_tree().call_group("IventCard", "cardupdate")
-	print ("4. обновились данные в карте")
-	if CardInfo[0] == "LooseScreen":
+	if Scriptwriter.CardType == "LooseScreen":
 		get_tree().call_group("CharacterControl", "dark_theme_card")
