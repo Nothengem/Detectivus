@@ -95,5 +95,5 @@ func card_var_generator():
 	NextCardRight = CardInfo[15]
 	get_tree().call_group("CharacterControl", "card_generation")
 	get_tree().call_group("IventCard", "cardupdate")
-	if Scriptwriter.CardType == "LooseScreen":
-		get_tree().call_group("CharacterControl", "dark_theme_card")
+#	if Scriptwriter.CardType == "LooseScreen":
+#		get_tree().call_group("CharacterControl", "dark_theme_card")

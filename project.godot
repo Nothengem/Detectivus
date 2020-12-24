@@ -27,7 +27,8 @@ Scriptwriter="*res://Scenes/Scriptwriter.tscn"
 
 window/size/width=1080
 window/size/height=1920
-window/size/fullscreen=true
+window/size/test_width=1024
+window/size/test_height=768
 window/handheld/orientation="portrait"
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_width"

@@ -6,11 +6,12 @@ onready var BanditismProgress = get_node("Control2/NinePatchRect/IndicatorBox/HB
 onready var LuckProgress = get_node("Control2/NinePatchRect/IndicatorBox/HBoxContainer/LuckProgress")
 
 func _ready():
-	victory_count_update()
 	Scriptwriter.Heath_var = 50
 	Scriptwriter.Law_var = 50
 	Scriptwriter.Banditism_var = 50
 	Scriptwriter.Luck_var = 50
+	victory_count_update()
+
 
 func change_proportions_right():
 	Scriptwriter.Heath_var = Scriptwriter.Heath_var + Scriptwriter.HealthRightChoose
@@ -21,6 +22,7 @@ func change_proportions_right():
 	animate_value_banditism(BanditismProgress.value, Scriptwriter.Banditism_var)
 	Scriptwriter.Luck_var = Scriptwriter.Luck_var + Scriptwriter.LuckRightChoose
 	animate_value_luck(LuckProgress.value, Scriptwriter.Luck_var)
+	print(Scriptwriter.Heath_var, ":", Scriptwriter.Law_var, ":", Scriptwriter.Banditism_var, ":", Scriptwriter.Luck_var)
 
 func change_proportions_left():
 	Scriptwriter.Heath_var = Scriptwriter.Heath_var + Scriptwriter.HealthLeftChoose
@@ -31,6 +33,7 @@ func change_proportions_left():
 	animate_value_banditism(BanditismProgress.value, Scriptwriter.Banditism_var)
 	Scriptwriter.Luck_var = Scriptwriter.Luck_var + Scriptwriter.LuckLeftChoose
 	animate_value_luck(LuckProgress.value, Scriptwriter.Luck_var)
+	print(Scriptwriter.Heath_var, ":", Scriptwriter.Law_var, ":", Scriptwriter.Banditism_var, ":", Scriptwriter.Luck_var)
 
 func animate_value_health(start, end):
 	if HealthProgress.value > Scriptwriter.Heath_var:

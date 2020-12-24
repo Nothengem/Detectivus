@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/StartMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/WinScene.gd" type="Script" id=2]
 [ext_resource path="res://Resources/GFX/Interface/Font/TextGame.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Resources/GFX/Interface/ButtonPressed.png" type="Texture" id=4]
+[ext_resource path="res://Resources/GFX/Interface/Button.png" type="Texture" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "PressTapTextSlow"
@@ -41,21 +43,31 @@ margin_bottom = 84.9998
 text = "Поздравляю! 
 Вы прошли игру. Это ваш прокомод на скидку в 3'000 р. при получении кредита в Ренессанс Кредит Банк"
 
-[node name="Button" type="Button" parent="LabelBack" index="3"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+[node name="Control" type="Control" parent="LabelBack" index="3"]
+anchor_left = 0.206897
+anchor_top = 0.842083
+anchor_right = 0.793103
+anchor_bottom = 0.952083
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Button" type="TouchScreenButton" parent="LabelBack/Control" index="0"]
+normal = ExtResource( 5 )
+pressed = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="LabelBack/Control/Button" index="0"]
+anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -66.0
-margin_top = -100.0
-margin_right = 66.0
-margin_bottom = -40.0
 custom_fonts/font = ExtResource( 3 )
 text = "Перезапуск"
+align = 1
+valign = 1
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
 }
 
 [node name="AnimationPlayer" parent="." index="3"]
 anims/PressTapTextSlow = SubResource( 1 )
-[connection signal="pressed" from="LabelBack/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="LabelBack/Control/Button" to="." method="_on_Button_pressed"]
+[connection signal="released" from="LabelBack/Control/Button" to="." method="_on_Button_released"]

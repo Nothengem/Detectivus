@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Resources/GFX/StartScreenBackGround.png" type="Texture" id=1]
 [ext_resource path="res://Resources/GFX/Interface/Font/JetBrainsMono-VariableFont_wght.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://Resources/GFX/StartScreenKey.png" type="Texture" id=3]
+[ext_resource path="res://Resources/GFX/RenLogo.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/StartMenu.gd" type="Script" id=4]
 [ext_resource path="res://Resources/GFX/Background.jpg" type="Texture" id=5]
 
@@ -67,7 +67,7 @@ margin_left = -145.0
 margin_top = -300.0
 margin_right = 145.0
 margin_bottom = 300.0
-rect_scale = Vector2( 3, 3 )
+rect_scale = Vector2( 3.6, 3.2 )
 rect_pivot_offset = Vector2( 145, 300 )
 texture = ExtResource( 1 )
 __meta__ = {
@@ -75,33 +75,33 @@ __meta__ = {
 }
 
 [node name="GameName" type="Label" parent="LabelBack"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -130.0
-margin_top = -70.0
-margin_right = 130.0
-margin_bottom = -8.0
+anchor_left = 0.0517241
+anchor_top = 0.448333
+anchor_right = 0.948276
+anchor_bottom = 0.64
+margin_bottom = -52.9996
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "Детективус"
+text = "RenGame
+studio"
 align = 1
 valign = 1
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
 }
 
 [node name="Key" type="NinePatchRect" parent="LabelBack"]
 anchor_left = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -40.0
-margin_top = 100.0
-margin_right = 40.0
-margin_bottom = -380.0
+margin_left = -60.0
+margin_top = 84.4347
+margin_right = 60.0
+margin_bottom = 204.435
 texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="PressTapText" type="Label" parent="LabelBack"]
 anchor_left = 0.0517241

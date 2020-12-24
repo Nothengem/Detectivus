@@ -63,14 +63,14 @@ __meta__ = {
 [node name="CardTemplate" parent="Control" groups=[
 "IventCard",
 ] instance=ExtResource( 1 )]
-anchor_left = 0.0932036
-anchor_top = 0.204079
-anchor_right = 0.912648
-anchor_bottom = 0.829079
-margin_left = -5.65993
-margin_top = -61.8324
-margin_right = -595.66
-margin_bottom = -861.833
+anchor_left = 0.062965
+anchor_top = 0.151042
+anchor_right = 0.937039
+anchor_bottom = 0.817708
+margin_left = 324.498
+margin_top = 440.0
+margin_right = -324.502
+margin_bottom = -439.999
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/FadeBackGround = SubResource( 1 )

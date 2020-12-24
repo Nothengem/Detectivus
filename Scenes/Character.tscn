@@ -149,7 +149,7 @@ anchor_right = 0.500977
 anchor_bottom = 0.508333
 margin_top = 12.0
 margin_bottom = 12.0
-rect_scale = Vector2( 3, 3 )
+rect_scale = Vector2( 3.2, 3.2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
