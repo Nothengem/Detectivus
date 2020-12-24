@@ -65,6 +65,7 @@ func _input(event): # если мы касаемся экрана или тян�
 	if event is InputEventScreenTouch:
 		if not event.pressed:
 			_on_touch_released(event)
+			choosedone()
 			
 
 func _on_touch_released(event):
@@ -125,6 +126,7 @@ func choosedone():
 			get_tree().call_group("BalanceGUI", "change_proportions_left")
 		elif Scriptwriter.CardType == "LooseScreen":
 			choosedone_loose()
+
 
 	if $CharacterCard.position == $RightChoose.position:
 		if Scriptwriter.CardType == "Characters" or Scriptwriter.CardType =="Tutorial":

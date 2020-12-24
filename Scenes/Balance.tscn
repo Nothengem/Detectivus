@@ -151,6 +151,8 @@ tracks/0/keys = {
 [node name="BalanceGUI" type="Control" groups=[
 "BalanceGUI",
 ]]
+anchor_right = 1.0
+anchor_bottom = 1.0
 script = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -172,6 +174,7 @@ margin_left = -145.0
 margin_top = -300.0
 margin_right = 145.0
 margin_bottom = 300.0
+rect_scale = Vector2( 3, 3 )
 rect_pivot_offset = Vector2( 145, 300 )
 texture = ExtResource( 1 )
 __meta__ = {
@@ -247,7 +250,6 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control2/NinePatchRect/IventStatusBox"]
-visible = false
 margin_left = 15.0
 margin_right = 275.0
 margin_bottom = 62.0
@@ -280,6 +282,7 @@ rect_min_size = Vector2( 62, 62 )
 texture = ExtResource( 10 )
 
 [node name="Victory_count" type="Label" parent="Control2/NinePatchRect"]
+visible = false
 anchor_left = 0.0689655
 anchor_top = 0.868333
 anchor_right = 0.931035

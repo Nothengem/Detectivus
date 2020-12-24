@@ -42,7 +42,7 @@ onready var CardDataBase = preload ("res://CardDataBase.gd")
 func randomcard():
 	var rng = RandomNumberGenerator.new() #ввели переменную, в которой запихнули функцию рандомайзера числа
 	rng.randomize() #опять тоже самое, что и строкой выше
-	var my_random_number = int(rng.randf_range(1, 5)) #указали диапазон чисел
+	var my_random_number = int(rng.randf_range(1, 10)) #указали диапазон чисел
 	CardChoose = str(CardChoose) + str(my_random_number) #сгененировали название карты из Интро и числа
 	card_var_generator()
 	

@@ -67,6 +67,8 @@ margin_left = -145.0
 margin_top = -300.0
 margin_right = 145.0
 margin_bottom = 300.0
+rect_scale = Vector2( 3, 3 )
+rect_pivot_offset = Vector2( 145, 300 )
 texture = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
