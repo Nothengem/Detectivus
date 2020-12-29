@@ -22,7 +22,6 @@ func change_proportions_right():
 	animate_value_banditism(BanditismProgress.value, Scriptwriter.Banditism_var)
 	Scriptwriter.Luck_var = Scriptwriter.Luck_var + Scriptwriter.LuckRightChoose
 	animate_value_luck(LuckProgress.value, Scriptwriter.Luck_var)
-	print(Scriptwriter.Heath_var, ":", Scriptwriter.Law_var, ":", Scriptwriter.Banditism_var, ":", Scriptwriter.Luck_var)
 
 func change_proportions_left():
 	Scriptwriter.Heath_var = Scriptwriter.Heath_var + Scriptwriter.HealthLeftChoose
@@ -33,7 +32,6 @@ func change_proportions_left():
 	animate_value_banditism(BanditismProgress.value, Scriptwriter.Banditism_var)
 	Scriptwriter.Luck_var = Scriptwriter.Luck_var + Scriptwriter.LuckLeftChoose
 	animate_value_luck(LuckProgress.value, Scriptwriter.Luck_var)
-	print(Scriptwriter.Heath_var, ":", Scriptwriter.Law_var, ":", Scriptwriter.Banditism_var, ":", Scriptwriter.Luck_var)
 
 func animate_value_health(start, end):
 	if HealthProgress.value > Scriptwriter.Heath_var:

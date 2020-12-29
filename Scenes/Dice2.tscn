@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Resources/GFX/Dice/Dice1.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/Dice2.gd" type="Script" id=2]
+[ext_resource path="res://Resources/GFX/Dice/cross.png" type="Texture" id=3]
+[ext_resource path="res://Resources/GFX/Dice/CrossButton.png" type="Texture" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "CanPick"
+
+[node name="Dice" type="NinePatchRect" groups=[
+"Dice2",
+]]
+anchor_right = 0.37037
+anchor_bottom = 0.208333
+margin_right = -400.0
+margin_bottom = -400.0
+rect_min_size = Vector2( 400, 400 )
+rect_pivot_offset = Vector2( 200, 200 )
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/CanPick = SubResource( 1 )
+
+[node name="Cross2" type="TextureRect" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -167.0
+margin_top = -167.0
+margin_right = 167.0
+margin_bottom = 167.0
+rect_min_size = Vector2( 334, 334 )
+rect_pivot_offset = Vector2( 167, 167 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Cross" type="TouchScreenButton" parent="."]
+visible = false
+position = Vector2( 28, 38 )
+normal = ExtResource( 4 )
+[connection signal="released" from="Cross" to="." method="_on_Cross_released"]

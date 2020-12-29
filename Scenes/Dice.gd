@@ -1,53 +1,67 @@
 extends Control
 
-var Dice = "Dice"
-
-var DiceImage1
-var DiceImage2
-var DiceImage3
-var DiceImage4
-
-var Dice1Picked
-var Dice2Picked
-var Dice3Picked
-var Dice4Picked
-var PickedLimit = 2
+var Dice
+var Dice2
+var Dice3
+var Dice4
+var victory_number
+var limited_dice = 2
+var Dice_active
+var Dice2_active
+var Dice3_active
+var Dice4_active
+var Dice_active_mass = 0
+var first_dice = true
 
 func _ready():
-	dice_generator1()
-	dice_generator2()
-	dice_generator3()
-	dice_generator4()
+	$Apperiance.play("Appearance")
+	print(Dice_active_mass)
 
-func randomdice():
-	var rng = RandomNumberGenerator.new()
-	rng.randomize()
-	var my_random_number = int(rng.randf_range(1, 6))
-	print(my_random_number)
-	Dice = str(Dice) + str(my_random_number)
-	print(Dice)
+func _on_Dice4_ready():
+	Dice_update()
 
-func dice_generator1():
-	randomdice()
-	DiceImage1 = str("res://Resources/GFX/Dice", "/", Dice, ".png")
-	print(DiceImage1)
-	$CenterContainer/VBoxContainer/HBoxContainer/Dice1.texture = load(DiceImage1)
-	Dice = "Dice"
-	
-func dice_generator2():
-	randomdice()
-	DiceImage2 = str ("res://Resources/GFX/Dice", "/", Dice, ".png")
-	$CenterContainer/VBoxContainer/HBoxContainer/Dice2.texture = load(DiceImage2)
-	Dice = "Dice"
+func Dice_update():
+	Dice = $NinePatchRect/CenterContainer/VBoxContainer/HBoxContainer/Dice.my_random_number
+	Dice2 = $NinePatchRect/CenterContainer/VBoxContainer/HBoxContainer/Dice2.my_random_number
+	Dice3 = $NinePatchRect/CenterContainer/VBoxContainer/HBoxContainer2/Dice3.my_random_number
+	Dice4 = $NinePatchRect/CenterContainer/VBoxContainer/HBoxContainer2/Dice4.my_random_number
+	print(Dice, Dice2, Dice3, Dice4)
 
-func dice_generator3():
-	randomdice()
-	DiceImage3 = str ("res://Resources/GFX/Dice", "/", Dice, ".png")
-	$CenterContainer/VBoxContainer/HBoxContainer2/Dice3.texture = load(DiceImage3)
-	Dice = "Dice"
+func counter():
+	victory_number = Dice + Dice2 + Dice3 + Dice4
+	$Label.text = str(victory_number)
+	print(victory_number)
 
-func dice_generator4():
-	randomdice()
-	DiceImage4 = str ("res://Resources/GFX/Dice", "/", Dice, ".png")
-	$CenterContainer/VBoxContainer/HBoxContainer2/Dice4.texture = load(DiceImage4)
-	Dice = "Dice"
+func number_update_plus():
+	if Dice_active_mass < limited_dice:
+		Dice_active_mass = Dice_active_mass + 1
+		limit_control()
+		button_blocker()
+		
+func number_update_minus():
+	if Dice_active_mass != 0:
+		Dice_active_mass = Dice_active_mass - 1
+		limit_control()
+		button_blocker()
+
+func limit_control():
+	if Dice_active_mass == limited_dice:
+		get_tree().call_group("Dice2", "block_cross")
+	elif Dice_active_mass < limited_dice:
+		get_tree().call_group("Dice2", "unblock_cross")
+
+func button_blocker():
+	if Dice_active_mass == 0:
+		$Button.disabled = true
+	elif Dice_active_mass > 0:
+		$Button.disabled = false
+
+func _on_Button_button_up():
+	if first_dice:
+		get_tree().call_group("Dice2", "first_dice")
+		Dice_update()
+		$Button.text = "Перебросить"
+		first_dice = false
+		counter()
+	elif !first_dice:
+		get_tree().call_group("Dice2", "redice")

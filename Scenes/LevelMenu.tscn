@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Resources/GFX/Interface/LevelMenuBackGround.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/LevelButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Resources/GFX/Interface/Font/TextGame.tres" type="DynamicFont" id=3]
 
 [node name="LevelMenu" type="NinePatchRect"]
 anchor_right = 1.0
@@ -9,3 +11,155 @@ texture = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": true
 }
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -440.0
+margin_top = -860.0
+margin_right = 440.0
+margin_bottom = 860.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_top = -1.0
+margin_right = 880.0
+margin_bottom = 439.0
+rect_min_size = Vector2( 880, 440 )
+custom_fonts/font = ExtResource( 3 )
+text = "По какому пути пойдёт Ваш банк? 
+Выборать только Вам"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="LevelButton1" parent="." instance=ExtResource( 2 )]
+anchor_left = 0.386556
+anchor_top = 0.276965
+anchor_right = 0.571741
+anchor_bottom = 0.381132
+level = 1
+enabled = true
+
+[node name="LevelButton2" parent="." instance=ExtResource( 2 )]
+anchor_left = 0.139627
+anchor_top = 0.357989
+anchor_right = 0.324812
+anchor_bottom = 0.462155
+level = 2
+
+[node name="LevelButton3" parent="." instance=ExtResource( 2 )]
+anchor_left = 0.00734332
+anchor_top = 0.516729
+anchor_right = 0.192529
+anchor_bottom = 0.620896
+level = 3
+
+[node name="LevelButton4" parent="." instance=ExtResource( 2 )]
+anchor_left = -0.0161738
+anchor_top = 0.658934
+anchor_right = 0.169011
+anchor_bottom = 0.7631
+level = 4
+
+[node name="LevelButton5" parent="." instance=ExtResource( 2 )]
+anchor_left = -0.022053
+anchor_top = 0.786256
+anchor_right = 0.163132
+anchor_bottom = 0.890423
+level = 5
+
+[node name="LevelButton6" parent="." instance=ExtResource( 2 )]
+anchor_left = 0.277789
+anchor_top = 0.391059
+anchor_right = 0.462975
+anchor_bottom = 0.495226
+level = 6
+
+[node name="LevelButton7" parent="." instance=ExtResource( 2 )]
+anchor_left = 0.210178
+anchor_top = 0.543185
+anchor_right = 0.395363
+anchor_bottom = 0.647352
+level = 7
+
+[node name="LevelButton8" parent="." instance=ExtResource( 2 )]
+anchor_left = 0.221936
+anchor_top = 0.660587
+anchor_right = 0.407122
+anchor_bottom = 0.764754
+level = 8
+
+[node name="LevelButton9" parent="." instance=ExtResource( 2 )]
+anchor_left = 0.210178
+anchor_top = 0.796177
+anchor_right = 0.395363
+anchor_bottom = 0.900344
+level = 9
+
+[node name="LevelButton10" parent="." instance=ExtResource( 2 )]
+anchor_left = 0.448288
+anchor_top = 0.379485
+anchor_right = 0.633473
+anchor_bottom = 0.483651
+level = 10
+
+[node name="LevelButton11" parent="." instance=ExtResource( 2 )]
+anchor_left = 0.486503
+anchor_top = 0.524996
+anchor_right = 0.671688
+anchor_bottom = 0.629163
+level = 11
+
+[node name="LevelButton12" parent="." instance=ExtResource( 2 )]
+anchor_left = 0.460046
+anchor_top = 0.655626
+anchor_right = 0.645232
+anchor_bottom = 0.759793
+level = 12
+
+[node name="LevelButton13" parent="." instance=ExtResource( 2 )]
+anchor_left = 0.457107
+anchor_top = 0.81602
+anchor_right = 0.642292
+anchor_bottom = 0.920187
+level = 13
+
+[node name="LevelButton14" parent="." instance=ExtResource( 2 )]
+anchor_left = 0.565873
+anchor_top = 0.314997
+anchor_right = 0.751058
+anchor_bottom = 0.419163
+level = 14
+
+[node name="LevelButton15" parent="." instance=ExtResource( 2 )]
+anchor_left = 0.680519
+anchor_top = 0.429091
+anchor_right = 0.865704
+anchor_bottom = 0.533258
+level = 15
+
+[node name="LevelButton16" parent="." instance=ExtResource( 2 )]
+anchor_left = 0.730493
+anchor_top = 0.602713
+anchor_right = 0.915678
+anchor_bottom = 0.70688
+level = 16
+
+[node name="LevelButton17" parent="." instance=ExtResource( 2 )]
+anchor_left = 0.739312
+anchor_top = 0.799485
+anchor_right = 0.924497
+anchor_bottom = 0.903651
+level = 17
+
+[node name="LevelButton18" parent="." instance=ExtResource( 2 )]
+anchor_left = 0.739312
+anchor_top = 0.799485
+anchor_right = 0.924497
+anchor_bottom = 0.903651
+level = 18

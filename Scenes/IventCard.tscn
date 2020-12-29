@@ -79,7 +79,7 @@ __meta__ = {
 
 [node name="CharacterName" type="Label" parent="CharNameCont"]
 margin_right = 254.0
-margin_bottom = 27.0
+margin_bottom = 33.0
 rect_min_size = Vector2( 0, 20 )
 theme = SubResource( 2 )
 custom_fonts/font = ExtResource( 6 )

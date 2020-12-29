@@ -21,20 +21,26 @@ func _ready():
 	LeftChoosePosition = $LeftChoose
 	RightChoosePosition = $RightChoose
 	if !Scriptwriter.Heath_var <= 0 and !Scriptwriter.Law_var <= 0 and !Scriptwriter.Banditism_var <= 0 and !Scriptwriter.Luck_var <= 0 and !Scriptwriter.Heath_var >= 100 and !Scriptwriter.Law_var >= 100 and !Scriptwriter.Banditism_var >= 100 and !Scriptwriter.Luck_var >= 100:
-		print("player doesnt lose")
 		if Scriptwriter.FirstCard == true:
 			Scriptwriter.CardChoose = "Tutorial1"
 			Scriptwriter.card_var_generator()
 			Scriptwriter.FirstCard = false
 			
-		elif !Scriptwriter.FirstCard and Scriptwriter.CardType == "Tutorial":
+		elif !Scriptwriter.FirstCard and Scriptwriter.CardType == "Tutorial" and Scriptwriter.CardType != "Characters":
 			Scriptwriter.card_var_generator()
+			print(Scriptwriter.CardType)
+			$CharacterCard/Control/AnimationPlayer.play("Appearance")
+			print("сработал apperiance")
 			
 		elif !Scriptwriter.FirstCard and Scriptwriter.CardChoose == "Random":
-			Scriptwriter.randomcard()
+#			$CharacterCard/Control/AnimationPlayer.play("Appearance")
+			Scriptwriter.card_var_generator()
+			
+		elif !Scriptwriter.FirstCard and !Scriptwriter.CardChoose == "Random" and !Scriptwriter.CardChoose == "Tutorial":
+			Scriptwriter.card_var_generator()
+			$CharacterCard/Control/AnimationPlayer.play("Appearance")
 			
 	elif Scriptwriter.Heath_var <= 0 or Scriptwriter.Law_var <= 0 or Scriptwriter.Banditism_var <= 0 or Scriptwriter.Luck_var <= 0 or Scriptwriter.Heath_var >= 100 or Scriptwriter.Law_var >= 100 or Scriptwriter.Banditism_var >= 100 or Scriptwriter.Luck_var >= 100:
-		print("player lose")
 		Scriptwriter.losecard()
 		get_tree().call_group("MainScene", "background_fade")
 
@@ -42,7 +48,6 @@ func _process(delta):
 	choosedone()
 	
 func card_generation():
-	$CharacterCard/Control/AnimationPlayer.play("Appearance")
 	$CharacterCard/CharacterPortrait.texture = load(Scriptwriter.CardImage)
 	if !Scriptwriter.Heath_var <= 0 and !Scriptwriter.Law_var <= 0 and !Scriptwriter.Banditism_var <= 0 and !Scriptwriter.Luck_var <= 0 and !Scriptwriter.Heath_var >= 100 and !Scriptwriter.Law_var >= 100 and !Scriptwriter.Banditism_var >= 100 and !Scriptwriter.Luck_var >= 100:
 		$CharacterCard/Control/RightChooseRect/RChooseText.text = Scriptwriter.CardRAnswer
@@ -113,7 +118,6 @@ func chooseanimationRight():
 	$CharacterCard/Control/AnimationPlayer.seek(fingerseek, true)
 	$CharacterCard/Control/AnimationPlayer.stop()
 
-
 func chooseanimationLeft():
 	$CharacterCard/Control/AnimationPlayer.play("LChooseText")
 	fingerseek = position.x/-250
@@ -155,6 +159,8 @@ func choosedone():
 
 func choosedone_next_card():
 	if Scriptwriter.victory_count < Scriptwriter.count_to_victory:
+		if Scriptwriter.CardIvent == "Dice":
+			get_tree().call_group("MainScene", "spawn_dice")
 		get_tree().call_group("MainScene", "spawn")
 	elif Scriptwriter.victory_count == Scriptwriter.count_to_victory:
 		get_tree().call_group("MainScene", "win_the_game")
