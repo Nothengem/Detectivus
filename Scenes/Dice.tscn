@@ -205,10 +205,10 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/CenterContainer"]
-margin_left = 11.0
-margin_top = 11.0
-margin_right = 815.0
-margin_bottom = 815.0
+margin_left = 12.0
+margin_top = 12.0
+margin_right = 816.0
+margin_bottom = 816.0
 rect_min_size = Vector2( 804, 804 )
 rect_pivot_offset = Vector2( 402, 402 )
 
@@ -275,11 +275,14 @@ margin_right = 575.227
 margin_bottom = 387.375
 rect_scale = Vector2( 2, 2 )
 custom_fonts/font = ExtResource( 5 )
-text = "wewrr"
+text = "4"
 align = 1
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="ready" from="NinePatchRect/CenterContainer/VBoxContainer/HBoxContainer2/Dice4" to="." method="_on_Dice4_ready"]
+[connection signal="texture_changed" from="NinePatchRect/CenterContainer/VBoxContainer/HBoxContainer/Dice" to="." method="_on_Dice_texture_changed"]
+[connection signal="texture_changed" from="NinePatchRect/CenterContainer/VBoxContainer/HBoxContainer/Dice2" to="." method="_on_Dice2_texture_changed"]
+[connection signal="texture_changed" from="NinePatchRect/CenterContainer/VBoxContainer/HBoxContainer2/Dice3" to="." method="_on_Dice3_texture_changed"]
+[connection signal="texture_changed" from="NinePatchRect/CenterContainer/VBoxContainer/HBoxContainer2/Dice4" to="." method="_on_Dice4_texture_changed"]
 [connection signal="button_up" from="Button" to="." method="_on_Button_button_up"]

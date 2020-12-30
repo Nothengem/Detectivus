@@ -3,14 +3,17 @@ extends NinePatchRect
 var Dice = "Dice"
 var DiceImage
 var DicePicked
-var my_random_number = 1
+var my_random_number
 var picked = false
 var cross_active = 0
-	
+
+func _ready():
+	my_random_number = 1
+
 func first_dice():
-		randomdice()
-		image_generator()
-		$Cross.visible = true
+	randomdice()
+	image_generator()
+	$Cross.visible = true
 	
 func redice():
 	if picked:
@@ -48,8 +51,6 @@ func _on_Cross_released():
 func block_cross():
 	if !picked:
 		$Cross.visible = false
-		print("block_cross")
 
 func unblock_cross():
 	$Cross.visible = true
-	print("unblock_cross")
