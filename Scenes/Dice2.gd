@@ -3,7 +3,7 @@ extends NinePatchRect
 var Dice = "Dice"
 var DiceImage
 var DicePicked
-var my_random_number
+var my_random_number = 1
 var picked = false
 var cross_active = 0
 
@@ -54,3 +54,6 @@ func block_cross():
 
 func unblock_cross():
 	$Cross.visible = true
+	
+func hidecross():
+	$Cross.visible = false

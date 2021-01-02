@@ -4,7 +4,7 @@ var Dice
 var Dice2
 var Dice3
 var Dice4
-var victory_number
+var victory_number = 0
 var limited_dice = 2
 var Dice_active
 var Dice2_active
@@ -15,16 +15,20 @@ var first_dice = true
 
 func _ready():
 	$Apperiance.play("Appearance")
+	Dice = 1
+	Dice2 = 1
+	Dice3 = 1
+	Dice4 = 1
 
 func _on_Dice4_ready():
 	Dice_update()
+	print(Dice, Dice2, Dice3, Dice4)
 
 func Dice_update():
 	Dice = $NinePatchRect/CenterContainer/VBoxContainer/HBoxContainer/Dice.my_random_number
 	Dice2 = $NinePatchRect/CenterContainer/VBoxContainer/HBoxContainer/Dice2.my_random_number
 	Dice3 = $NinePatchRect/CenterContainer/VBoxContainer/HBoxContainer2/Dice3.my_random_number
 	Dice4 = $NinePatchRect/CenterContainer/VBoxContainer/HBoxContainer2/Dice4.my_random_number
-	print(Dice, Dice2, Dice3, Dice4)
 
 func counter():
 	victory_number = Dice + Dice2 + Dice3 + Dice4
@@ -55,14 +59,7 @@ func button_blocker():
 		$Button.disabled = false
 
 func _on_Button_button_up():
-	if first_dice == true:
-		get_tree().call_group("Dice2", "first_dice")
-		Dice_update()
-		counter()
-		$Button.text = "Перебросить"
-		first_dice = false
-	elif first_dice == false:
-		get_tree().call_group("Dice2", "redice")
+	$RollDice.play("RollDice")
 
 func _on_Dice_texture_changed():
 	Dice = $NinePatchRect/CenterContainer/VBoxContainer/HBoxContainer/Dice.my_random_number
@@ -79,3 +76,23 @@ func _on_Dice3_texture_changed():
 func _on_Dice4_texture_changed():
 	Dice4 = $NinePatchRect/CenterContainer/VBoxContainer/HBoxContainer2/Dice4.my_random_number
 	counter()
+
+func _on_RollDice_animation_finished(RollDice):
+	$RollDice2.play("RollDice")
+
+func _on_RollDice2_animation_finished(anim_name):
+	$RollDice3.play("RollDice")
+
+func _on_RollDice3_animation_finished(anim_name):
+	$RollDice4.play("RollDice")
+
+func _on_RollDice4_animation_finished(anim_name):
+	if first_dice == true:
+		get_tree().call_group("Dice2", "first_dice")
+		counter()
+		$Button.text = "Перебросить"
+		first_dice = false
+	elif first_dice == false:
+		get_tree().call_group("Dice2", "redice")
+		$Button.visible = false
+		get_tree().call_group("Dice2", "hidecross")
