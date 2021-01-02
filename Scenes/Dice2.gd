@@ -4,7 +4,7 @@ var Dice = "Dice"
 var DiceImage
 var DicePicked
 var my_random_number = 1
-var picked = false
+var picked = false #параметр, того что кубик выбран
 var cross_active = 0
 
 func _ready():
@@ -21,9 +21,6 @@ func redice():
 		image_generator()
 		$Cross2.visible = false
 		get_tree().call_group("Dice", "Dice_update")
-
-func redice_animation():
-	texture = load("res://Resources/GFX/Dice/Dice.tres")
 
 func randomdice():
 	var rng = RandomNumberGenerator.new()

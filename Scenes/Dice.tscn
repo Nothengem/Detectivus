@@ -254,6 +254,7 @@ anims/RollDice = SubResource( 6 )
 anims/RollDice = SubResource( 7 )
 
 [node name="Label" type="Label" parent="."]
+visible = false
 margin_left = 375.227
 margin_top = 287.375
 margin_right = 575.227
