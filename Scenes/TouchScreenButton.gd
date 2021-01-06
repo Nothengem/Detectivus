@@ -28,12 +28,9 @@ func _ready():
 			
 		elif !Scriptwriter.FirstCard and Scriptwriter.CardType == "Tutorial" and Scriptwriter.CardType != "Characters":
 			Scriptwriter.card_var_generator()
-			print(Scriptwriter.CardType)
 			$CharacterCard/Control/AnimationPlayer.play("Appearance")
-			print("сработал apperiance")
 			
 		elif !Scriptwriter.FirstCard and Scriptwriter.CardChoose == "Random":
-#			$CharacterCard/Control/AnimationPlayer.play("Appearance")
 			Scriptwriter.card_var_generator()
 			
 		elif !Scriptwriter.FirstCard and !Scriptwriter.CardChoose == "Random" and !Scriptwriter.CardChoose == "Tutorial":
@@ -67,7 +64,7 @@ func _input(event): # если мы касаемся экрана или тян�
 		if Scriptwriter.CardType == "Characters" or Scriptwriter.CardType == "Tutorial":
 			chooseanimationRight()
 			chooseanimationLeft()
-
+			
 		if _get_button_pos().length() > boundary:
 			set_position(_get_button_pos().normalized() * boundary)
 			rotationos()
@@ -88,6 +85,7 @@ func _on_touch_released(event):
 		$Tween.interpolate_property(CharacterBack, "position", CharacterBack.position, 
 		RightChoosePosition.position, 0.1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		$Tween.start()
+	
 
 
 func _leftrightanimation(): #анимация плавного перекана влево-вправо-вцентр
@@ -117,7 +115,9 @@ func chooseanimationRight():
 	fingerseek = position.x/250
 	$CharacterCard/Control/AnimationPlayer.seek(fingerseek, true)
 	$CharacterCard/Control/AnimationPlayer.stop()
-
+	
+	
+	
 func chooseanimationLeft():
 	$CharacterCard/Control/AnimationPlayer.play("LChooseText")
 	fingerseek = position.x/-250
@@ -125,46 +125,80 @@ func chooseanimationLeft():
 	$CharacterCard/Control/AnimationPlayer.stop()
 
 
+
 func choosedone():
 	if $CharacterCard.position == $LeftChoose.position:
 		if Scriptwriter.CardType =="Tutorial":
 			Scriptwriter.CardChoose = Scriptwriter.NextCardLeft
-			choosedone_next_card()
+			choosedone_next_card_left()
 		
-		elif Scriptwriter.CardType == "Characters":
-			Scriptwriter.victory_count += 1
+		elif Scriptwriter.CardType == "Characters" or Scriptwriter.CardType == "Tutorial" or Scriptwriter.CardType == "Resuilt":
+			if Scriptwriter.CardType == "Characters":
+				Scriptwriter.victory_count += 1
 			Scriptwriter.CardChoose = Scriptwriter.NextCardLeft
-			choosedone_next_card()
 			get_tree().call_group("BalanceGUI", "victory_count_update")
 			get_tree().call_group("BalanceGUI", "change_proportions_left")
+			choosedone_next_card_left()
+
 			
 		elif Scriptwriter.CardType == "LooseScreen":
 			choosedone_loose()
-
+			
 
 	if $CharacterCard.position == $RightChoose.position:
 		if Scriptwriter.CardType =="Tutorial":
 			Scriptwriter.CardChoose = Scriptwriter.NextCardRight
-			choosedone_next_card()
+			choosedone_next_card_right()
 		
-		elif Scriptwriter.CardType == "Characters" or Scriptwriter.CardType =="Tutorial":
-			Scriptwriter.victory_count += 1
+		elif Scriptwriter.CardType == "Characters" or Scriptwriter.CardType == "Tutorial" or Scriptwriter.CardType == "Resuilt":
+			if Scriptwriter.CardType == "Characters":
+				Scriptwriter.victory_count += 1
 			Scriptwriter.CardChoose = Scriptwriter.NextCardRight
-			choosedone_next_card()
 			get_tree().call_group("BalanceGUI", "victory_count_update")
 			get_tree().call_group("BalanceGUI", "change_proportions_right")
+			choosedone_next_card_right()
+
 			
 		elif Scriptwriter.CardType == "LooseScreen":
 			choosedone_loose()
 
-func choosedone_next_card():
+
+#func choosedone_next_card():
+#	if Scriptwriter.victory_count < Scriptwriter.count_to_victory:
+#
+#		if Scriptwriter.NextCardRight == "Ivent":
+#			get_tree().call_group("MainScene", "spawn_dice")
+#		elif Scriptwriter.NextCardRight != "Ivent":
+#			get_tree().call_group("MainScene", "spawn")
+
+func choosedone_next_card_right():	
+	get_tree().call_group("BalanceGIU", "debug_print")
 	if Scriptwriter.victory_count < Scriptwriter.count_to_victory:
-		if Scriptwriter.CardIvent == "Dice":
+		
+		if Scriptwriter.NextCardRight == "Ivent":
 			get_tree().call_group("MainScene", "spawn_dice")
-		get_tree().call_group("MainScene", "spawn")
+		elif Scriptwriter.NextCardRight != "Ivent":
+			get_tree().call_group("MainScene", "spawn")
+			
 	elif Scriptwriter.victory_count == Scriptwriter.count_to_victory:
 		get_tree().call_group("MainScene", "win_the_game")
 	$"..".queue_free()
+	
+
+
+func choosedone_next_card_left():
+	if Scriptwriter.victory_count < Scriptwriter.count_to_victory:
+		
+		if Scriptwriter.NextCardLeft == "Ivent":
+			get_tree().call_group("MainScene", "spawn_dice")
+		elif Scriptwriter.NextCardLeft != "Ivent":
+			get_tree().call_group("MainScene", "spawn")
+			
+	elif Scriptwriter.victory_count == Scriptwriter.count_to_victory:
+		get_tree().call_group("MainScene", "win_the_game")
+	$"..".queue_free()
+		
+		
 		
 func choosedone_loose():
 	Scriptwriter.victory_count = 0

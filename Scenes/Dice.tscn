@@ -1,10 +1,10 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Scenes/Dice.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Dice2.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Resources/GFX/CharacterCardBG.png" type="Texture" id=3]
 [ext_resource path="res://Resources/GFX/Interface/Font/Card.tres" type="DynamicFont" id=4]
-[ext_resource path="res://Resources/GFX/Interface/Font/TextGame.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Resources/GFX/Interface/Font/JetBrainsMono-VariableFont_wght.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://Resources/GFX/Dice/Dice.tres" type="Texture" id=6]
 [ext_resource path="res://Resources/GFX/Dice/Dice1.png" type="Texture" id=7]
 
@@ -26,8 +26,13 @@ ItemList/styles/cursor_unfocused = null
 ItemList/styles/selected = null
 ItemList/styles/selected_focus = null
 
-[sub_resource type="Animation" id=3]
-resource_name = "Appearance"
+[sub_resource type="DynamicFont" id=3]
+size = 70
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 5 )
+
+[sub_resource type="Animation" id=4]
 length = 0.4
 step = 0.01
 tracks/0/type = "value"
@@ -72,8 +77,39 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "RollDice"
+[sub_resource type="Animation" id=5]
+resource_name = "Lose"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("NinePatchRect/CenterContainer/Label:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 1, 0, 0, 1 ), Color( 0, 0, 0, 1 ), Color( 1, 0, 0, 1 ), Color( 0, 0, 0, 1 ), Color( 1, 0, 0, 1 ), Color( 0, 0, 0, 1 ), Color( 1, 0, 0, 1 ), Color( 0, 0, 0, 1 ), Color( 1, 0, 0, 1 ), Color( 0, 0, 0, 1 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Win"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("NinePatchRect/CenterContainer/Label:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 1, 0.345098, 1 ), Color( 0, 0, 0, 1 ), Color( 0, 1, 0.345098, 1 ), Color( 0, 0, 0, 1 ), Color( 0, 1, 0.345098, 1 ), Color( 0, 0, 0, 1 ), Color( 0, 1, 0.345098, 1 ), Color( 0, 0, 0, 1 ), Color( 0, 1, 0.345098, 1 ), Color( 0, 0, 0, 1 ) ]
+}
+
+[sub_resource type="Animation" id=7]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("NinePatchRect/CenterContainer/VBoxContainer/HBoxContainer/Dice:texture")
@@ -83,13 +119,12 @@ tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 2.46229, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ ExtResource( 7 ), ExtResource( 6 ) ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "RollDice"
+[sub_resource type="Animation" id=8]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("NinePatchRect/CenterContainer/VBoxContainer/HBoxContainer/Dice2:texture")
@@ -104,8 +139,7 @@ tracks/0/keys = {
 "values": [ ExtResource( 7 ), ExtResource( 6 ) ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "RollDice"
+[sub_resource type="Animation" id=9]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("NinePatchRect/CenterContainer/VBoxContainer/HBoxContainer2/Dice3:texture")
@@ -120,8 +154,7 @@ tracks/0/keys = {
 "values": [ ExtResource( 7 ), ExtResource( 6 ) ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "RollDice"
+[sub_resource type="Animation" id=10]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("NinePatchRect/CenterContainer/VBoxContainer/HBoxContainer2/Dice4:texture")
@@ -226,6 +259,21 @@ margin_left = 404.0
 margin_right = 804.0
 margin_bottom = 400.0
 
+[node name="Label" type="Label" parent="NinePatchRect/CenterContainer"]
+visible = false
+self_modulate = Color( 0, 0, 0, 1 )
+margin_left = 393.0
+margin_top = 367.0
+margin_right = 435.0
+margin_bottom = 460.0
+custom_fonts/font = SubResource( 3 )
+text = "4"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Button" type="Button" parent="."]
 visible = false
 anchor_left = 0.314815
@@ -235,43 +283,54 @@ anchor_bottom = 0.775
 custom_fonts/font = ExtResource( 4 )
 text = "Мне повезет"
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
+}
+
+[node name="AgreeButton" type="Button" parent="."]
+visible = false
+self_modulate = Color( 0.0470588, 0.988235, 0.635294, 1 )
+anchor_left = 0.314815
+anchor_top = 0.722917
+anchor_right = 0.685185
+anchor_bottom = 0.775
+margin_left = -0.000183105
+margin_top = 111.999
+margin_right = -0.000183105
+margin_bottom = 111.999
+custom_fonts/font = ExtResource( 4 )
+text = "Принять"
+__meta__ = {
+"_edit_use_anchors_": true
 }
 
 [node name="Apperiance" type="AnimationPlayer" parent="."]
-anims/Appearance = SubResource( 3 )
+anims/Appearance = SubResource( 4 )
+
+[node name="Lose" type="AnimationPlayer" parent="."]
+anims/Lose = SubResource( 5 )
+
+[node name="Win" type="AnimationPlayer" parent="."]
+anims/Win = SubResource( 6 )
 
 [node name="RollDice" type="AnimationPlayer" parent="."]
-anims/RollDice = SubResource( 4 )
-
-[node name="RollDice2" type="AnimationPlayer" parent="."]
-anims/RollDice = SubResource( 5 )
-
-[node name="RollDice3" type="AnimationPlayer" parent="."]
-anims/RollDice = SubResource( 6 )
-
-[node name="RollDice4" type="AnimationPlayer" parent="."]
 anims/RollDice = SubResource( 7 )
 
-[node name="Label" type="Label" parent="."]
-visible = false
-margin_left = 375.227
-margin_top = 287.375
-margin_right = 575.227
-margin_bottom = 387.375
-rect_scale = Vector2( 2, 2 )
-custom_fonts/font = ExtResource( 5 )
-text = "4"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="RollDice2" type="AnimationPlayer" parent="."]
+anims/RollDice = SubResource( 8 )
+
+[node name="RollDice3" type="AnimationPlayer" parent="."]
+anims/RollDice = SubResource( 9 )
+
+[node name="RollDice4" type="AnimationPlayer" parent="."]
+anims/RollDice = SubResource( 10 )
 [connection signal="texture_changed" from="NinePatchRect/CenterContainer/VBoxContainer/HBoxContainer/Dice" to="." method="_on_Dice_texture_changed"]
 [connection signal="texture_changed" from="NinePatchRect/CenterContainer/VBoxContainer/HBoxContainer/Dice2" to="." method="_on_Dice2_texture_changed"]
 [connection signal="texture_changed" from="NinePatchRect/CenterContainer/VBoxContainer/HBoxContainer2/Dice3" to="." method="_on_Dice3_texture_changed"]
 [connection signal="texture_changed" from="NinePatchRect/CenterContainer/VBoxContainer/HBoxContainer2/Dice4" to="." method="_on_Dice4_texture_changed"]
 [connection signal="button_up" from="Button" to="." method="_on_Button_button_up"]
+[connection signal="button_up" from="AgreeButton" to="." method="_on_AgreeButton_button_up"]
+[connection signal="animation_finished" from="Lose" to="." method="_on_Lose_animation_finished"]
+[connection signal="animation_finished" from="Win" to="." method="_on_Win_animation_finished"]
 [connection signal="animation_finished" from="RollDice" to="." method="_on_RollDice_animation_finished"]
 [connection signal="animation_finished" from="RollDice2" to="." method="_on_RollDice2_animation_finished"]
 [connection signal="animation_finished" from="RollDice3" to="." method="_on_RollDice3_animation_finished"]

@@ -2,10 +2,9 @@ extends NinePatchRect
 
 var Dice = "Dice"
 var DiceImage
-var DicePicked
+var Dice_reroll = false #параметр для разделения на те которые нужно перебрасывать и те, которые не нужно
 var my_random_number = 1
 var picked = false #параметр, того что кубик выбран
-var cross_active = 0
 
 func _ready():
 	my_random_number = 1
@@ -15,12 +14,15 @@ func first_dice():
 	image_generator()
 	$Cross.visible = true
 	
+	
 func redice():
-	if picked:
+	if Dice_reroll == true:
 		randomdice()
 		image_generator()
-		$Cross2.visible = false
-		get_tree().call_group("Dice", "Dice_update")
+		Dice_reroll = false
+	$Cross.visible = false
+	$Cross2.visible = false
+	get_tree().call_group("Dice", "Dice_update")
 
 func randomdice():
 	var rng = RandomNumberGenerator.new()
@@ -37,12 +39,11 @@ func _on_Cross_released():
 	if picked == false:
 		$Cross2.visible = true
 		picked = true
-		cross_active = 1
+		Dice_reroll = true
 		get_tree().call_group("Dice", "number_update_plus")
 	elif picked == true:
 		$Cross2.visible = false
 		picked = false
-		cross_active = 0
 		get_tree().call_group("Dice", "number_update_minus")
 
 func block_cross():
@@ -54,3 +55,6 @@ func unblock_cross():
 	
 func hidecross():
 	$Cross.visible = false
+
+func hidecross2():
+	$Cross2.visible = false

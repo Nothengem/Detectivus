@@ -40,14 +40,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 4 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
 }
 
 [node name="Control" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
 }
 
 [node name="BackGround" type="NinePatchRect" parent="."]
@@ -55,23 +55,22 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 5 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
 }
 
 [node name="LabelBack" type="NinePatchRect" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -145.0
-margin_top = -300.0
-margin_right = 145.0
-margin_bottom = 300.0
+anchor_left = 0.0166667
+anchor_right = 0.983333
+anchor_bottom = 1.0
+margin_left = 377.0
+margin_top = 660.0
+margin_right = -377.0
+margin_bottom = -660.0
 rect_scale = Vector2( 3.6, 3.2 )
 rect_pivot_offset = Vector2( 145, 300 )
 texture = ExtResource( 1 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
 }
 
 [node name="GameName" type="Label" parent="LabelBack"]

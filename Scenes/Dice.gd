@@ -1,9 +1,9 @@
 extends Control
 
-var Dice
-var Dice2
-var Dice3
-var Dice4
+onready var Dice = get_node("NinePatchRect/CenterContainer/VBoxContainer/HBoxContainer/Dice")
+onready var Dice2 = get_node("NinePatchRect/CenterContainer/VBoxContainer/HBoxContainer/Dice2")
+onready var Dice3 = get_node("NinePatchRect/CenterContainer/VBoxContainer/HBoxContainer2/Dice3")
+onready var Dice4 = get_node("NinePatchRect/CenterContainer/VBoxContainer/HBoxContainer2/Dice4")
 var victory_number = 0
 var limited_dice = 2
 var Dice_active
@@ -12,34 +12,16 @@ var Dice3_active
 var Dice4_active
 var Dice_active_mass = 0 #количество выбранных костей
 var first_dice = true
-
-var Dice_test
-var Dice2_test
-var count_test
+var difficult = Scriptwriter.IventDifficulty
+onready var Resuilt = get_node("NinePatchRect/CenterContainer/Label")
 
 func _ready():
+	get_tree().call_group("IventCard", "cardupdate_dice")
 	$Apperiance.play("Appearance")
-	Dice = 1
-	Dice2 = 1
-	Dice3 = 1
-	Dice4 = 1
-	Dice_test = get_node("NinePatchRect/CenterContainer/VBoxContainer/HBoxContainer/Dice")
-	Dice2_test = get_node("NinePatchRect/CenterContainer/VBoxContainer/HBoxContainer/Dice2")
-
-func _on_Dice4_ready():
-	Dice_update()
-
-func Dice_update():
-	Dice = $NinePatchRect/CenterContainer/VBoxContainer/HBoxContainer/Dice.my_random_number
-	Dice2 = $NinePatchRect/CenterContainer/VBoxContainer/HBoxContainer/Dice2.my_random_number
-	Dice3 = $NinePatchRect/CenterContainer/VBoxContainer/HBoxContainer2/Dice3.my_random_number
-	Dice4 = $NinePatchRect/CenterContainer/VBoxContainer/HBoxContainer2/Dice4.my_random_number
 
 func counter():
-	victory_number = Dice + Dice2 + Dice3 + Dice4
-	$Label.text = str(victory_number)
-	count_test = Dice_test.my_random_number + Dice2_test.my_random_number
-	print(count_test)
+	victory_number = Dice.my_random_number + Dice2.my_random_number + Dice3.my_random_number + Dice4.my_random_number
+	Resuilt.text = str(victory_number)
 
 func number_update_plus():
 	if Dice_active_mass < limited_dice:
@@ -66,57 +48,108 @@ func button_blocker():
 		$Button.disabled = false
 
 func _on_Button_button_up():
-	if first_dice == true or $NinePatchRect/CenterContainer/VBoxContainer/HBoxContainer/Dice.picked == true:
+	get_tree().call_group("Dice2", "hidecross2")
+	if first_dice == true:
 		$RollDice.play("RollDice")
-	elif $NinePatchRect/CenterContainer/VBoxContainer/HBoxContainer/Dice.picked == false:
-		$RollDice2.play("RollDice")
-
-func _on_Dice_texture_changed():
-	Dice = $NinePatchRect/CenterContainer/VBoxContainer/HBoxContainer/Dice.my_random_number
-	counter()
-
-func _on_Dice2_texture_changed():
-	Dice2 = $NinePatchRect/CenterContainer/VBoxContainer/HBoxContainer/Dice2.my_random_number
-	counter()
-
-func _on_Dice3_texture_changed():
-	Dice3 = $NinePatchRect/CenterContainer/VBoxContainer/HBoxContainer2/Dice3.my_random_number
-	counter()
-
-func _on_Dice4_texture_changed():
-	Dice4 = $NinePatchRect/CenterContainer/VBoxContainer/HBoxContainer2/Dice4.my_random_number
-	counter()
+	elif !first_dice:
+		reroll_dice_chainc_check()
 
 func _on_RollDice_animation_finished(RollDice):
-	if first_dice == true or $NinePatchRect/CenterContainer/VBoxContainer/HBoxContainer/Dice.picked == true:
+	if first_dice == true or Dice2.picked == true:
 		$RollDice2.play("RollDice")
-	elif $NinePatchRect/CenterContainer/VBoxContainer/HBoxContainer/Dice.picked == false:
-		$RollDice3.play("RollDice")
+	elif !first_dice:
+		reroll_dice_chainc_check()
 
-func _on_RollDice2_animation_finished(anim_name):
-	if first_dice == true or $NinePatchRect/CenterContainer/VBoxContainer/HBoxContainer/Dice2.picked == true:
+func _on_RollDice2_animation_finished(RollDice):
+	if first_dice == true or Dice3.picked == true:
 		$RollDice3.play("RollDice")
-	elif $NinePatchRect/CenterContainer/VBoxContainer/HBoxContainer/Dice2.picked == false:
-		$RollDice4.play("RollDice")
+	elif !first_dice:
+		reroll_dice_chainc_check()
 
-func _on_RollDice3_animation_finished(anim_name):
-	if first_dice == true or $NinePatchRect/CenterContainer/VBoxContainer/HBoxContainer2/Dice3.picked == true:
+func _on_RollDice3_animation_finished(RollDice):
+	if first_dice == true or Dice4.picked == true:
 		$RollDice4.play("RollDice")
-	elif $NinePatchRect/CenterContainer/VBoxContainer/HBoxContainer2/Dice3.picked == false:
+	elif !first_dice:
 		finish_of_rolldice()
 
-func _on_RollDice4_animation_finished(anim_name):
+func _on_RollDice4_animation_finished(RollDice):
 	finish_of_rolldice()
+	counter()
+	Resuilt.visible = true
+	win_lose_animation()
+	
+func reroll_dice_chainc_check():
+	if Dice.picked:
+		$RollDice.play("RollDice")
+		Dice.picked = false
+	elif Dice2.picked:
+		$RollDice2.play("RollDice")
+		Dice2.picked = false
+	elif Dice3.picked:
+		$RollDice3.play("RollDice")
+		Dice3.picked = false
+	elif Dice4.picked:
+		$RollDice4.play("RollDice")
+		Dice4.picked = false
+	elif !Dice.picked and !Dice2.picked and !Dice3.picked and !Dice4.picked:
+		finish_of_rolldice()
+		win_lose_animation()
 		
 func finish_of_rolldice():
 	if first_dice == true:
 		get_tree().call_group("Dice2", "first_dice")
 		counter()
 		$Button.text = "Перебросить"
-		first_dice = false
-		$Label.visible = true
+		Resuilt.visible = true
 		button_blocker()
+		$AgreeButton.visible = true
 	elif first_dice == false:
-		get_tree().call_group("Dice2", "redice")
 		$Button.visible = false
+		$AgreeButton.visible = false
+		get_tree().call_group("Dice2", "redice")
 		get_tree().call_group("Dice2", "hidecross")
+		counter()
+
+func _on_Dice_texture_changed():
+	counter()
+
+func _on_Dice2_texture_changed():
+	counter()
+
+func _on_Dice3_texture_changed():
+	counter()
+
+func _on_Dice4_texture_changed():
+	counter()
+	win_lose_animation()
+
+func _on_AgreeButton_button_up():
+	get_tree().call_group("MainScene", "spawn")
+	queue_free()
+
+func win_lose_animation():
+	if victory_number < difficult:
+		$Lose.play("Lose")
+		if !first_dice:
+			get_tree().call_group("IventCard", "cardupdate_ivent_lose")
+	elif victory_number >= difficult:
+		$Win.play("Win")
+		get_tree().call_group("IventCard", "cardupdate_ivent_win")
+		
+func _on_Lose_animation_finished(Lose):
+	if !first_dice:
+		Scriptwriter.CardChoose = Scriptwriter.NextCardLeft
+		get_tree().call_group("MainScene", "spawn")
+		get_tree().call_group("BalanceGUI", "change_proportions_ivent_loose")
+		queue_free()
+	elif first_dice:
+		first_dice = false
+
+func _on_Win_animation_finished(Win):
+	Scriptwriter.CardChoose = Scriptwriter.NextCardLeft
+	get_tree().call_group("MainScene", "spawn")
+	get_tree().call_group("BalanceGUI", "change_proportions_ivent_win")
+	queue_free()
+
+func correction():
+	pass

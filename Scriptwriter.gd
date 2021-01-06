@@ -13,6 +13,19 @@ var CardRAnswer #переменная для правого ответа
 var CardLAnswer #переменная для левого ответа
 var CardIvent #переменная для активации события после карточки
 
+#переменные для формирования ивента
+var IventInfo #хранение данных ивента
+var IventName
+var IventDifficulty
+var IventLoseText
+var IventLoseTeam
+var IventLoseClient
+var IventLoseCentralBank
+var IventLoseMoney
+var IventWinText
+var IventVarCorrection
+var IventCorrectorModificator
+
 #переменные выбора на карточке влияющие на баланс
 var HealthLeftChoose
 var LawLeftChoose
@@ -47,15 +60,16 @@ var level_cards = []
 
 #предзагрузка БД карт
 onready var CardDataBase = preload ("res://CardDataBase.gd")
+#предзагрузка БД ивентов
+onready var IventDataBase = preload ("res://IventDataBase.gd")
 
 func _ready():
 	level_massive_generator()
 
 func level_massive_generator():
 	var level_composit
-	for i in range(1, 22):
+	for i in range(1, 23):
 		randomize()
-		i = 22 #НЕ ЗАБЫТЬ УДАЛИТЬ
 		level_composit = "Random" + str(i)
 		level_cards.append(level_composit)
 	level_cards.shuffle()
@@ -120,8 +134,24 @@ func card_var_generator():
 	LawRightChoose = CardInfo[11]
 	BanditismRightChoose = CardInfo[12]
 	LuckRightChoose = CardInfo[13]
-	NextCardLeft = CardInfo[14]
-	NextCardRight = CardInfo[15]
+	NextCardRight = CardInfo[14]
+	NextCardLeft = CardInfo[15]
 	CardIvent = CardInfo[16]
+	if NextCardRight == "Ivent":
+		ivent_generatior()
+#	elif NextCardRight != "Ivent":
 	get_tree().call_group("CharacterControl", "card_generation")
 	get_tree().call_group("IventCard", "cardupdate")
+
+func ivent_generatior():
+	IventInfo = IventDataBase.DATA[IventDataBase.get(CardIvent)]
+	IventName = IventInfo[0]
+	IventDifficulty = IventInfo[1]
+	IventLoseText = IventInfo[2]
+	IventLoseTeam = IventInfo[3]
+	IventLoseClient = IventInfo[4]
+	IventLoseCentralBank = IventInfo[5]
+	IventLoseMoney = IventInfo[6]
+	IventWinText = IventInfo[7]
+	IventVarCorrection = IventInfo[8]
+	IventCorrectorModificator = IventInfo[9]

@@ -9,6 +9,8 @@ func spawn():
 	var card = scene.instance()
 	add_child_below_node($Control, card, true)
 	
+	
+	
 func spawn_dice():
 	var scene = load("res://Scenes/Dice.tscn")
 	var card = scene.instance()
