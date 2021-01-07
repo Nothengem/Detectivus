@@ -23,21 +23,15 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[node name="MainScene" type="Control" groups=[
+[node name="MainScene" type="Node" groups=[
 "MainScene",
 ]]
-anchor_right = 1.0
-anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 512, 300 )
 script = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Control" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 512, 330 )
+rect_pivot_offset = Vector2( 540, 960 )
 mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
@@ -59,13 +53,17 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="Balance" parent="Control" instance=ExtResource( 5 )]
+[node name="BalanceGUI" parent="Control" instance=ExtResource( 5 )]
 
 [node name="CardTemplate" parent="Control" instance=ExtResource( 1 )]
 anchor_top = 0.151042
 anchor_bottom = 0.817708
 
 [node name="Character" parent="Control" instance=ExtResource( 4 )]
+mouse_filter = 2
+
+[node name="Position2D" type="Position2D" parent="Control"]
+position = Vector2( 540, 960 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/FadeBackGround = SubResource( 1 )

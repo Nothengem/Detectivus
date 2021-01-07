@@ -153,6 +153,7 @@ tracks/0/keys = {
 ]]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 script = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -161,6 +162,7 @@ __meta__ = {
 [node name="Control2" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -188,6 +190,7 @@ margin_top = 20.0
 margin_right = 30.0
 margin_bottom = 82.0
 rect_scale = Vector2( 0.8, 0.8 )
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -196,12 +199,14 @@ __meta__ = {
 margin_left = 13.0
 margin_right = 297.0
 margin_bottom = 62.0
+mouse_filter = 2
 custom_constants/separation = 12
 
 [node name="HealthProgress" type="TextureProgress" parent="Control2/NinePatchRect/IndicatorBox/HBoxContainer"]
 margin_right = 62.0
 margin_bottom = 62.0
 rect_min_size = Vector2( 62, 62 )
+mouse_filter = 2
 value = 50.0
 texture_under = ExtResource( 9 )
 texture_progress = ExtResource( 2 )
@@ -212,6 +217,7 @@ margin_left = 74.0
 margin_right = 136.0
 margin_bottom = 62.0
 rect_min_size = Vector2( 62, 62 )
+mouse_filter = 2
 value = 50.0
 texture_under = ExtResource( 5 )
 texture_progress = ExtResource( 6 )
@@ -225,6 +231,7 @@ margin_left = 148.0
 margin_right = 210.0
 margin_bottom = 62.0
 rect_min_size = Vector2( 62, 62 )
+mouse_filter = 2
 value = 50.0
 texture_under = ExtResource( 7 )
 texture_progress = ExtResource( 8 )
@@ -238,6 +245,7 @@ margin_left = 222.0
 margin_right = 284.0
 margin_bottom = 62.0
 rect_min_size = Vector2( 62, 62 )
+mouse_filter = 2
 value = 50.0
 texture_under = ExtResource( 3 )
 texture_progress = ExtResource( 4 )
@@ -253,6 +261,7 @@ anchor_right = 0.5
 anchor_bottom = 0.967892
 margin_left = -145.0
 margin_right = 145.0
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": true
 }
@@ -263,6 +272,7 @@ margin_left = 15.0
 margin_top = 1.0
 margin_right = 275.0
 margin_bottom = 63.0
+mouse_filter = 2
 
 [node name="IventStatus1" type="NinePatchRect" parent="Control2/NinePatchRect/IventStatusBox/HBoxContainer"]
 margin_right = 62.0
