@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Resources/GFX/BackGroundBalance.png" type="Texture" id=1]
 [ext_resource path="res://Resources/GFX/Galstuk.svg" type="Texture" id=2]
@@ -11,7 +11,13 @@
 [ext_resource path="res://Resources/GFX/CustomerWhite.svg" type="Texture" id=9]
 [ext_resource path="res://Resources/GFX/NoItem.png" type="Texture" id=10]
 [ext_resource path="res://Scenes/Balance.gd" type="Script" id=11]
-[ext_resource path="res://Resources/GFX/Interface/Font/TextGame.tres" type="DynamicFont" id=12]
+[ext_resource path="res://Resources/GFX/Interface/Font/JetBrainsMono-VariableFont_wght.ttf" type="DynamicFontData" id=12]
+
+[sub_resource type="DynamicFont" id=9]
+size = 20
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 12 )
 
 [sub_resource type="Animation" id=1]
 resource_name = "HealthMinus"
@@ -308,13 +314,13 @@ anchor_left = 0.0689655
 anchor_top = 0.868333
 anchor_right = 0.931035
 anchor_bottom = 0.966667
-custom_fonts/font = ExtResource( 12 )
+custom_fonts/font = SubResource( 9 )
 text = "Количество клиентов:
 10/20"
 align = 1
 autowrap = true
 __meta__ = {
-"_edit_use_anchors_": true
+"_edit_use_anchors_": false
 }
 
 [node name="Tween" type="Tween" parent="."]
