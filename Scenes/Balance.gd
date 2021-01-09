@@ -64,6 +64,7 @@ func change_proportions_ivent_loose():
 
 
 func change_proportions_ivent_win():
+	print("Функция вызвалась")
 	Modi = Scriptwriter.IventCorrectorModificator
 	
 	if Scriptwriter.IventVarCorrection == "Team":
@@ -89,21 +90,33 @@ func change_proportions_ivent_win():
 		correction_calculating()
 		Scriptwriter.Luck_var = b
 		animate_value_luck(LuckProgress.value, Scriptwriter.Luck_var)
-	
+
 
 
 func correction_calculating():
-	a = 50 - b
-	if a > 0:
-		while a != 0 or Modi != 0:
-			b +=1
-			a -=1
-			Modi -=1
-	elif a < 0:
-		while a != 0 or Modi != 0:
-			b +=1
-			a +=1
-			Modi +=1
+	if b < 50:
+		b = b + Modi
+		print("сработала в плюс")
+	elif b > 50:
+		print("сработала в минус")
+		b = b - Modi
+	elif b == 50:
+		print("сработала в молоко")
+		pass
+
+#Когда-нибудь повторить
+#func correction_calculating_Banditism():
+#	a = 50 - Scriptwriter.Banditism_var
+#	if a > 0:
+#		while a != 0 or Modi != 0:
+#			Scriptwriter.Banditism_var +=1
+#			a -=1
+#			Modi -=1
+#	elif a < 0:
+#		while a != 0 or Modi != 0:
+#			Scriptwriter.Banditism_var +=1
+#			a +=1
+#			Modi -=1
 
 func animate_value_health(start, end):
 	if HealthProgress.value > Scriptwriter.Heath_var:

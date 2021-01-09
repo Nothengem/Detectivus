@@ -68,7 +68,7 @@ func _ready():
 
 func level_massive_generator():
 	var level_composit
-	for i in range(1, 23):
+	for i in range(1, 22):
 		randomize()
 		level_composit = "Random" + str(i)
 		level_cards.append(level_composit)

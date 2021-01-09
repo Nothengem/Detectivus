@@ -190,7 +190,7 @@ func choosedone():
 
 
 
-func choosedone_next_card_right():	
+func choosedone_next_card_right():
 	get_tree().call_group("BalanceGIU", "debug_print")
 	if Scriptwriter.victory_count < Scriptwriter.count_to_victory:
 			

@@ -52,7 +52,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 length = 0.2
 step = 0.01
 tracks/0/type = "value"
@@ -80,7 +80,7 @@ tracks/1/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 length = 0.2
 step = 0.01
 tracks/0/type = "value"
@@ -108,7 +108,7 @@ tracks/1/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "DarkThemeCard"
 length = 0.5
 tracks/0/type = "value"
@@ -237,8 +237,8 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterControl/CharacterCard/Control"]
 anims/Appearance = SubResource( 1 )
-anims/LChooseText = SubResource( 3 )
-anims/RChooseText = SubResource( 4 )
+anims/LChooseText = SubResource( 2 )
+anims/RChooseText = SubResource( 3 )
 
 [node name="DarkTheme" type="AnimationPlayer" parent="CharacterControl/CharacterCard/Control"]
-anims/DarkThemeCard = SubResource( 5 )
+anims/DarkThemeCard = SubResource( 4 )

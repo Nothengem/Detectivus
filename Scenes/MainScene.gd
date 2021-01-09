@@ -32,7 +32,6 @@ func win_the_game():
 
 func _on_CharacterControl_input_event(viewport, event, shape_idx):
 	if event.is_action_pressed("ui_touch"):
-		print(event)
 		get_tree().set_input_as_handled()
 		previous_mouse_position = event.position
 		is_dragging = true
