@@ -15,4 +15,8 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="CharacterCard" parent="." instance=ExtResource( 1 )]
+[node name="CharacterCardLeft" parent="." instance=ExtResource( 1 )]
+
+[node name="CharacterCardRight" parent="." instance=ExtResource( 1 )]
+
+[node name="Tween" type="Tween" parent="."]

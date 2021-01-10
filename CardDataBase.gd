@@ -19,7 +19,7 @@ enum {
 
 const DATA = {
 	
-	Tutorial1 : 
+	"Tutorial1" : 
 		["Tutorial", #ссылка на папку персонажей 0
 		"AlexeyKochanov", #кто говорит 1, портрет
 		"Перетаскивай карточку влево/вправо, чтобы давать ответы", #что говорит 2
@@ -38,7 +38,7 @@ const DATA = {
 		"Random", #Следующая карта на право 15 (ДА)
 		"None"], #Игровое событие
 	
-	Tutorial2 : 
+	"Tutorial2" : 
 		["Tutorial",
 		"AlexeyKochanov", #кто говорит
 		"Сохраняй баланс, чтобы удержаться на банковском рынке", #что говорит
@@ -56,8 +56,8 @@ const DATA = {
 		"Tutorial3",
 		"Random",
 		"None"],
-		
-	Tutorial3 : 
+	
+	"Tutorial3" : 
 		["Tutorial",
 		"AlexeyKochanov", #кто говорит
 		"4 показателя вверху. Нельзя опускать их до минимума и максимума", #что говорит
@@ -76,7 +76,7 @@ const DATA = {
 		"Random",
 		"None"],
 	
-	Tutorial4 : 
+	"Tutorial4" : 
 		["Tutorial",
 		"AlexeyKochanov", #кто говорит
 		"Моральных дух банка,  отношение людей, отношение ЦБ и финансы", #что говорит
@@ -95,7 +95,7 @@ const DATA = {
 		"Random",
 		"None"],
 	
-	Random1 : 
+	"Random1" : 
 		["Characters", #ссылка на папку персонажей 0
 		"AnastasiyaMalkova", #кто говорит 1
 		"Мне нужен кредит в 1'000'000. Отдам быстро", #что говорит 2
@@ -114,7 +114,7 @@ const DATA = {
 		"Random",
 		"None"],
 	
-	Random2 : 
+	"Random2" : 
 		["Characters",
 		"AnastasiyaCherevatkina", #кто говорит
 		"Я просто мимо проходила, не обращай внимание", #что говорит
@@ -133,7 +133,7 @@ const DATA = {
 		"Random2b",
 		"None"],
 		
-	Random2a : 
+	"Random2a" : 
 		["Characters",
 		"AnastasiyaCherevatkina", #кто говорит
 		"500'000 под 10% говорите??? Дайте два!", #что говорит
@@ -152,7 +152,7 @@ const DATA = {
 		"Random",
 		"None"],
 		
-	Random2b : 
+	"Random2b" : 
 		["Characters",
 		"AnastasiyaCherevatkina", #кто говорит
 		"Охеренел!? Я тебя сама сейчас так кредитану!", #что говорит
@@ -171,7 +171,7 @@ const DATA = {
 		"Random",
 		"None"],
 		
-	Random3 : 
+	"Random3" : 
 		["Characters",
 		"AlexeySilkin", #кто говорит
 		"Мне нужна дебетовка. Желательно с бонусами", #что говорит
@@ -186,11 +186,11 @@ const DATA = {
 		-15, #Люди на право 11
 		+10, #ЦБ на право 12
 		0, #Деньги на право 13
+		"Random3a",
 		"Random",
-		"Random5a",
 		"None"],
 		
-	Random3a : 
+	"Random3a" : 
 		["Characters",
 		"AlexeySilkin", #кто говорит
 		"Говорите кредита даёт больше свободы? Ну давайте...", #что говорит
@@ -205,11 +205,11 @@ const DATA = {
 		0, #Люди на право 11
 		+20, #ЦБ на право 12
 		-10, #Деньги на право 13
+		"Random3b",
 		"Random",
-		"Random5b",
 		"None"],
 		
-	Random3b : 
+	"Random3b" : 
 		["Characters",
 		"AlexeySilkin", #кто говорит
 		"Блин да хорош уже меня разводить! Я ухожу!", #что говорит
@@ -224,11 +224,11 @@ const DATA = {
 		-20, #Люди на право 11
 		-20, #ЦБ на право 12
 		0, #Деньги на право 13
-		"Random5c",
+		"Random3c",
 		"Random",
 		"None"],
 
-	Random3c : 
+	"Random3c" : 
 		["Characters",
 		"AlexeySilkin", #кто говорит
 		"Ок", #что говорит
@@ -247,7 +247,7 @@ const DATA = {
 		"Random",
 		"None"],
 
-	Random4 : 
+	"Random4" : 
 		["Characters",
 		"Bman", #кто говорит
 		"Никто не даёт мне кредит... на ремонт не хватает. Дадите?", #что говорит
@@ -266,7 +266,7 @@ const DATA = {
 		"Random",
 		"None"],
 
-	Random5 : 
+	"Random5" : 
 		["Characters",
 		"CBomjMan", #кто говорит
 		"Привет! Я за баблом! хахахаха!!! Возвращать, конечно не буду xD", #что говорит
@@ -281,11 +281,11 @@ const DATA = {
 		-20, #Люди на право 11
 		-20, #ЦБ на право 12
 		0, #Деньги на право 13
-		"Random",
+		"Random5a",
 		"Random5a",
 		"None"],
 		
-	Random5a : 
+	"Random5a" : 
 		["Characters",
 		"CBomjMan", #кто говорит
 		"Я буду жаловаться в ЦБ! Сильно при сильно!", #что говорит
@@ -304,7 +304,7 @@ const DATA = {
 		"Random",
 		"None"],
 
-	Random6 : 
+	"Random6" : 
 		["Characters", #ссылка на папку персонажей 0
 		"DmitriyOvsyannikov", #кто говорит 1
 		"Я пришел сюда за кредиткой. Больше ничего не предлагать!", #что говорит 2
@@ -323,7 +323,7 @@ const DATA = {
 		"Random",
 		"None"],
 
-	Random7 : 
+	"Random7" : 
 		["Characters",
 		"Chechen", #кто говорит
 		"В вашАм Панке у меня есть кредиДка. ХАчу втАрАя братан", #что говорит
@@ -342,7 +342,7 @@ const DATA = {
 		"Random",
 		"None"],
 
-	Random8 : 
+	"Random8" : 
 		["Characters",
 		"BArtem", #кто говорит
 		"Мне пришла СМС о том, что одобрена кредитная карта", #что говорит
@@ -361,7 +361,7 @@ const DATA = {
 		"Random",
 		"None"],
 
-	Random9 : 
+	"Random9" : 
 		["Characters",
 		"KristinaStepanova", #кто говорит
 		"Хочу положить деньги на депозит. 400'000.", #что говорит
@@ -380,7 +380,7 @@ const DATA = {
 		"Random",
 		"None"],
 
-	Random10 : 
+	"Random10" : 
 		["Characters",
 		"Babylia", #кто говорит
 		"Я принесла 10'000 на депозит. Через год накопится мильён?", #что говорит
@@ -399,7 +399,7 @@ const DATA = {
 		"Random",
 		"None"],
 
-	Random11 : 
+	"Random11" : 
 		["Characters", #ссылка на папку персонажей 0
 		"IlonMask", #кто говорит 1
 		"Я принес немного денег на депозит. Где разгрузить грузовик?", #что говорит 2
@@ -418,7 +418,7 @@ const DATA = {
 		"Random",
 		"None"],
 
-	Random12 : 
+	"Random12" : 
 		["Characters",
 		"Mafiosi", #кто говорит
 		"За мной гонятся! Быстрее возьмите деньги на сохранение!", #что говорит
@@ -431,7 +431,7 @@ const DATA = {
 		"Random",
 		"None"],
 
-	Random13 : 
+	"Random13" : 
 		["Characters",
 		"GrishaGrachev", #кто говорит
 		"Хочу открыть брокерский счет", #что говорит
@@ -450,7 +450,7 @@ const DATA = {
 		"Random",
 		"None"],
 		
-	Random13a : 
+	"Random13a" : 
 		["Characters",
 		"GrishaGrachev", #кто говорит
 		"Нет, спасибо. Только брокерский счет", #что говорит
@@ -469,7 +469,7 @@ const DATA = {
 		"Random",
 		"None"],
 		
-	Random13b : 
+	"Random13b" : 
 		["Characters",
 		"GrishaGrachev", #кто говорит
 		"СКОЛЬКО??? Ладно... проинвестируем. Спасибо", #что говорит
@@ -488,7 +488,7 @@ const DATA = {
 		"Random",
 		"None"],
 		
-	Random14 : 
+	"Random14" : 
 		["Characters",
 		"BitKogan", #кто говорит
 		"Я бы потестил брокерские услуги и написал обзор", #что говорит
@@ -507,7 +507,7 @@ const DATA = {
 		"Random",
 		"None"],
 		
-	Random15 : 
+	"Random15" : 
 		["Characters",
 		"InvestorJunior", #кто говорит
 		"Откройте мне брокерский счет пожалуйста. Я близок к богатству!", #что говорит
@@ -526,7 +526,7 @@ const DATA = {
 		"Random",
 		"None"],
 
-	Random16 : 
+	"Random16" : 
 		["Characters",
 		"OstapBender", #кто говорит
 		"Я опытны инвестор. Раскрою банку секреты... за плату", #что говорит
@@ -545,7 +545,7 @@ const DATA = {
 		"Random",
 		"None"],
 		
-	Random17 : 
+	"Random17" : 
 		["Characters",
 		"OlegTinkoff", #кто говорит
 		"Мой Банк разорился. Дайте денег на покупку телека, плиз", #что говорит
@@ -564,7 +564,7 @@ const DATA = {
 		"Random",
 		"None"],
 		
-	Random17a : 
+	"Random17a" : 
 		["Characters",
 		"OlegTinkoff", #кто говорит
 		"Да. Ваш Банк разорил мой. Дайте денег... плиз", #что говорит
@@ -583,7 +583,7 @@ const DATA = {
 		"Random",
 		"None"],
 		
-	Random18 : 
+	"Random18" : 
 		["Characters",
 		"BillGates", #кто говорит
 		"Никогда не брал кредиты. Хочу купить чайник. Займёте?", #что говорит
@@ -602,7 +602,7 @@ const DATA = {
 		"Random",
 		"None"],
 		
-	Random18a : 
+	"Random18a" : 
 		["Characters",
 		"BillGates", #кто говорит
 		"Да, ничего. Просто дурью маюсь", #что говорит
@@ -621,7 +621,7 @@ const DATA = {
 		"Random",
 		"None"],
 		
-	Random19 : 
+	"Random19" : 
 		["Characters",
 		"Putin", #кто говорит
 		"Некогда объяснять. Срочно нужны деньги на диван", #что говорит
@@ -640,7 +640,7 @@ const DATA = {
 		"Random",
 		"None"],
 	
-	Random20 : 
+	"Random20" : 
 		["Characters",
 		"MegaBomj", #кто говорит
 		"Я сейчас выбью из вас деньги себе на машину!!!", #что говорит
@@ -659,7 +659,7 @@ const DATA = {
 		"Random",
 		"None"],
 		
-		Random21 : 
+	"Random21" : 
 		["Characters",
 		"RomanShabanov", #кто говорит
 		"Мне нужен кредит на хату. Дома не одобряют", #что говорит
@@ -678,7 +678,7 @@ const DATA = {
 		"Random",
 		"None"],
 	
-		Random21a : 
+	"Random21a" : 
 		["Characters",
 		"RomanShabanov", #кто говорит
 		"эээй а что так много... В европе дешевле!", #что говорит
@@ -697,7 +697,7 @@ const DATA = {
 		"Random",
 		"None"],
 		
-		Random22 : 
+	"Random22" : 
 		["Characters",
 		"CBreviewer", #кто говорит
 		"Покажите отчетность за прошлый квартал", #что говорит
@@ -716,8 +716,7 @@ const DATA = {
 		"Random",
 		"CentralBankDice1"],
 		
-		
-	LooseTopHealth : 
+	"LooseTopHealth" : 
 		["LooseScreen", #ссылка на папку персонажей 0
 		"LooseTopHealth", #кто говорит 1
 		"Банк стал слишком уверенным в себе и нанял кучу сотрудников", #что говорит 2
@@ -736,7 +735,7 @@ const DATA = {
 		"Random",
 		"None"],
 		
-	LooseBottomHealth : 
+	"LooseBottomHealth" : 
 		["LooseScreen", #ссылка на папку персонажей 0
 		"LooseBottomHealth", #кто говорит 1
 		"Сотрудники потеряли веру в Банк", #что говорит 2
@@ -755,7 +754,7 @@ const DATA = {
 		"Random",
 		"None"],
 	
-	LooseTopLaw : 
+	"LooseTopLaw" : 
 		["LooseScreen", #ссылка на папку персонажей 0
 		"LooseTopLaw", #кто говорит 1
 		"В офис ринулась толпа радостных клиентов. Банк лопнул от потока людей", #что говорит 2
@@ -774,7 +773,7 @@ const DATA = {
 		"Random",
 		"None"],
 		
-	LooseBottomLaw : 
+	"LooseBottomLaw" : 
 		["LooseScreen", #ссылка на папку персонажей 0
 		"LooseBottomLaw", #кто говорит 1
 		"Ваш Банк нигде не любят. Клиенты закрыли все счета", #что говорит 2
@@ -793,7 +792,7 @@ const DATA = {
 		"Random",
 		"None"],
 	
-	LooseTopBanditism : 
+	"LooseTopBanditism" : 
 		["LooseScreen", #ссылка на папку персонажей 0
 		"LooseTopBanditism", #кто говорит 1
 		"Вы слишком заметны для ЦБ. Вас взяли под контроль", #что говорит 2
@@ -812,7 +811,7 @@ const DATA = {
 		"Random",
 		"None"],
 		
-	LooseBottomBanditism : 
+	"LooseBottomBanditism" : 
 		["LooseScreen", #ссылка на папку персонажей 0
 		"LooseBottomBanditism", #кто говорит 1
 		"Вы не светитесь перед ЦБ. ЦБ решил, что Банк не эффективен", #что говорит 2
@@ -831,7 +830,7 @@ const DATA = {
 		"Random",
 		"None"],
 		
-	LooseTopLuck : 
+	"LooseTopLuck" : 
 		["LooseScreen", #ссылка на папку персонажей 0
 		"LooseTopLuck", #кто говорит 1
 		"Ваш Банк затопило деньгами. Все погибли", #что говорит 2
@@ -850,7 +849,7 @@ const DATA = {
 		"Random",
 		"None"],
 		
-	LooseBottomLuck : 
+	"LooseBottomLuck" : 
 		["LooseScreen", #ссылка на папку персонажей 0
 		"LooseBottomLuck", #кто говорит 1
 		"Деньги закончились. Банку не на что существовать", #что говорит 2

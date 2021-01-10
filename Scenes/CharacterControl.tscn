@@ -4,7 +4,7 @@
 [ext_resource path="res://Scenes/CharacterControl.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 124.199, 123.304 )
+extents = Vector2( 835.374, 1150.14 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "Apperiance"
@@ -131,7 +131,6 @@ margin_right = 6.10352e-05
 self_modulate = Color( 1, 1, 1, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource( 1 )
 
 [node name="LeftChoose" type="Position2D" parent="."]

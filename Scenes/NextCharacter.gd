@@ -2,4 +2,4 @@ extends Control
 
 
 func nextcardupdate():
-	$CharacterCard/CharacterPortrait.texture = load(Scriptwriter.NextCardImage)
+	$CharacterCardRight/CharacterPortrait.texture = load(Scriptwriter.NextCardImageRight)

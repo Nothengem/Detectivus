@@ -34,7 +34,7 @@ anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 540, 960 )
 mouse_filter = 2
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
 }
 
 [node name="GameBackGround2" type="NinePatchRect" parent="Control"]
@@ -62,7 +62,10 @@ anchor_bottom = 0.817708
 [node name="Character" parent="Control" instance=ExtResource( 4 )]
 mouse_filter = 2
 
-[node name="Control" parent="Control/Character/CharacterCard" index="1"]
+[node name="Control" parent="Control/Character/CharacterCardLeft" index="1"]
+visible = false
+
+[node name="Control" parent="Control/Character/CharacterCardRight" index="1"]
 visible = false
 
 [node name="Position2D" type="Position2D" parent="Control"]
@@ -73,4 +76,6 @@ anims/FadeBackGround = SubResource( 1 )
 
 [editable path="Control/Character"]
 
-[editable path="Control/Character/CharacterCard"]
+[editable path="Control/Character/CharacterCardLeft"]
+
+[editable path="Control/Character/CharacterCardRight"]

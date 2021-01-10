@@ -6,7 +6,8 @@ var CardChoose #какую карточку мы выбрали?
 var CardInfo #переменная хранящая данные из выбранной карты
 var CardImage #переменная хранящая путь до карты
 var NextCardInfo #переменная для обращения к следующей карте из массива
-var NextCardImage #переменная хранящая путь до картинки следующей карты
+var NextCardImageRight #переменная хранящая путь до картинки следующей карты при ответе "Да"
+var NextCardImageLeft #переменная хранящая путь до картинки следующей карты при ответе "Нет"
 var CardName #переменная хранящая название карты
 var CardText #переменная хранщая текст карты
 var CardRAnswer #переменная для правого ответа
@@ -65,6 +66,10 @@ onready var IventDataBase = preload ("res://IventDataBase.gd")
 
 func _ready():
 	level_massive_generator()
+	
+	var a
+	a = CardDataBase.DATA.keys()
+	print(a)
 
 func level_massive_generator():
 	var level_composit
@@ -73,7 +78,8 @@ func level_massive_generator():
 		level_composit = "Random" + str(i)
 		level_cards.append(level_composit)
 	level_cards.shuffle()
-	NextCardImage = level_cards[1]
+	NextCardImageRight = level_cards[1]
+#	NextCardImageLeft = 
 	get_tree().call_group("NextCharacterCard", "nextcardupdate")
 	
 	
@@ -105,18 +111,20 @@ func losecard():
 
 func card_var_generator():
 	if CardChoose == "Random":
-		CardChoose = level_cards[0]
+		CardChoose = str(level_cards[0])
 	
-	CardInfo = CardDataBase.DATA[CardDataBase.get(CardChoose)] #применили к переменной кардинфо все данные карты из базы данных
+	print(CardChoose)
+#	CardInfo = CardDataBase.DATA[CardDataBase.get(CardChoose)] #применили к переменной кардинфо все данные карты из базы данных
+	CardInfo = CardDataBase.DATA.get(CardChoose)
 	CardImage = str ("res://Resources/GFX/CharacterPortraits", "/", CardInfo[1], ".png") #сгенерировали путь в проекте до портрета персонажа
 	CardType = CardInfo[0] #тип карты
 	
 	if CardType == "Characters":
-		NextCardInfo = CardDataBase.DATA[CardDataBase.get(level_cards[1])]
+		NextCardInfo = CardDataBase.DATA.get(level_cards[1])
 	elif CardType == "Tutorial":
-		NextCardInfo = CardDataBase.DATA[CardDataBase.get(level_cards[0])]
+		NextCardInfo = CardDataBase.DATA.get(level_cards[0])
 	
-	NextCardImage = str ("res://Resources/GFX/CharacterPortraits", "/", NextCardInfo[1], ".png")
+	NextCardImageRight = str ("res://Resources/GFX/CharacterPortraits", "/", NextCardInfo[1], ".png")
 	get_tree().call_group("NextCharacterCard", "nextcardupdate")
 	
 	if CardType != "Tutorial":
