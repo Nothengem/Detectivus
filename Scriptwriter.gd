@@ -4,7 +4,6 @@ extends Node
 var CardType #nbg выбранной карточки
 var CardChoose #какую карточку мы выбрали?
 var CardInfo #переменная хранящая данные из выбранной карты
-var CardImage #переменная хранящая путь до карты
 var NextCardInfo #переменная для обращения к следующей карте из массива
 var NextCardImageRight #переменная хранящая путь до картинки следующей карты при ответе "Да"
 var NextCardImageLeft #переменная хранящая путь до картинки следующей карты при ответе "Нет"
@@ -13,6 +12,21 @@ var CardText #переменная хранщая текст карты
 var CardRAnswer #переменная для правого ответа
 var CardLAnswer #переменная для левого ответа
 var CardIvent #переменная для активации события после карточки
+
+#переменные для формирования потрета карты
+var CharacterPortrait #переменная хранящая название массива портрета в БД персонажей
+var CharacterEars
+var CharacterEyebrows
+var CharacterEyes
+var CharacterForehead
+var CharacterGlasses
+var CharacterHair
+var CharacterHead
+var CharacterJowls
+var CharacterMouth
+var CharacterNeck
+var CharacterNose
+var CharacterShirt
 
 #переменные для формирования ивента
 var IventInfo #хранение данных ивента
@@ -60,16 +74,30 @@ var CurrentLevel = 1
 var level_cards = []
 
 #предзагрузка БД карт
-onready var CardDataBase = preload ("res://CardDataBase.gd")
+onready var CardDataBase = preload ("res://DataBase/CardDataBase.gd")
 #предзагрузка БД ивентов
-onready var IventDataBase = preload ("res://IventDataBase.gd")
+onready var IventDataBase = preload ("res://DataBase/IventDataBase.gd")
+#предзагрузка БД настроек портретов персонажей
+onready var CharacterPortraitDataBase = preload("res://DataBase/CharacterPortraitDataBase.gd")
+#предзагрузка БД всех частей портетов персонажей
+onready var PortraitPardDataBase = preload("res://DataBase/PortraitPartDataBase.gd")
 
 func _ready():
+	var Head = PortraitPardDataBase.DATA.get("Head")
+	var Neck = PortraitPardDataBase.DATA.get("Neck")
+	var Shirt = PortraitPardDataBase.DATA.get("Shirt")
+	var Eyebrows = PortraitPardDataBase.DATA.get("Eyebrows")
+	var Eyes = PortraitPardDataBase.DATA.get("Eyes")
+	var Forehead = PortraitPardDataBase.DATA.get("Forehead")
+	var Ears = PortraitPardDataBase.DATA.get("Ears")
+	var Jowls = PortraitPardDataBase.DATA.get("Jowls")
+	var Glasses = PortraitPardDataBase.DATA.get("Glasses")
+	var Mouth = PortraitPardDataBase.DATA.get("Mouth")
+	var Hair = PortraitPardDataBase.DATA.get("Hair")
+	var Nose = PortraitPardDataBase.DATA.get("Nose")
 	level_massive_generator()
-	
-	var a
-	a = CardDataBase.DATA.keys()
-	print(a)
+	#присваивание переменным частей портретов их значений
+
 
 func level_massive_generator():
 	var level_composit
@@ -113,10 +141,21 @@ func card_var_generator():
 	if CardChoose == "Random":
 		CardChoose = str(level_cards[0])
 	
-	print(CardChoose)
-#	CardInfo = CardDataBase.DATA[CardDataBase.get(CardChoose)] #применили к переменной кардинфо все данные карты из базы данных
 	CardInfo = CardDataBase.DATA.get(CardChoose)
-	CardImage = str ("res://Resources/GFX/CharacterPortraits", "/", CardInfo[1], ".png") #сгенерировали путь в проекте до портрета персонажа
+	CharacterPortrait = CharacterPortraitDataBase.DATA.get(CardInfo[1])
+	CharacterHead = "Scriptwriter." + CharacterPortrait[0]
+	CharacterNeck = "Scriptwriter." + CharacterPortrait[1]
+	CharacterShirt = "Scriptwriter." + CharacterPortrait[2]
+	CharacterEyebrows = "Scriptwriter." + CharacterPortrait[3]
+	CharacterEyes = "Scriptwriter." + CharacterPortrait[4]
+	CharacterForehead = "Scriptwriter." + CharacterPortrait[5]
+	CharacterEars = "Scriptwriter." + CharacterPortrait[6]
+	CharacterJowls = "Scriptwriter." + CharacterPortrait[7]
+	CharacterGlasses = "Scriptwriter." + CharacterPortrait[8]
+	CharacterMouth = "Scriptwriter." + CharacterPortrait[9]
+	CharacterHair = "Scriptwriter." + CharacterPortrait[10]
+	CharacterNose = "Scriptwriter." + CharacterPortrait[11]
+#	CharacterPortrait = str ("res://Resources/GFX/CharacterPortraits", "/", CardInfo[1], ".png") #сгенерировали путь в проекте до портрета персонажа
 	CardType = CardInfo[0] #тип карты
 	
 	if CardType == "Characters":

@@ -51,7 +51,7 @@ func _process(delta):
 	choosedone()
 
 func card_generation():
-	$CharacterCard/CharacterPortrait.texture = load(Scriptwriter.CardImage)
+	$CharacterCard/CharacterPortrait.texture = load(Scriptwriter.CharacterPortrait)
 	if !Scriptwriter.Heath_var <= 0 and !Scriptwriter.Law_var <= 0 and !Scriptwriter.Banditism_var <= 0 and !Scriptwriter.Luck_var <= 0 and !Scriptwriter.Heath_var >= 100 and !Scriptwriter.Law_var >= 100 and !Scriptwriter.Banditism_var >= 100 and !Scriptwriter.Luck_var >= 100:
 		$CharacterCard/Control/RightChooseRect/RChooseText.text = Scriptwriter.CardRAnswer
 		$CharacterCard/Control/LeftChooseRect/LChooseText.text = Scriptwriter.CardLAnswer
