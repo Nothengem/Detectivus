@@ -31,7 +31,21 @@ var fingerseek #переменная для срабатывания анима�
 
 
 #переменные для облегчения кода
-onready var portrait = get_node("CharacterCard/CharacterPortrait")
+onready var portrait = get_node("CharacterCard/Character/CharacterPortrait")
+onready var Head = get_node("CharacterCard/Character/Head")
+onready var Neck = get_node("CharacterCard/Character/Neck")
+onready var Shirt = get_node("CharacterCard/Character/Shirt")
+onready var Eyebrows = get_node("CharacterCard/Character/Eyebrows")
+onready var Eyes = get_node("CharacterCard/Character/Eyes")
+onready var Forehead = get_node("CharacterCard/Character/Forehead")
+onready var Ears = get_node("CharacterCard/Character/Ears")
+onready var Jowls = get_node("CharacterCard/Character/Jowls")
+onready var Glasses = get_node("CharacterCard/Character/Glasses")
+onready var Mouth = get_node("CharacterCard/Character/Mouth")
+onready var Hair = get_node("CharacterCard/Character/Hair")
+onready var Nose = get_node("CharacterCard/Character/Nose")
+
+
 
 func _ready():
 	start_position = screensize/2
@@ -43,25 +57,48 @@ func _ready():
 			Scriptwriter.CardChoose = "Tutorial1"
 			Scriptwriter.card_var_generator()
 			Scriptwriter.FirstCard = false
-
+			
 		elif !Scriptwriter.FirstCard and Scriptwriter.CardType == "Tutorial" and Scriptwriter.CardType != "Characters":
 			Scriptwriter.card_var_generator()
 			Animator.play("Appearance")
-
+			
 		elif !Scriptwriter.FirstCard and Scriptwriter.CardChoose == "Random":
 			Scriptwriter.card_var_generator()
-
+			
 		elif !Scriptwriter.FirstCard and !Scriptwriter.CardChoose == "Random" and !Scriptwriter.CardChoose == "Tutorial":
 			Scriptwriter.card_var_generator()
 			Animator.play("Appearance")
-
+			
 	elif Scriptwriter.Heath_var <= 0 or Scriptwriter.Law_var <= 0 or Scriptwriter.Banditism_var <= 0 or Scriptwriter.Luck_var <= 0 or Scriptwriter.Heath_var >= 100 or Scriptwriter.Law_var >= 100 or Scriptwriter.Banditism_var >= 100 or Scriptwriter.Luck_var >= 100:
-		Scriptwriter.losecard()
+		if !Scriptwriter.NextCardInfo[0] == "LooseScreen":
+			Scriptwriter.card_var_generator()
+			Scriptwriter.NextCardInfo[0] = "LooseScreen"
+		elif Scriptwriter.NextCardInfo[0] == "LooseScreen":
+			Scriptwriter.CardChoose = "LooseScreen"
+			Scriptwriter.losecard()
 
 
 
 func card_generation():
-	portrait.texture = load(Scriptwriter.CardImage)
+	if Scriptwriter.CardType == "Characters" or Scriptwriter.CardType == "Tutorial":
+		Head.texture = load(Scriptwriter.CharacterHead)
+		Neck.texture = load(Scriptwriter.CharacterNeck)
+		Shirt.texture = load(Scriptwriter.CharacterShirt)
+		Eyebrows.texture = load(Scriptwriter.CharacterEyebrows)
+		Eyes.texture = load(Scriptwriter.CharacterEyes)
+		Forehead.texture = load(Scriptwriter.CharacterForehead)
+		Ears.texture = load(Scriptwriter.CharacterEars)
+		Jowls.texture = load(Scriptwriter.CharacterJowls)
+		Glasses.texture = load(Scriptwriter.CharacterGlasses)
+		Mouth.texture = load(Scriptwriter.CharacterMouth)
+		Hair.texture = load(Scriptwriter.CharacterHair)
+		Nose.texture = load(Scriptwriter.CharacterNose)
+	elif Scriptwriter.CardType == "LooseScreen":
+		$CharacterCard/Character.visible = false
+		$CharacterCard/CharacterPortrait.visible = true
+		$CharacterCard/CharacterPortrait.texture = load(Scriptwriter.CharacterPortrait)
+		$CharacterCard/Control.visible = false
+	
 	if !Scriptwriter.Heath_var <= 0 and !Scriptwriter.Law_var <= 0 and !Scriptwriter.Banditism_var <= 0 and !Scriptwriter.Luck_var <= 0 and !Scriptwriter.Heath_var >= 100 and !Scriptwriter.Law_var >= 100 and !Scriptwriter.Banditism_var >= 100 and !Scriptwriter.Luck_var >= 100:
 		CardRAnswer.text = Scriptwriter.CardRAnswer
 		CardLAnswer.text = Scriptwriter.CardLAnswer
@@ -77,6 +114,7 @@ func _process(delta):
 
 
 func choosedone():
+	get_tree().call_group("BalanceGUI", "white_indicatos_color")
 	if $CharacterCard.position == leftxposition:
 		if Scriptwriter.CardType =="Tutorial":
 			Scriptwriter.CardChoose = Scriptwriter.NextCardLeft
@@ -106,7 +144,7 @@ func choosedone():
 			get_tree().call_group("BalanceGUI", "change_proportions_right")
 			choosedone_next_card_right()
 			
-		elif Scriptwriter.CardType == "LooseScreen":
+		elif Scriptwriter.CardChoose == "LooseScreen":
 			choosedone_loose()
 
 
@@ -125,7 +163,7 @@ func choosedone_next_card_left():
 
 
 
-func choosedone_next_card_right():	
+func choosedone_next_card_right():
 	get_tree().call_group("BalanceGIU", "debug_print")
 	if Scriptwriter.victory_count < Scriptwriter.count_to_victory:
 			
@@ -157,6 +195,7 @@ func _on_CharacterControl2_input_event(viewport, event, shape_idx):
 
 
 func _input(event):
+	get_tree().call_group("BalanceGUI", "yellow_indicatos_color")
 	if not is_dragging:
 		return
 		
@@ -181,6 +220,7 @@ func _input(event):
 		if not event.pressed:
 			character_card_released()
 			choosedone()
+			get_tree().call_group("BalanceGUI", "white_indicatos_color")
 			if LChosRect.rect_size.y > 0:
 				$Tween.interpolate_property(LChosRect, "rect_size", LChosRect.rect_size, 
 				Vector2(276,0), 0.1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
@@ -190,6 +230,7 @@ func _input(event):
 				Color(modulate.r, modulate.g, modulate.b, 0.0), 0.1, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 				TweenLChosText.start()
 				
+				
 			elif RChosRect.rect_size.y > 0:
 				$Tween.interpolate_property(RChosRect, "rect_size", RChosRect.rect_size, 
 				Vector2(276,0), 0.1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
@@ -198,6 +239,8 @@ func _input(event):
 				TweenRChosText.interpolate_property(RChosText, "modulate", Color(modulate.r, modulate.g, modulate.b, modulate.a), 
 				Color(modulate.r, modulate.g, modulate.b, 0.0), 0.1, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 				TweenRChosText.start()
+				
+
 
 
 func rotationos(): # анимация поворота при смещении влево-вправо
@@ -205,10 +248,15 @@ func rotationos(): # анимация поворота при смещении �
 		var a = position.x - start_position.x
 		a = a * 0.08
 		rotation_degrees = a
+		get_tree().call_group("BalanceGUI", "yellow_indicatos_color")
+#		get_tree().call_group("BalanceGUI", "progress_pre_choose_animation_left")
 	elif (position.x) < start_position.x:
 		var a = position.x - start_position.x
 		a = a * 0.08
 		rotation_degrees = a
+		get_tree().call_group("BalanceGUI", "yellow_indicatos_color")
+#		get_tree().call_group("BalanceGUI", "progress_pre_choose_animation_right")
+
 
 
 func chooseanimationRight():
@@ -218,10 +266,8 @@ func chooseanimationRight():
 	fingerseek = (position.x - a)/b
 	Animator.seek(fingerseek, true)
 	Animator.stop()
-	
-	TweenLChosText.interpolate_property(LChosText, "modulate", Color(modulate.r, modulate.g, modulate.b, modulate.a), 
-	Color(modulate.r, modulate.g, modulate.b, 1.0), 0.1, Tween.TRANS_LINEAR, Tween.EASE_OUT)
-	TweenLChosText.start()
+	get_tree().call_group("BalanceGUI", "yellow_indicatos_color")
+
 
 
 func chooseanimationLeft():
@@ -231,11 +277,11 @@ func chooseanimationLeft():
 	fingerseek = -(position.x - a)/b
 	Animator.seek(fingerseek, true)
 	Animator.stop()
+	get_tree().call_group("BalanceGUI", "yellow_indicatos_color")
 
 
 
 func character_card_released():
-	var position_released = position
 	if position.x < start_position.x -200:
 		$Tween.interpolate_property(Card, "position", Card.position, 
 		leftxposition, 0.1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
@@ -254,3 +300,10 @@ func character_card_released():
 		$Tween.interpolate_property(thisnode, "rotation_degrees", thisnode.rotation_degrees, 
 		0, 1.2, Tween.TRANS_ELASTIC, Tween.EASE_OUT)
 		
+	get_tree().call_group("BalanceGUI", "progress_pre_choose_animation_return")
+
+
+
+func to_see_losecard():
+	$CharacterCard/CharacterPortrait.visible = true
+	$CharacterCard/CharacterPortrait.texture = Scriptwriter.CharacterPortrait

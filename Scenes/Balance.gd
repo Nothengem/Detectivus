@@ -5,6 +5,12 @@ onready var LawProgress = get_node("Control2/NinePatchRect/IndicatorBox/HBoxCont
 onready var BanditismProgress = get_node("Control2/NinePatchRect/IndicatorBox/HBoxContainer/BanditismProgress")
 onready var LuckProgress = get_node("Control2/NinePatchRect/IndicatorBox/HBoxContainer/LuckProgress")
 
+#переменные для измененяи размеров индикаторов
+var scale_max = Vector2(1.2, 1.2)
+var scale_norm = Vector2(1, 1)
+var scale_speed = 0.1
+
+
 #переменные для коррекции после победы в ивентах
 var Modi
 var a
@@ -16,6 +22,7 @@ func _ready():
 	Scriptwriter.Banditism_var = 50
 	Scriptwriter.Luck_var = 50
 	victory_count_update()
+
 
 
 func change_proportions_right():
@@ -168,3 +175,65 @@ func animate_value_luck(start, end):
 
 func victory_count_update():
 	$Control2/NinePatchRect/Victory_count.text = "Количество клиентов:" + str(Scriptwriter.victory_count) + "/" + str(Scriptwriter.count_to_victory)
+
+
+
+func progress_pre_choose_animation_left():
+	progress_pre_choose_animation_return()
+	$Tween.stop(HealthProgress, "rect_scale")
+	$Tween.stop(LawProgress, "rect_scale")
+	$Tween.stop(BanditismProgress, "rect_scale")
+	$Tween.stop(LuckProgress, "rect_scale")
+	if !Scriptwriter.HealthRightChoose == 0:
+		$Tween.interpolate_property(HealthProgress, "rect_scale", HealthProgress.rect_scale, scale_max, scale_speed, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+		$Tween.start()
+	if !Scriptwriter.LawRightChoose == 0:
+		$Tween.interpolate_property(LawProgress, "rect_scale", LawProgress.rect_scale, scale_max, scale_speed, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+		$Tween.start()
+	if !Scriptwriter.BanditismRightChoose == 0:
+		$Tween.interpolate_property(BanditismProgress, "rect_scale", BanditismProgress.rect_scale, scale_max, scale_speed, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+		$Tween.start()
+	if !Scriptwriter.LuckRightChoose == 0:
+		$Tween.interpolate_property(LuckProgress, "rect_scale", LuckProgress.rect_scale, scale_max, scale_speed, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+		$Tween.start()
+
+
+
+func progress_pre_choose_animation_right():
+	progress_pre_choose_animation_return()
+	$Tween.stop(HealthProgress, "rect_scale")
+	$Tween.stop(LawProgress, "rect_scale")
+	$Tween.stop(BanditismProgress, "rect_scale")
+	$Tween.stop(LuckProgress, "rect_scale")
+	if !Scriptwriter.HealthLeftChoose == 0:
+		$Tween.interpolate_property(HealthProgress, "rect_scale", HealthProgress.rect_scale, scale_max, scale_speed, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+		$Tween.start()
+	if !Scriptwriter.LawLeftChoose == 0:
+		$Tween.interpolate_property(LawProgress, "rect_scale", LawProgress.rect_scale, scale_max, scale_speed, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+		$Tween.start()
+	if !Scriptwriter.BanditismLeftChoose == 0:
+		$Tween.interpolate_property(BanditismProgress, "rect_scale", BanditismProgress.rect_scale, scale_max, scale_speed, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+		$Tween.start()
+	if !Scriptwriter.LuckLeftChoose == 0:
+		$Tween.interpolate_property(LuckProgress, "rect_scale", LuckProgress.rect_scale, scale_max, scale_speed, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+		$Tween.start()
+
+
+
+func progress_pre_choose_animation_return():
+	$Tween.stop(HealthProgress, "rect_scale")
+	$Tween.stop(LawProgress, "rect_scale")
+	$Tween.stop(BanditismProgress, "rect_scale")
+	$Tween.stop(LuckProgress, "rect_scale")
+	if !HealthProgress.rect_scale == scale_norm:
+		$Tween.interpolate_property(HealthProgress, "rect_scale", HealthProgress.rect_scale, scale_norm, scale_speed, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+		$Tween.start()
+	if !LawProgress.rect_scale == scale_norm:
+		$Tween.interpolate_property(LawProgress, "rect_scale", LawProgress.rect_scale, scale_norm, scale_speed, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+		$Tween.start()
+	if !BanditismProgress.rect_scale == scale_norm:
+		$Tween.interpolate_property(BanditismProgress, "rect_scale", BanditismProgress.rect_scale, scale_norm, scale_speed, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+		$Tween.start()
+	if !LuckProgress.rect_scale == scale_norm:
+		$Tween.interpolate_property(LuckProgress, "rect_scale", LuckProgress.rect_scale, scale_norm, scale_speed, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+		$Tween.start()

@@ -63,19 +63,43 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
+"times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 840, 0 ), Vector2( 840, 350 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 600, 600 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("CharacterCard/Control/LeftChooseRect/LChooseText:self_modulate")
+tracks/1/path = NodePath("CharacterCard/Control/LeftChooseRect/LChooseText:rect_position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.12 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 70, 300 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CharacterCard/Control/LeftChooseRect/LChooseText:rect_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( -0.01 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 286.95, 151.198 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CharacterCard/Control/LeftChooseRect/LChooseText:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
@@ -92,10 +116,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
+"times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 840, 0 ), Vector2( 840, 350 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 600, 600 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("CharacterCard/Control/RightChooseRect/RChooseText:self_modulate")
@@ -109,6 +133,30 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("CharacterCard/Control/RightChooseRect/RChooseText:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.01 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 41.6005, 146.799 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CharacterCard/Control/RightChooseRect/RChooseText:rect_size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 234, 100 ) ]
+}
 
 [node name="CharacterControl" type="Area2D" groups=[
 "CharacterControl",
@@ -118,19 +166,36 @@ script = ExtResource( 2 )
 
 [node name="CharacterCard" parent="." instance=ExtResource( 1 )]
 
-[node name="LeftChooseRect" parent="CharacterCard/Control" index="0"]
-margin_right = 6.10352e-05
-
-[node name="LChooseText" parent="CharacterCard/Control/LeftChooseRect" index="0"]
-self_modulate = Color( 1, 1, 1, 0 )
-
-[node name="RightChooseRect" parent="CharacterCard/Control" index="1"]
-margin_right = 6.10352e-05
+[node name="RightChooseRect" parent="CharacterCard/Control" index="0"]
+margin_right = 0.0
+margin_bottom = 0.0
 
 [node name="RChooseText" parent="CharacterCard/Control/RightChooseRect" index="0"]
 self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 41.6005
+margin_top = 146.799
+margin_right = 275.601
+margin_bottom = 246.799
+rect_rotation = -30.0
+
+[node name="LeftChooseRect" parent="CharacterCard/Control" index="1"]
+margin_right = 6.10352e-05
+margin_bottom = 0.0
+
+[node name="LChooseText" parent="CharacterCard/Control/LeftChooseRect" index="0"]
+self_modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.101999
+anchor_top = 0.466927
+anchor_right = 0.660916
+anchor_bottom = 1.00735
+margin_left = 70.0
+margin_top = 300.0
+margin_right = 356.95
+margin_bottom = 451.198
+rect_rotation = -70.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource( 1 )
 
 [node name="LeftChoose" type="Position2D" parent="."]

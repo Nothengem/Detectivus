@@ -5,52 +5,52 @@ enum {
 	}
 
 const DATA = {
-	"Dictor": [ "Head[1]", "Neck[0]", "Shirt[1]", "Eyebrows[1]", "Eyes[1]", "Forehead[0]", "Ears[1]", "Jowls[0]", "Glasses[0]", "Mouth[1]", "Hair[1]", "Nose[1]"],
+	"Dictor": [ "Head1", "Neck1", "Shirt1", "Eyebrows1", "Eyes1", "Forehead0", "Ears1", "Jowls0", "Glasses0", "Mouth1", "Hair0", "Nose3"],
 	
-	"AlexeyKochanov" : [ "Head[2]", "Neck[0]", "Shirt[2]", "Eyebrows[2]", "Eyes[2]", "Forehead[0]", "Ears[2]", "Jowls[1]", "Glasses[0]", "Mouth[2]", "Hair[2]", "Nose[2]"],
+	"AlexeyKochanov" : [ "Head2", "Neck1", "Shirt2", "Eyebrows2", "Eyes2", "Fore0", "Ears2", "Jowls1", "Glasses0", "Mouth2", "Hair1", "Nose3"],
 	
-	"AnastasiyaMalkova" : [ "Head[3]", "Neck[0]", "Shirt[3]", "Eyebrows[3]", "Eyes[3]", "Forehead[0]", "Ears[3]", "Jowls[2]", "Glasses[0]", "Mouth[3]", "Hair[3]", "Nose[3]"],
+	"AnastasiyaMalkova" : [ "Head3", "Neck1", "Shirt3", "Eyebrows3", "Eyes3", "Forehead0", "Ears3", "Jowls0", "Glasses0", "Mouth3", "Hair2", "Nose3"],
 	
-	"AnastasiyaCherevatkina" : [ "Head[4]", "Neck[0]", "Shirt[4]", "Eyebrows[4]", "Eyes[4]", "Forehead[0]", "Ears[4]", "Jowls[3]", "Glasses[0]", "Mouth[4]", "Hair[4]", "Nose[4]"],
+	"AnastasiyaCherevatkina" : [ "Head4", "Neck1", "Shirt4", "Eyebrows4", "Eyes4", "Forehead0", "Ears3", "Jowls1", "Glasses0", "Mouth4", "Hair3", "Nose2"],
 	
-	"AlexeySilkin" : [ "Head[5]", "Neck[0]", "Shirt[5]", "Eyebrows[5]", "Eyes[5]", "Forehead[1]", "Ears[3]", "Jowls[2]", "Glasses[1]", "Mouth[5]", "Hair[5]", "Nose[5]"],
+	"AlexeySilkin" : [ "Head5", "Neck1", "Shirt5", "Eyebrows5", "Eyes5", "Forehead1", "Ears2", "Jowls0", "Glasses1", "Mouth5", "Hair4", "Nose2"],
 	
-	"Bman" : [ "Head[6]", "Neck[0]", "Shirt[6]", "Eyebrows[6]", "Eyes[6]", "Forehead[0]", "Ears[2]", "Jowls[1]", "Glasses[0]", "Mouth[6]", "Hair[6]", "Nose[6]"],
+	"Bman" : [ "Head1", "Neck1", "Shirt4", "Eyebrows4", "Eyes1", "Forehead0", "Ears1", "Jowls1", "Glasses0", "Mouth1", "Hair0", "Nose2"],
 	
-	"CBomjMan" : [ "Head[7]", "Neck[0]", "Shirt[7]", "Eyebrows[7]", "Eyes[7]", "Forehead[0]", "Ears[1]", "Jowls[0]", "Glasses[0]", "Mouth[7]", "Hair[7]", "Nose[5]"],
+	"CBomjMan" : [ "Head2", "Neck1", "Shirt3", "Eyebrows3", "Eyes2", "Forehead0", "Ears1", "Jowls0", "Glasses0", "Mouth2", "Hair1", "Nose1"],
 	
-	"DmitriyOvsyannikov" : [ "Head[8]", "Neck[0]", "Shirt[8]", "Eyebrows[8]", "Eyes[8]", "Forehead[0]", "Ears[2]", "Jowls[1]", "Glasses[0]", "Mouth[8]", "Hair[8]", "Nose[4]"],
+	"DmitriyOvsyannikov" : [ "Head3", "Neck1", "Shirt2", "Eyebrows2", "Eyes3", "Forehead0", "Ears2", "Jowls1", "Glasses0", "Mouth3", "Hair2", "Nose1"],
 	
-	"Chechen" : [ "Head[9]", "Neck[0]", "Shirt[9]", "Eyebrows[9]", "Eyes[9]", "Forehead[0]", "Ears[3]", "Jowls[2]", "Glasses[0]", "Mouth[9]", "Hair[9]", "Nose[3]"],
+	"Chechen" : [ "Head4", "Neck1", "Shirt1", "Eyebrows1", "Eyes4", "Forehead0", "Ears3", "Jowls0", "Glasses0", "Mouth4", "Hair3", "Nose1"],
 	
-	"BArtem" : [ "Head[10]", "Neck[0]", "Shirt[10]", "Eyebrows[10]", "Eyes[10]", "Forehead[0]", "Ears[4]", "Jowls[3]", "Glasses[0]", "Mouth[10]", "Hair[10]", "Nose[2]"],
+	"BArtem" : [ "Head5", "Neck1", "Shirt2", "Eyebrows2", "Eyes5", "Forehead0", "Ears3", "Jowls1", "Glasses0", "Mouth5", "Hair4", "Nose3"],
 	
-	"KristinaStepanova" : [ "Head[11]", "Neck[0]", "Shirt[9]", "Eyebrows[11]", "Eyes[11]", "Forehead[0]", "Ears[1]", "Jowls[0]", "Glasses[1]", "Mouth[11]", "Hair[11]", "Nose[1]"],
+	"KristinaStepanova" : [ "Head1", "Neck1", "Shirt3", "Eyebrows3", "Eyes3", "Forehead0", "Ears2", "Jowls0", "Glasses1", "Mouth5", "Hair0", "Nose3"],
 	
-	"Babylia" : [ "Head[12]", "Neck[0]", "Shirt[8]", "Eyebrows[12]", "Eyes[10]", "Forehead[0]", "Ears[2]", "Jowls[1]", "Glasses[0]", "Mouth[12]", "Hair[10]", "Nose[2]"],
+	"Babylia" : [ "Head2", "Neck1", "Shirt4", "Eyebrows4", "Eyes2", "Forehead0", "Ears1", "Jowls1", "Glasses0", "Mouth4", "Hair1", "Nose3"],
 	
-	"IlonMask" : [ "Head[13]", "Neck[0]", "Shirt[7]", "Eyebrows[13]", "Eyes[9]", "Forehead[0]", "Ears[3]", "Jowls[2]", "Glasses[0]", "Mouth[13]", "Hair[9]", "Nose[3]"],
+	"IlonMask" : [ "Head3", "Neck1", "Shirt5", "Eyebrows5", "Eyes3", "Forehead0", "Ears1", "Jowls0", "Glasses0", "Mouth3", "Hair2", "Nose2"],
 	
-	"Mafiosi" : [ "Head[14]", "Neck[0]", "Shirt[6]", "Eyebrows[14]", "Eyes[8]", "Forehead[0]", "Ears[4]", "Jowls[3]", "Glasses[0]", "Mouth[12]", "Hair[8]", "Nose[4]"],
+	"Mafiosi" : [ "Head4", "Neck1", "Shirt4", "Eyebrows4", "Eyes4", "Forehead0", "Ears2", "Jowls1", "Glasses0", "Mouth2", "Hair3", "Nose2"],
 	
-	"GrishaGrachev" : [ "Head[13]", "Neck[0]", "Shirt[5]", "Eyebrows[15]", "Eyes[7]", "Forehead[1]", "Ears[3]", "Jowls[2]", "Glasses[1]", "Mouth[11]", "Hair[7]", "Nose[5]"],
+	"GrishaGrachev" : [ "Head5", "Neck1", "Shirt3", "Eyebrows3", "Eyes5", "Forehead1", "Ears3", "Jowls0", "Glasses1", "Mouth1", "Hair4", "Nose2"],
 	
-	"BitKogan" : [ "Head[12]", "Neck[0]", "Shirt[4]", "Eyebrows[14]", "Eyes[6]", "Forehead[0]", "Ears[2]", "Jowls[1]", "Glasses[0]", "Mouth[10]", "Hair[6]", "Nose[6]"],
+	"BitKogan" : [ "Head1", "Neck1", "Shirt2", "Eyebrows2", "Eyes1", "Forehead0", "Ears3", "Jowls1", "Glasses0", "Mouth1", "Hair0", "Nose1"],
 	
-	"InvestorJunior" : [ "Head[11]", "Neck[0]", "Shirt[3]", "Eyebrows[13]", "Eyes[5]", "Forehead[0]", "Ears[1]", "Jowls[0]", "Glasses[0]", "Mouth[9]", "Hair[5]", "Nose[5]"],
+	"InvestorJunior" : [ "Head2", "Neck1", "Shirt1", "Eyebrows1", "Eyes2", "Forehead0", "Ears2", "Jowls0", "Glasses0", "Mouth2", "Hair1", "Nose1"],
 	
-	"OstapBender" : [ "Head[10]", "Neck[0]", "Shirt[2]", "Eyebrows[12]", "Eyes[4]", "Forehead[0]", "Ears[2]", "Jowls[1]", "Glasses[0]", "Mouth[8]", "Hair[4]", "Nose[4]"],
+	"OstapBender" : [ "Head3", "Neck1", "Shirt2", "Eyebrows2", "Eyes3", "Forehead0", "Ears1", "Jowls1", "Glasses0", "Mouth3", "Hair2", "Nose1"],
 	
-	"OlegTinkoff" : [ "Head[9]", "Neck[0]", "Shirt[1]", "Eyebrows[11]", "Eyes[3]", "Forehead[0]", "Ears[3]", "Jowls[2]", "Glasses[0]", "Mouth[7]", "Hair[3]", "Nose[3]"],
+	"OlegTinkoff" : [ "Head4", "Neck1", "Shirt3", "Eyebrows3", "Eyes4", "Forehead0", "Ears1", "Jowls0", "Glasses0", "Mouth4", "Hair3", "Nose3"],
 	
-	"BillGates" : [ "Head[8]", "Neck[0]", "Shirt[2]", "Eyebrows[10]", "Eyes[2]", "Forehead[0]", "Ears[4]", "Jowls[3]", "Glasses[1]", "Mouth[6]", "Hair[2]", "Nose[2]"],
+	"BillGates" : [ "Head5", "Neck1", "Shirt4", "Eyebrows4", "Eyes5", "Forehead0", "Ears2", "Jowls1", "Glasses1", "Mouth5", "Hair4", "Nose3"],
 	
-	"Putin" : [ "Head[7]", "Neck[0]", "Shirt[3]", "Eyebrows[9]", "Eyes[3]", "Forehead[1]", "Ears[3]", "Jowls[2]", "Glasses[0]", "Mouth[5]", "Hair[1]", "Nose[1]"],
+	"Putin" : [ "Head1", "Neck1", "Shirt5", "Eyebrows5", "Eyes1", "Forehead1", "Ears3", "Jowls0", "Glasses0", "Mouth5", "Hair0", "Nose3"],
 	
-	"MegaBomj" : [ "Head[6]", "Neck[0]", "Shirt[4]", "Eyebrows[8]", "Eyes[4]", "Forehead[0]", "Ears[2]", "Jowls[1]", "Glasses[0]", "Mouth[4]", "Hair[2]", "Nose[2]"],
+	"MegaBomj" : [ "Head2", "Neck1", "Shirt4", "Eyebrows4", "Eyes2", "Forehead0", "Ears3", "Jowls1", "Glasses0", "Mouth4", "Hair1", "Nose2"],
 	
-	"RomanShabanov" : [ "Head[5]", "Neck[0]", "Shirt[5]", "Eyebrows[7]", "Eyes[5]", "Forehead[0]", "Ears[1]", "Jowls[0]", "Glasses[0]", "Mouth[3]", "Hair[3]", "Nose[3]"],
+	"RomanShabanov" : [ "Head3", "Neck1", "Shirt3", "Eyebrows3", "Eyes3", "Forehead0", "Ears2", "Jowls0", "Glasses0", "Mouth3", "Hair2", "Nose2"],
 	
-	"CBreviewer" : [ "Head[4]", "Neck[0]", "Shirt[6]", "Eyebrows[6]", "Eyes[6]", "Forehead[1]", "Ears[2]", "Jowls[1]", "Glasses[1]", "Mouth[2]", "Hair[4]", "Nose[4]"],
+	"CBreviewer" : [ "Head4", "Neck1", "Shirt2", "Eyebrows2", "Eyes4", "Forehead1", "Ears1", "Jowls1", "Glasses1", "Mouth2", "Hair3", "Nose2"],
 }
  

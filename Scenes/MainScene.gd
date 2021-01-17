@@ -18,14 +18,20 @@ func spawn_dice():
 	var card = scene.instance()
 	add_child_below_node($Control, card, true)
 
+
+
 func background_fade():
 	$AnimationPlayer.play("FadeBackGround")
+
+
 
 func restart_game():
 	Scriptwriter.FirstCard = true
 	Scriptwriter.level_massive_generator()
 	get_tree().change_scene("res://Scenes/StartMenu.tscn")
-	
+
+
+
 func win_the_game():
 	get_tree().change_scene("res://Scenes/WinScene.tscn")
 
@@ -35,3 +41,11 @@ func _on_CharacterControl_input_event(viewport, event, shape_idx):
 		get_tree().set_input_as_handled()
 		previous_mouse_position = event.position
 		is_dragging = true
+
+
+
+func next_card_hide():
+	$Control/Character.visible = false
+
+
+

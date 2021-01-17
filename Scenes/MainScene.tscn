@@ -60,6 +60,8 @@ anchor_top = 0.151042
 anchor_bottom = 0.817708
 
 [node name="Character" parent="Control" instance=ExtResource( 4 )]
+margin_top = 0.000671387
+margin_bottom = 0.000671387
 mouse_filter = 2
 
 [node name="Control" parent="Control/Character/CharacterCardLeft" index="1"]

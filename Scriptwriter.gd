@@ -4,8 +4,8 @@ extends Node
 var CardType #nbg выбранной карточки
 var CardChoose #какую карточку мы выбрали?
 var CardInfo #переменная хранящая данные из выбранной карты
-var NextCardInfo #переменная для обращения к следующей карте из массива
-var NextCardImageRight #переменная хранящая путь до картинки следующей карты при ответе "Да"
+var NextCardInfo = ["0", "1"] #переменная для обращения к следующей карте из массива
+var CardImage #переменная хранящая путь до картинки следующей карты при ответе "Да"
 var NextCardImageLeft #переменная хранящая путь до картинки следующей карты при ответе "Нет"
 var CardName #переменная хранящая название карты
 var CardText #переменная хранщая текст карты
@@ -50,6 +50,8 @@ var HealthRightChoose
 var LawRightChoose
 var BanditismRightChoose
 var LuckRightChoose
+
+#Какие карты будут следующими?
 var NextCardRight
 var NextCardLeft
 
@@ -106,9 +108,10 @@ func level_massive_generator():
 		level_composit = "Random" + str(i)
 		level_cards.append(level_composit)
 	level_cards.shuffle()
-	NextCardImageRight = level_cards[1]
+	CardImage = level_cards[1]
 #	NextCardImageLeft = 
 	get_tree().call_group("NextCharacterCard", "nextcardupdate")
+	
 	
 	
 func losecard():
@@ -137,36 +140,49 @@ func losecard():
 		CardChoose = "LooseTopLuck"
 		card_var_generator()
 
+
+
 func card_var_generator():
-	if CardChoose == "Random":
+	if CardChoose == "LooseScreen": #проверяем что следующая карта проигрышная или нет
+		losecard()
+	elif CardChoose == "Random" or CardChoose == "Tutorial":
 		CardChoose = str(level_cards[0])
-	
-	CardInfo = CardDataBase.DATA.get(CardChoose)
-	CharacterPortrait = CharacterPortraitDataBase.DATA.get(CardInfo[1])
-	CharacterHead = "Scriptwriter." + CharacterPortrait[0]
-	CharacterNeck = "Scriptwriter." + CharacterPortrait[1]
-	CharacterShirt = "Scriptwriter." + CharacterPortrait[2]
-	CharacterEyebrows = "Scriptwriter." + CharacterPortrait[3]
-	CharacterEyes = "Scriptwriter." + CharacterPortrait[4]
-	CharacterForehead = "Scriptwriter." + CharacterPortrait[5]
-	CharacterEars = "Scriptwriter." + CharacterPortrait[6]
-	CharacterJowls = "Scriptwriter." + CharacterPortrait[7]
-	CharacterGlasses = "Scriptwriter." + CharacterPortrait[8]
-	CharacterMouth = "Scriptwriter." + CharacterPortrait[9]
-	CharacterHair = "Scriptwriter." + CharacterPortrait[10]
-	CharacterNose = "Scriptwriter." + CharacterPortrait[11]
-#	CharacterPortrait = str ("res://Resources/GFX/CharacterPortraits", "/", CardInfo[1], ".png") #сгенерировали путь в проекте до портрета персонажа
-	CardType = CardInfo[0] #тип карты
-	
+		CardInfo = CardDataBase.DATA.get(CardChoose)
+		CharacterPortrait = CharacterPortraitDataBase.DATA.get(CardInfo[1])
+	elif CardChoose != "LooseScreen" and CardChoose != "Random":
+		CardInfo = CardDataBase.DATA.get(CardChoose)
+		CharacterPortrait = CharacterPortraitDataBase.DATA.get(CardInfo[1])
+		
+	CardType = CardInfo[0]
+		
 	if CardType == "Characters":
 		NextCardInfo = CardDataBase.DATA.get(level_cards[1])
+		get_tree().call_group("NextCharacterCard", "nextcardupdate")
 	elif CardType == "Tutorial":
 		NextCardInfo = CardDataBase.DATA.get(level_cards[0])
+		get_tree().call_group("NextCharacterCard", "nextcardupdate")
+	elif CardType == "LooseScreen":
+		get_tree().call_group("MainScene", "next_card_hide")
 	
-	NextCardImageRight = str ("res://Resources/GFX/CharacterPortraits", "/", NextCardInfo[1], ".png")
-	get_tree().call_group("NextCharacterCard", "nextcardupdate")
 	
-	if CardType != "Tutorial":
+	if CardType == "LooseScreen":
+		CardImage = str ("res://Resources/GFX/CharacterPortraits", "/", CardInfo[1], ".png")
+		CharacterPortrait = CardImage
+	elif CardType == "Characters" or CardType == "Tutorial":
+		CharacterHead = str ("res://Resources/GFX/CharacterCotaint/Head", "/", CharacterPortrait[0], ".png")
+		CharacterNeck = str ("res://Resources/GFX/CharacterCotaint/Neck", "/", CharacterPortrait[1], ".png")
+		CharacterShirt =  str ("res://Resources/GFX/CharacterCotaint/Shirt", "/", CharacterPortrait[2], ".png")
+		CharacterEyebrows = str ("res://Resources/GFX/CharacterCotaint/Eyebrows", "/", CharacterPortrait[3], ".png")
+		CharacterEyes = str ("res://Resources/GFX/CharacterCotaint/Eyes", "/", CharacterPortrait[4], ".png")
+		CharacterForehead = str ("res://Resources/GFX/CharacterCotaint/Forehead", "/", CharacterPortrait[5], ".png")
+		CharacterEars = str ("res://Resources/GFX/CharacterCotaint/Ears", "/", CharacterPortrait[6], ".png")
+		CharacterJowls = str ("res://Resources/GFX/CharacterCotaint/Jowls", "/", CharacterPortrait[7], ".png")
+		CharacterGlasses = str ("res://Resources/GFX/CharacterCotaint/Glasses", "/", CharacterPortrait[8], ".png")
+		CharacterMouth = str ("res://Resources/GFX/CharacterCotaint/Mouth", "/", CharacterPortrait[9], ".png")
+		CharacterHair = str ("res://Resources/GFX/CharacterCotaint/Hair", "/", CharacterPortrait[10], ".png")
+		CharacterNose = str ("res://Resources/GFX/CharacterCotaint/Nose", "/", CharacterPortrait[11], ".png")
+		
+	if CardType != "Tutorial" and CardType != "LooseScreen":
 		level_cards.remove(0)
 		
 	CardName = CardInfo[3] #Ввели в переменную текстовое значение имени карты из массива БД
@@ -186,9 +202,10 @@ func card_var_generator():
 	CardIvent = CardInfo[16]
 	if NextCardRight == "Ivent":
 		ivent_generatior()
-#	elif NextCardRight != "Ivent":
 	get_tree().call_group("CharacterControl", "card_generation")
 	get_tree().call_group("IventCard", "cardupdate")
+
+
 
 func ivent_generatior():
 	IventInfo = IventDataBase.DATA[IventDataBase.get(CardIvent)]
