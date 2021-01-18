@@ -10,6 +10,7 @@ func spawn():
 	var scene = load("res://Scenes/CharacterControl.tscn")
 	var card = scene.instance()
 	add_child_below_node($Control, card, true)
+	get_tree().call_group("NextCharacterCard", "got_left_right_choose_portraits")
 
 
 

@@ -34,10 +34,13 @@ onready var RightNose = get_node("Control/Character/CharacterCardRight/Character
 var left_choose_portrait
 var right_choose_portrait
 
+#func _ready():
+#	got_left_right_choose_portraits()
+
 func got_left_right_choose_portraits():
 	left_choose_portrait = Scriptwriter.NextCardLeft
 	right_choose_portrait = Scriptwriter.NextCardRight
-
+	find_name_of_portraits()
 
 
 func find_name_of_portraits():
@@ -47,6 +50,10 @@ func find_name_of_portraits():
 		left_choose_portrait = Scriptwriter.CharacterPortraitDataBase.DATA.get(left_choose_portrait)
 	elif left_choose_portrait == "Random":
 		left_choose_portrait = Scriptwriter.level_cards[1]
+		left_choose_portrait = Scriptwriter.CardDataBase.DATA.get(left_choose_portrait)
+		left_choose_portrait = left_choose_portrait[1]
+		left_choose_portrait = Scriptwriter.CharacterPortraitDataBase.DATA.get(left_choose_portrait)
+		print(left_choose_portrait)
 		
 	if !right_choose_portrait == "Random":
 		right_choose_portrait = Scriptwriter.CardDataBase.DATA.get(right_choose_portrait)
@@ -54,35 +61,40 @@ func find_name_of_portraits():
 		right_choose_portrait = Scriptwriter.CharacterPortraitDataBase.DATA.get(right_choose_portrait)
 	elif right_choose_portrait == "Random":
 		right_choose_portrait = Scriptwriter.level_cards[1]
+		right_choose_portrait = Scriptwriter.CharacterPortraitDataBase.DATA.get(right_choose_portrait)
+
 		
 	nextcardupdate()
 
 
 func nextcardupdate():
-	LeftPortrait.texture = 
-	LeftHead.texture = left_choose_portrait[0]
-	LeftNeck.texture = left_choose_portrait[1]
-	LeftShirt.texture = left_choose_portrait[2]
-	LeftEyebrows.texture = left_choose_portrait[3]
-	LeftEyes.texture = left_choose_portrait[4]
-	LeftForehead.texture = left_choose_portrait[5]
-	LeftEars.texture = left_choose_portrait[6]
-	LeftJowls.texture = left_choose_portrait[7]
-	LeftGlasses.texture = left_choose_portrait[8]
-	LeftMouth.texture = left_choose_portrait[9]
-	LeftHair.texture = left_choose_portrait[10]
-	LeftNose.texture = left_choose_portrait[11]
-
-	RightPortrait.texture = 
-	RightHead.texture = 
-	RightNeck.texture = 
-	RightShirt.texture = 
-	RightEyebrows.texture = 
-	RightEyes.texture = 
-	RightForehead.texture = 
-	RightEars.texture = 
-	RightJowls.texture = 
-	RightGlasses.texture = 
-	RightMouth.texture = 
-	RightHair.texture = 
-	RightNose.texture = 
+	if Scriptwriter.CardChoose == "LooseScreen":
+		LeftPortrait.texture = 1
+		RightPortrait.texture = 1
+	elif Scriptwriter.CardChoose != "LooseScreen":
+		LeftHead.texture = str ("res://Resources/GFX/CharacterCotaint/Head", "/", left_choose_portrait[0], ".png")
+		
+		LeftNeck.texture = str ("res://Resources/GFX/CharacterCotaint/Head", "/", left_choose_portrait[1], ".png") 
+		LeftShirt.texture = str ("res://Resources/GFX/CharacterCotaint/Head", "/", left_choose_portrait[2], ".png")
+		LeftEyebrows.texture = str ("res://Resources/GFX/CharacterCotaint/Head", "/", left_choose_portrait[3], ".png")
+		LeftEyes.texture = str ("res://Resources/GFX/CharacterCotaint/Head", "/", left_choose_portrait[4], ".png")
+		LeftForehead.texture = str ("res://Resources/GFX/CharacterCotaint/Head", "/", left_choose_portrait[5], ".png")
+		LeftEars.texture = str ("res://Resources/GFX/CharacterCotaint/Head", "/", left_choose_portrait[6], ".png")
+		LeftJowls.texture = str ("res://Resources/GFX/CharacterCotaint/Head", "/", left_choose_portrait[7], ".png")
+		LeftGlasses.texture = str ("res://Resources/GFX/CharacterCotaint/Head", "/", left_choose_portrait[8], ".png")
+		LeftMouth.texture = str ("res://Resources/GFX/CharacterCotaint/Head", "/", left_choose_portrait[9], ".png")
+		LeftHair.texture = str ("res://Resources/GFX/CharacterCotaint/Head", "/", left_choose_portrait[10], ".png")
+		LeftNose.texture = str ("res://Resources/GFX/CharacterCotaint/Head", "/", left_choose_portrait[11], ".png")
+		
+		RightHead.texture = right_choose_portrait[0]
+		RightNeck.texture = right_choose_portrait[1]
+		RightShirt.texture = right_choose_portrait[2]
+		RightEyebrows.texture = right_choose_portrait[3]
+		RightEyes.texture = right_choose_portrait[4]
+		RightForehead.texture = right_choose_portrait[5]
+		RightEars.texture = right_choose_portrait[6]
+		RightJowls.texture = right_choose_portrait[7]
+		RightGlasses.texture = right_choose_portrait[8]
+		RightMouth.texture = right_choose_portrait[9]
+		RightHair.texture = right_choose_portrait[10]
+		RightNose.texture = right_choose_portrait[11]

@@ -110,7 +110,7 @@ func level_massive_generator():
 	level_cards.shuffle()
 	CardImage = level_cards[1]
 #	NextCardImageLeft = 
-	get_tree().call_group("NextCharacterCard", "nextcardupdate")
+	get_tree().call_group("NextCharacterCard", "got_left_right_choose_portraits")
 	
 	
 	
@@ -157,12 +157,12 @@ func card_var_generator():
 		
 	if CardType == "Characters":
 		NextCardInfo = CardDataBase.DATA.get(level_cards[1])
-		get_tree().call_group("NextCharacterCard", "nextcardupdate")
+		get_tree().call_group("NextCharacterCard", "got_left_right_choose_portraits")
 	elif CardType == "Tutorial":
 		NextCardInfo = CardDataBase.DATA.get(level_cards[0])
-		get_tree().call_group("NextCharacterCard", "nextcardupdate")
+		get_tree().call_group("NextCharacterCard", "got_left_right_choose_portraits")
 	elif CardType == "LooseScreen":
-		get_tree().call_group("MainScene", "next_card_hide")
+		get_tree().call_group("NextCharacterCard", "got_left_right_choose_portraits")
 	
 	
 	if CardType == "LooseScreen":
