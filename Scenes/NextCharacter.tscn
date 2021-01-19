@@ -17,6 +17,16 @@ __meta__ = {
 
 [node name="CharacterCardLeft" parent="." instance=ExtResource( 1 )]
 
+[node name="Control" parent="CharacterCardLeft" index="1"]
+visible = false
+
 [node name="CharacterCardRight" parent="." instance=ExtResource( 1 )]
 
+[node name="Control" parent="CharacterCardRight" index="1"]
+visible = false
+
 [node name="Tween" type="Tween" parent="."]
+
+[editable path="CharacterCardLeft"]
+
+[editable path="CharacterCardRight"]

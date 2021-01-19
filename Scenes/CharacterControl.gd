@@ -203,16 +203,19 @@ func _input(event):
 		previous_mouse_position = Vector2()
 		is_dragging = false
 		
+		
 	if is_dragging and event is InputEventMouseMotion:
 		$Tween.stop(thisnode, "position")
 		$Tween.stop(thisnode, "rotation_degrees")
 		
 		position += event.position - previous_mouse_position
 		previous_mouse_position = event.position
+		chooseanimationReturnToZero()
 		rotationos()
 		chooseanimationRight()
 		chooseanimationLeft()
 		if Scriptwriter.CardType == "Characters" or Scriptwriter.CardType == "Tutorial":
+			chooseanimationReturnToZero()
 			chooseanimationRight()
 			chooseanimationLeft()
 			
@@ -220,25 +223,27 @@ func _input(event):
 		if not event.pressed:
 			character_card_released()
 			choosedone()
+			Animator.stop(true)
+			chooseanimationReturnToZero()
 			get_tree().call_group("BalanceGUI", "white_indicatos_color")
-			if LChosRect.rect_size.y > 0:
-				$Tween.interpolate_property(LChosRect, "rect_size", LChosRect.rect_size, 
-				Vector2(276,0), 0.1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-				$Tween.start()
-				
-				TweenLChosText.interpolate_property(LChosText, "modulate", Color(modulate.r, modulate.g, modulate.b, modulate.a), 
-				Color(modulate.r, modulate.g, modulate.b, 0.0), 0.1, Tween.TRANS_LINEAR, Tween.EASE_OUT)
-				TweenLChosText.start()
-				
-				
-			elif RChosRect.rect_size.y > 0:
-				$Tween.interpolate_property(RChosRect, "rect_size", RChosRect.rect_size, 
-				Vector2(276,0), 0.1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-				$Tween.start()
-				
-				TweenRChosText.interpolate_property(RChosText, "modulate", Color(modulate.r, modulate.g, modulate.b, modulate.a), 
-				Color(modulate.r, modulate.g, modulate.b, 0.0), 0.1, Tween.TRANS_LINEAR, Tween.EASE_OUT)
-				TweenRChosText.start()
+#			if LChosRect.rect_size.y > 0:
+#				$Tween.interpolate_property(LChosRect, "rect_size", LChosRect.rect_size, 
+#				Vector2(276,0), 0.1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+#				$Tween.start()
+#
+#				TweenLChosText.interpolate_property(LChosText, "modulate", Color(modulate.r, modulate.g, modulate.b, modulate.a), 
+#				Color(modulate.r, modulate.g, modulate.b, 0.0), 0.1, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+#				TweenLChosText.start()
+#
+#
+#			elif RChosRect.rect_size.y > 0:
+#				$Tween.interpolate_property(RChosRect, "rect_size", RChosRect.rect_size, 
+#				Vector2(276,0), 0.1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+#				$Tween.start()
+#
+#				TweenRChosText.interpolate_property(RChosText, "modulate", Color(modulate.r, modulate.g, modulate.b, modulate.a), 
+#				Color(modulate.r, modulate.g, modulate.b, 0.0), 0.1, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+#				TweenRChosText.start()
 				
 
 
@@ -257,15 +262,22 @@ func rotationos(): # анимация поворота при смещении �
 		get_tree().call_group("BalanceGUI", "yellow_indicatos_color")
 #		get_tree().call_group("BalanceGUI", "progress_pre_choose_animation_right")
 
-
+func chooseanimationReturnToZero():
+	Animator.play("LChooseText")
+	Animator.seek(0, true)
+	Animator.stop()
+	Animator.play("RChooseText")
+	Animator.seek(0, true)
+	Animator.stop()
 
 func chooseanimationRight():
 	Animator.play("RChooseText")
 	var a = start_position.x
 	var b = start_position.x*3
 	fingerseek = (position.x - a)/b
+	Animator.current_animation = "RChooseText"
+	Animator.stop(false)
 	Animator.seek(fingerseek, true)
-	Animator.stop()
 	get_tree().call_group("BalanceGUI", "yellow_indicatos_color")
 
 
@@ -275,8 +287,8 @@ func chooseanimationLeft():
 	var a = start_position.x
 	var b = start_position.x*3
 	fingerseek = -(position.x - a)/b
+	Animator.stop(false)
 	Animator.seek(fingerseek, true)
-	Animator.stop()
 	get_tree().call_group("BalanceGUI", "yellow_indicatos_color")
 
 

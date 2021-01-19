@@ -174,7 +174,7 @@ margin_bottom = 0.0
 self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 41.6005
 margin_top = 146.799
-margin_right = 275.601
+margin_right = 275.6
 margin_bottom = 246.799
 rect_rotation = -30.0
 
