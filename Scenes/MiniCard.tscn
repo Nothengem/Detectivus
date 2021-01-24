@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Resources/GFX/mini_cards/Happy.jpg" type="Texture" id=1]
+[ext_resource path="res://Resources/GFX/mini_cards/Сard_holder_shirt.jpg" type="Texture" id=2]
+[ext_resource path="res://Scenes/MiniCard.gd" type="Script" id=3]
+
+[node name="MiniCard" type="Sprite" groups=[
+"MiniCard",
+]]
+texture = ExtResource( 1 )
+script = ExtResource( 3 )
+
+[node name="Shirt" type="Sprite" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+texture = ExtResource( 2 )
+
+[node name="Tween" type="Tween" parent="."]

@@ -1,0 +1,88 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/MiniCard.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/thimbles.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Apperiance"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("MiniCards/MiniCard1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -200, 875 ), Vector2( 185, 875 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MiniCards/MiniCard3:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1300, 875 ), Vector2( 890, 875 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("MiniCards/MiniCard2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 537, -340 ), Vector2( 537, 875 ) ]
+}
+
+[node name="thimbles" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 540, 960 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Apperiance = SubResource( 1 )
+
+[node name="Positions" type="Node" parent="."]
+
+[node name="LeftPosition" type="Position2D" parent="Positions"]
+position = Vector2( 185, 875 )
+
+[node name="CentrePosition" type="Position2D" parent="Positions"]
+position = Vector2( 537, 875 )
+
+[node name="RightPosition" type="Position2D" parent="Positions"]
+position = Vector2( 890, 875 )
+
+[node name="MiniCards" type="Node" parent="."]
+
+[node name="MiniCard1" parent="MiniCards" instance=ExtResource( 1 )]
+position = Vector2( -200, 875 )
+z_index = 1
+
+[node name="MiniCard2" parent="MiniCards" instance=ExtResource( 1 )]
+position = Vector2( 537, -340 )
+
+[node name="MiniCard3" parent="MiniCards" instance=ExtResource( 1 )]
+position = Vector2( 1300, 875 )
+
+[node name="Tween" type="Tween" parent="MiniCards"]
+
+[node name="Timer_start" type="Timer" parent="."]
+one_shot = true
+
+[node name="Timer_midle" type="Timer" parent="."]
+[connection signal="timeout" from="Timer_start" to="." method="_on_Timer_start_timeout"]
+[connection signal="timeout" from="Timer_midle" to="." method="_on_Timer_midle_timeout"]

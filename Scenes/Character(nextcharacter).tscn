@@ -91,7 +91,7 @@ margin_left = -420.0
 margin_top = -420.0
 margin_right = -420.0
 margin_bottom = -420.0
-rect_pivot_offset = Vector2( 138, 137 )
+rect_pivot_offset = Vector2( 420, 420 )
 mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": true

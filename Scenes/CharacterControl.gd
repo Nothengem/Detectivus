@@ -45,6 +45,10 @@ onready var Mouth = get_node("CharacterCard/Character/Mouth")
 onready var Hair = get_node("CharacterCard/Character/Hair")
 onready var Nose = get_node("CharacterCard/Character/Nose")
 
+#переменные обозначающие что карточка сейчас в правой или левой позиции, нужна для анимаций изменения цвета индикаторов и 
+var right_position = false
+var left_position = false
+var middle_position = false
 
 
 func _ready():
@@ -105,6 +109,14 @@ func card_generation():
 	elif Scriptwriter.Heath_var <= 0 or Scriptwriter.Law_var <= 0 or Scriptwriter.Banditism_var <= 0 or Scriptwriter.Luck_var <= 0 or Scriptwriter.Heath_var >= 100 or Scriptwriter.Law_var >= 100 or Scriptwriter.Banditism_var >= 100 or Scriptwriter.Luck_var >= 100:
 		CardRAnswer.text = "Ой, кажется банку конец..."
 		CardLAnswer.text = "У нас случилось ЧП..."
+		
+#	print("Следующая правая: ", Scriptwriter.NextCardRight)
+#	var a = Scriptwriter.CardDataBase.DATA.get(Scriptwriter.NextCardRight)
+#	print("её портрет: ", a[1])
+#	print("----------------------")
+#	print("Следующая левая:", Scriptwriter.NextCardLeft)
+#	var b = Scriptwriter.CardDataBase.DATA.get(Scriptwriter.NextCardLeft)
+#	print("её портрет: ", b[1])
 
 
 
@@ -159,6 +171,7 @@ func choosedone_next_card_left():
 		
 	elif Scriptwriter.victory_count == Scriptwriter.count_to_victory:
 		get_tree().call_group("MainScene", "win_the_game")
+	get_tree().call_group("BalanceGUI", "yellow_indicatos_color_middle")
 	queue_free()
 
 
@@ -174,11 +187,13 @@ func choosedone_next_card_right():
 		
 	elif Scriptwriter.victory_count == Scriptwriter.count_to_victory:
 		get_tree().call_group("MainScene", "win_the_game")
+	get_tree().call_group("BalanceGUI", "yellow_indicatos_color_middle")
 	queue_free()
 
 
 
 func choosedone_loose():
+	get_tree().call_group("BalanceGUI", "yellow_indicatos_color_middle")
 	Scriptwriter.victory_count = 0
 	get_tree().call_group("MainScene", "restart_game")
 	queue_free()
@@ -195,7 +210,21 @@ func _on_CharacterControl2_input_event(viewport, event, shape_idx):
 
 
 func _input(event):
-	get_tree().call_group("BalanceGUI", "yellow_indicatos_color")
+	var a = start_position.x + 100
+	var b = start_position.x - 100
+	if position.x > a:
+		right_position = true
+		left_position = false
+		middle_position = false
+	elif position.x < b:
+		right_position = false
+		left_position = true
+		middle_position = false
+	elif position.x < a and position.x > b:
+		right_position = false
+		left_position = false
+		middle_position = true
+
 	if not is_dragging:
 		return
 		
@@ -226,29 +255,14 @@ func _input(event):
 			Animator.stop(true)
 			chooseanimationReturnToZero()
 			get_tree().call_group("BalanceGUI", "white_indicatos_color")
-#			if LChosRect.rect_size.y > 0:
-#				$Tween.interpolate_property(LChosRect, "rect_size", LChosRect.rect_size, 
-#				Vector2(276,0), 0.1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-#				$Tween.start()
-#
-#				TweenLChosText.interpolate_property(LChosText, "modulate", Color(modulate.r, modulate.g, modulate.b, modulate.a), 
-#				Color(modulate.r, modulate.g, modulate.b, 0.0), 0.1, Tween.TRANS_LINEAR, Tween.EASE_OUT)
-#				TweenLChosText.start()
-#
-#
-#			elif RChosRect.rect_size.y > 0:
-#				$Tween.interpolate_property(RChosRect, "rect_size", RChosRect.rect_size, 
-#				Vector2(276,0), 0.1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-#				$Tween.start()
-#
-#				TweenRChosText.interpolate_property(RChosText, "modulate", Color(modulate.r, modulate.g, modulate.b, modulate.a), 
-#				Color(modulate.r, modulate.g, modulate.b, 0.0), 0.1, Tween.TRANS_LINEAR, Tween.EASE_OUT)
-#				TweenRChosText.start()
-				
+			right_position = false
+			left_position = false
+			middle_position = true
 
 
 
 func rotationos(): # анимация поворота при смещении влево-вправо
+	balance_color_prechoose()
 	if (position.x) > start_position.x:
 		var a = position.x - start_position.x
 		a = a * 0.08
@@ -278,7 +292,6 @@ func chooseanimationRight():
 	Animator.current_animation = "RChooseText"
 	Animator.stop(false)
 	Animator.seek(fingerseek, true)
-	get_tree().call_group("BalanceGUI", "yellow_indicatos_color")
 
 
 
@@ -289,7 +302,20 @@ func chooseanimationLeft():
 	fingerseek = -(position.x - a)/b
 	Animator.stop(false)
 	Animator.seek(fingerseek, true)
-	get_tree().call_group("BalanceGUI", "yellow_indicatos_color")
+#	get_tree().call_group("BalanceGUI", "yellow_indicatos_color")
+
+
+
+func balance_color_prechoose():
+	if right_position:
+		get_tree().call_group("BalanceGUI", "yellow_indicatos_color_right")
+		get_tree().call_group("NextCharacterCard", "right_card_appear")
+	elif left_position:
+		get_tree().call_group("BalanceGUI", "yellow_indicatos_color_left")
+		get_tree().call_group("NextCharacterCard", "right_card_fade")
+	elif middle_position:
+		get_tree().call_group("BalanceGUI", "yellow_indicatos_color_middle")
+
 
 
 

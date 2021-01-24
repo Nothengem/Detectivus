@@ -26,12 +26,12 @@ func randomcard():
 	CardRAnswer = CardInfo[5] #левый ответ из БД
 	CardLAnswer = CardInfo[4] #Правый ответ из БД
 	return CardInfo
-	
-	
+
+
 func get_event():
 	#CardInfo = CardDataBase.DATA[CardDataBase.get(CardName)]
 	print(CardChoose)
-	
+
 func generate_event():
 	pass
 

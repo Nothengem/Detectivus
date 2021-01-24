@@ -51,7 +51,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 0, 1, 0.203922, 1 ), Color( 0, 1, 0.203922, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=4]
 resource_name = "Hold"
 length = 0.1
 tracks/0/type = "value"
@@ -67,22 +67,6 @@ tracks/0/keys = {
 "values": [ Color( 1, 0.772549, 0, 1 ) ]
 }
 
-[sub_resource type="Animation" id=4]
-length = 0.4
-step = 0.01
-tracks/0/type = "value"
-tracks/0/path = NodePath("Control2/NinePatchRect/IndicatorBox/HBoxContainer/LawProgress:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.05, 0.35, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
-}
-
 [sub_resource type="Animation" id=5]
 length = 0.4
 step = 0.01
@@ -96,14 +80,14 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.05, 0.35, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 0, 1, 0.203922, 1 ), Color( 0, 1, 0.203922, 1 ), Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=6]
 length = 0.4
 step = 0.01
 tracks/0/type = "value"
-tracks/0/path = NodePath("Control2/NinePatchRect/IndicatorBox/HBoxContainer/BanditismProgress:modulate")
+tracks/0/path = NodePath("Control2/NinePatchRect/IndicatorBox/HBoxContainer/LawProgress:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -112,7 +96,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.05, 0.35, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 1, 0.203922, 1 ), Color( 0, 1, 0.203922, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -128,10 +112,26 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.05, 0.35, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 0, 1, 0.203922, 1 ), Color( 0, 1, 0.203922, 1 ), Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=8]
+length = 0.4
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Control2/NinePatchRect/IndicatorBox/HBoxContainer/BanditismProgress:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.35, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 1, 0.203922, 1 ), Color( 0, 1, 0.203922, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=9]
 length = 0.4
 step = 0.01
 tracks/0/type = "value"
@@ -147,7 +147,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=10]
 length = 0.4
 step = 0.01
 tracks/0/type = "value"
@@ -342,16 +342,16 @@ __meta__ = {
 [node name="AnimPlayerHealth" type="AnimationPlayer" parent="."]
 anims/HealthMinus = SubResource( 2 )
 anims/HealthPlus = SubResource( 3 )
-anims/Hold = SubResource( 10 )
+anims/Hold = SubResource( 4 )
 
 [node name="AnimPlayerLaw" type="AnimationPlayer" parent="."]
-anims/LawMinus = SubResource( 4 )
-anims/LawPlus = SubResource( 5 )
+anims/LawMinus = SubResource( 5 )
+anims/LawPlus = SubResource( 6 )
 
 [node name="AnimPlayerBanditism" type="AnimationPlayer" parent="."]
-anims/BanditismMinus = SubResource( 6 )
-anims/BanditismPlus = SubResource( 7 )
+anims/BanditismMinus = SubResource( 7 )
+anims/BanditismPlus = SubResource( 8 )
 
 [node name="AnimPlayerLuck" type="AnimationPlayer" parent="."]
-anims/LuckMinus = SubResource( 8 )
-anims/LuckPlus = SubResource( 9 )
+anims/LuckMinus = SubResource( 9 )
+anims/LuckPlus = SubResource( 10 )

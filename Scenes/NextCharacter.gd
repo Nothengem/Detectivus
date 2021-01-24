@@ -34,8 +34,10 @@ onready var RightNose = get_node("CharacterCardRight/Character/Nose")
 var left_choose_portrait
 var right_choose_portrait
 
-func _ready():
-	print(LeftHead)
+#переменные карточек
+onready var CharacterCardLeft = get_node("CharacterCardLeft")
+onready var CharacterCardRight = get_node("CharacterCardRight")
+
 
 func got_left_right_choose_portraits():
 	left_choose_portrait = Scriptwriter.NextCardLeft
@@ -48,8 +50,9 @@ func find_name_of_portraits():
 		left_choose_portrait = Scriptwriter.CardDataBase.DATA.get(left_choose_portrait)
 		left_choose_portrait = left_choose_portrait[1]
 		left_choose_portrait = Scriptwriter.CharacterPortraitDataBase.DATA.get(left_choose_portrait)
+	
 	elif left_choose_portrait == "Random":
-		left_choose_portrait = Scriptwriter.level_cards[1]
+		left_choose_portrait = Scriptwriter.level_cards[0]
 		left_choose_portrait = Scriptwriter.CardDataBase.DATA.get(left_choose_portrait)
 		left_choose_portrait = left_choose_portrait[1]
 		left_choose_portrait = Scriptwriter.CharacterPortraitDataBase.DATA.get(left_choose_portrait)
@@ -59,12 +62,11 @@ func find_name_of_portraits():
 		right_choose_portrait = right_choose_portrait[1]
 		right_choose_portrait = Scriptwriter.CharacterPortraitDataBase.DATA.get(right_choose_portrait)
 	elif right_choose_portrait == "Random":
-		right_choose_portrait = Scriptwriter.level_cards[1]
+		right_choose_portrait = Scriptwriter.level_cards[0]
 		right_choose_portrait = Scriptwriter.CardDataBase.DATA.get(right_choose_portrait)
 		right_choose_portrait = right_choose_portrait[1]
 		right_choose_portrait = Scriptwriter.CharacterPortraitDataBase.DATA.get(right_choose_portrait)
-
-		
+	
 	nextcardupdate()
 
 
@@ -86,7 +88,6 @@ func nextcardupdate():
 		LeftHair.texture = load (str ("res://Resources/GFX/CharacterCotaint/Hair", "/", left_choose_portrait[10], ".png"))
 		LeftNose.texture = load (str ("res://Resources/GFX/CharacterCotaint/Nose", "/", left_choose_portrait[11], ".png"))
 		
-		print(right_choose_portrait)
 		RightHead.texture = load (str ("res://Resources/GFX/CharacterCotaint/Head", "/", right_choose_portrait[0], ".png"))
 		RightNeck.texture = load (str ("res://Resources/GFX/CharacterCotaint/Neck", "/", right_choose_portrait[1], ".png"))
 		RightShirt.texture = load (str ("res://Resources/GFX/CharacterCotaint/Shirt", "/", right_choose_portrait[2], ".png"))
@@ -99,3 +100,16 @@ func nextcardupdate():
 		RightMouth.texture = load (str ("res://Resources/GFX/CharacterCotaint/Mouth", "/", right_choose_portrait[9], ".png"))
 		RightHair.texture = load (str ("res://Resources/GFX/CharacterCotaint/Hair", "/", right_choose_portrait[10], ".png"))
 		RightNose.texture = load (str ("res://Resources/GFX/CharacterCotaint/Nose", "/", right_choose_portrait[11], ".png"))
+
+func right_card_fade():
+	$Tween.interpolate_property(CharacterCardRight, "modulate", CharacterCardRight.modulate, Color("00ffffff"), 0.05, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	$Tween.start()
+	$Tween.interpolate_property(CharacterCardLeft, "modulate", CharacterCardLeft.modulate, Color("ffffff"), 0.05, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	$Tween.start()
+	
+func right_card_appear():
+	$Tween.interpolate_property(CharacterCardRight, "modulate", CharacterCardRight.modulate, Color("ffffff"), 0.05, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	$Tween.start()
+	$Tween.interpolate_property(CharacterCardLeft, "modulate", CharacterCardLeft.modulate, Color("00ffffff"), 0.05, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	$Tween.start()
+
