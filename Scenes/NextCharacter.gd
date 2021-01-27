@@ -124,7 +124,7 @@ func ivent_card_appear():
 	$Tween.interpolate_property(CharacterCardLeft, "self_modulate", CharacterCardLeft.self_modulate, Color("00ffffff"), 0.05, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	$Tween.start()
 
-	$Tween.interpolate_property($CharacterCardRight/CharacterPortrait, "self_modulate", $CharacterCardRight/CharacterPortrait.modulate, Color("ffffff"), 0.05, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	$Tween.interpolate_property($CharacterCardRight/IventPortrait, "self_modulate", $CharacterCardRight/IventPortrait.modulate, Color("ffffff"), 0.05, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	$Tween.start()
 
 	$Tween.interpolate_property(CharacterCardRight, "self_modulate", CharacterCardRight.self_modulate, Color("ffffff"), 0.05, Tween.TRANS_LINEAR, Tween.EASE_OUT)
