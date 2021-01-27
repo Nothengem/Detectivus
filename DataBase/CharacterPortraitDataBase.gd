@@ -52,5 +52,7 @@ const DATA = {
 	"RomanShabanov" : [ "Head3", "Neck1", "Shirt3", "Eyebrows3", "Eyes3", "Forehead0", "Ears2", "Jowls0", "Glasses0", "Mouth3", "Hair2", "Nose2"],
 	
 	"CBreviewer" : [ "Head4", "Neck1", "Shirt2", "Eyebrows2", "Eyes4", "Forehead1", "Ears1", "Jowls1", "Glasses1", "Mouth2", "Hair3", "Nose2"],
+	
+	"Ivent" : [ "Head0", "Neck0", "Shirt0", "Eyebrows0", "Eyes0", "Forehead0", "Ears0", "Jowls0", "Glasses0", "Mouth0", "Hair0", "Nose0"],
 }
  

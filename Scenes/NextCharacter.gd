@@ -1,7 +1,7 @@
 extends Control
 
 #Переменные для выбора на лево
-onready var LeftPortrait = get_node("CharacterCardLeft/CharacterPortrait")
+onready var LeftPortrait = get_node("CharacterCardLeft/Character")
 onready var LeftHead = get_node("CharacterCardLeft/Character/Head")
 onready var LeftNeck = get_node("CharacterCardLeft/Character/Neck")
 onready var LeftShirt = get_node("CharacterCardLeft/Character/Shirt")
@@ -16,7 +16,7 @@ onready var LeftHair = get_node("CharacterCardLeft/Character/Hair")
 onready var LeftNose = get_node("CharacterCardLeft/Character/Nose")
 
 #Переменные для выбора на право
-onready var RightPortrait = get_node("CharacterCardRight/CharacterPortrait")
+onready var RightPortrait = get_node("CharacterCardRight/Character")
 onready var RightHead = get_node("CharacterCardRight/Character/Head")
 onready var RightNeck = get_node("CharacterCardRight/Character/Neck")
 onready var RightShirt = get_node("CharacterCardRight/Character/Shirt")
@@ -35,8 +35,8 @@ var left_choose_portrait
 var right_choose_portrait
 
 #переменные карточек
-onready var CharacterCardLeft = get_node("CharacterCardLeft")
-onready var CharacterCardRight = get_node("CharacterCardRight")
+onready var CharacterCardLeft = get_node("CharacterCardLeft/Character")
+onready var CharacterCardRight = get_node("CharacterCardRight/Character")
 
 
 func got_left_right_choose_portraits():
@@ -58,9 +58,13 @@ func find_name_of_portraits():
 		left_choose_portrait = Scriptwriter.CharacterPortraitDataBase.DATA.get(left_choose_portrait)
 		
 	if !right_choose_portrait == "Random":
-		right_choose_portrait = Scriptwriter.CardDataBase.DATA.get(right_choose_portrait)
-		right_choose_portrait = right_choose_portrait[1]
-		right_choose_portrait = Scriptwriter.CharacterPortraitDataBase.DATA.get(right_choose_portrait)
+		if !right_choose_portrait == "Ivent":
+			right_choose_portrait = Scriptwriter.CardDataBase.DATA.get(right_choose_portrait)
+			right_choose_portrait = right_choose_portrait[1]
+			right_choose_portrait = Scriptwriter.CharacterPortraitDataBase.DATA.get(right_choose_portrait)
+		elif right_choose_portrait == "Ivent":
+			right_choose_portrait = Scriptwriter.CharacterPortraitDataBase.DATA.get(right_choose_portrait)
+			#написать скрипт для портрета ивента
 	elif right_choose_portrait == "Random":
 		right_choose_portrait = Scriptwriter.level_cards[0]
 		right_choose_portrait = Scriptwriter.CardDataBase.DATA.get(right_choose_portrait)
@@ -102,14 +106,27 @@ func nextcardupdate():
 		RightNose.texture = load (str ("res://Resources/GFX/CharacterCotaint/Nose", "/", right_choose_portrait[11], ".png"))
 
 func right_card_fade():
-	$Tween.interpolate_property(CharacterCardRight, "modulate", CharacterCardRight.modulate, Color("00ffffff"), 0.05, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	$Tween.interpolate_property(CharacterCardRight, "self_modulate", CharacterCardRight.self_modulate, Color("00ffffff"), 0.05, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	$Tween.start()
-	$Tween.interpolate_property(CharacterCardLeft, "modulate", CharacterCardLeft.modulate, Color("ffffff"), 0.05, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	
+	$Tween.interpolate_property(CharacterCardLeft, "self_modulate", CharacterCardLeft.self_modulate, Color("ffffff"), 0.05, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	$Tween.start()
 	
 func right_card_appear():
-	$Tween.interpolate_property(CharacterCardRight, "modulate", CharacterCardRight.modulate, Color("ffffff"), 0.05, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	$Tween.interpolate_property(CharacterCardRight, "self_modulate", CharacterCardRight.self_modulate, Color("ffffff"), 0.05, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	$Tween.start()
-	$Tween.interpolate_property(CharacterCardLeft, "modulate", CharacterCardLeft.modulate, Color("00ffffff"), 0.05, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+
+	$Tween.interpolate_property(CharacterCardLeft, "self_modulate", CharacterCardLeft.self_modulate, Color("00ffffff"), 0.05, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	$Tween.start()
+	
+
+func ivent_card_appear():
+	$Tween.interpolate_property(CharacterCardLeft, "self_modulate", CharacterCardLeft.self_modulate, Color("00ffffff"), 0.05, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	$Tween.start()
+
+	$Tween.interpolate_property($CharacterCardRight/CharacterPortrait, "self_modulate", $CharacterCardRight/CharacterPortrait.modulate, Color("ffffff"), 0.05, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	$Tween.start()
+
+	$Tween.interpolate_property(CharacterCardRight, "self_modulate", CharacterCardRight.self_modulate, Color("ffffff"), 0.05, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	$Tween.start()
 

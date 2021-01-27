@@ -18,12 +18,13 @@ var my_random_number
 #переменные для точек куда заходят карты
 var points_siquence
 
-
+#переменная для остановки анимации перемешивания
+var stoper = 0
 
 func _ready():
 	Animator.play("Apperiance")
-	Time.wait_time = 3
-	Time.start()
+	$Timer_start.wait_time = 3
+	$Timer_start.start()
 
 
 
@@ -41,35 +42,77 @@ func animate_value_banditism(start, end):
 
 
 
-func all_minicard_centre():
-	Twee.interpolate_property($MiniCards/MiniCard1, "position", $MiniCards/MiniCard1.position, $Positions/CentrePosition.position, 0.5, Tween.TRANS_BACK, Tween.EASE_IN)
-	Twee.start()
-	Twee.interpolate_property($MiniCards/MiniCard3, "position", $MiniCards/MiniCard3.position, $Positions/CentrePosition.position, 0.5, Tween.TRANS_BACK, Tween.EASE_IN)
-	Twee.start()
-
-
-
 func _on_Timer_start_timeout():
+	print("сработал старт")
 	get_tree().call_group("MiniCard", "flip_the_shirt")
 	all_minicard_centre()
-	card_layer_position.shuffle()
-	PositionsMassive.shuffle()
-	$Timer_midle.wait_time = 1
-	$Timer_midle.start()
+
 
 
 func _on_Timer_midle_timeout():
-	all_minicard_centre()
-	$MiniCards/MiniCard1.z_index = card_layer_position[0]
-	$MiniCards/MiniCard2.z_index = card_layer_position[1]
-	$MiniCards/MiniCard3.z_index = card_layer_position[2]
-	
-	Twee.interpolate_property($MiniCards/MiniCard1, "position", $MiniCards/MiniCard1.position, PositionsMassive[0], 0.5, Tween.TRANS_BACK, Tween.EASE_IN)
+		all_minicard_parse()
+		$MiniCards/MiniCard1.z_index = card_layer_position[0]
+		$MiniCards/MiniCard2.z_index = card_layer_position[1]
+		$MiniCards/MiniCard3.z_index = card_layer_position[2]
+		$Timer_repeat.wait_time = 0.5
+		$Timer_repeat.start()
+
+
+
+
+func _on_Timer_repeat_timeout():
+	if stoper != 3:
+		all_minicard_centre()
+		stoper = stoper +1
+		print (stoper)
+	elif stoper == 3:
+		$Timer_start.one_shot = true
+		get_tree().call_group("MiniCard", "activate_choose_button")
+
+
+
+
+func all_minicard_centre():
+	card_layer_position.shuffle()
+	PositionsMassive.shuffle()
+	$Timer_middle.start()
+	Twee.interpolate_property($MiniCards/MiniCard1, "position", $MiniCards/MiniCard1.position, $Positions/CentrePosition.position, 0.25, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	Twee.start()
-	
-	Twee.interpolate_property($MiniCards/MiniCard2, "position", $MiniCards/MiniCard2.position, PositionsMassive[1], 0.5, Tween.TRANS_BACK, Tween.EASE_IN)
+	Twee.interpolate_property($MiniCards/MiniCard3, "position", $MiniCards/MiniCard3.position, $Positions/CentrePosition.position, 0.25, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	Twee.start()
-	
-	Twee.interpolate_property($MiniCards/MiniCard3, "position", $MiniCards/MiniCard3.position, PositionsMassive[2], 0.5, Tween.TRANS_BACK, Tween.EASE_IN)
+	Twee.interpolate_property($MiniCards/MiniCard2, "position", $MiniCards/MiniCard2.position, $Positions/CentrePosition.position, 0.25, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	Twee.start()
-	$Timer_midle.start()
+
+
+
+func all_minicard_parse():
+	Twee.interpolate_property($MiniCards/MiniCard1, "position", $MiniCards/MiniCard1.position, PositionsMassive[0], 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	Twee.start()
+	Twee.interpolate_property($MiniCards/MiniCard2, "position", $MiniCards/MiniCard2.position, PositionsMassive[1], 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	Twee.start()
+	Twee.interpolate_property($MiniCards/MiniCard3, "position", $MiniCards/MiniCard3.position, PositionsMassive[2], 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	Twee.start()
+
+
+
+func Timer_start_final_anim():
+	$Timer_start_final_anim.start()
+
+
+
+func _on_Timer_start_final_anim_timeout():
+	print("timer done")
+	var a
+	if $MiniCards/MiniCard1/Shirt.visible == false:
+		a = $MiniCards/MiniCard1
+	elif $MiniCards/MiniCard2/Shirt.visible == false:
+		a = $MiniCards/MiniCard2
+	elif $MiniCards/MiniCard3/Shirt.visible == false:
+		a = $MiniCards/MiniCard3
+	
+	var b: Vector2 = get_parent().get_viewport().size/2 #позиция центра экрана
+	
+	Twee.interpolate_property(a, "position", a.position, b, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	Twee.start()
+	Twee.interpolate_property(a, "scale", $MiniCards/MiniCard3.scale, Vector2(2, 2), 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	Twee.start()

@@ -310,6 +310,9 @@ func balance_color_prechoose():
 	if right_position:
 		get_tree().call_group("BalanceGUI", "yellow_indicatos_color_right")
 		get_tree().call_group("NextCharacterCard", "right_card_appear")
+		if Scriptwriter.NextCardRight == "Ivent":
+			print(Scriptwriter.NextCardRight)
+			get_tree().call_group("NextCharacterCard", "ivent_card_appear")
 	elif left_position:
 		get_tree().call_group("BalanceGUI", "yellow_indicatos_color_left")
 		get_tree().call_group("NextCharacterCard", "right_card_fade")

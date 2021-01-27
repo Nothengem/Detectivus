@@ -176,23 +176,17 @@ margin_left = 41.6005
 margin_top = 146.799
 margin_right = 275.6
 margin_bottom = 246.799
-rect_rotation = -30.0
 
 [node name="LeftChooseRect" parent="CharacterCard/Control" index="1"]
-margin_right = 6.10352e-05
-margin_bottom = 0.0
+margin_right = -3.85004
+margin_bottom = -3.84259
 
 [node name="LChooseText" parent="CharacterCard/Control/LeftChooseRect" index="0"]
 self_modulate = Color( 1, 1, 1, 0 )
-anchor_left = 0.101999
-anchor_top = 0.466927
-anchor_right = 0.660916
-anchor_bottom = 1.00735
 margin_left = 70.0
 margin_top = 300.0
 margin_right = 356.95
 margin_bottom = 451.198
-rect_rotation = -70.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

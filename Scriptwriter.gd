@@ -103,11 +103,12 @@ func _ready():
 
 func level_massive_generator():
 	var level_composit
-	for i in range(1, 22):
+	for i in range(20, 23):
 		randomize()
 		level_composit = "Random" + str(i)
 		level_cards.append(level_composit)
-	level_cards.shuffle()
+	level_cards = ["Random20", "Random21", "Random22", "Random1", "Random20", "Random21", "Random1"]
+#	level_cards.shuffle()
 	CardImage = level_cards[1]
 #	NextCardImageLeft = 
 	get_tree().call_group("NextCharacterCard", "got_left_right_choose_portraits")

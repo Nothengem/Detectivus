@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/MiniCard.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/thimbles.gd" type="Script" id=2]
+[ext_resource path="res://Resources/GFX/mini_cards/Neutrality.jpg" type="Texture" id=3]
+[ext_resource path="res://Resources/GFX/mini_cards/Rage.jpg" type="Texture" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Apperiance"
@@ -43,7 +45,9 @@ tracks/2/keys = {
 "values": [ Vector2( 537, -340 ), Vector2( 537, 875 ) ]
 }
 
-[node name="thimbles" type="Control"]
+[node name="thimbles" type="Control" groups=[
+"thimbles",
+]]
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 540, 960 )
@@ -74,15 +78,26 @@ z_index = 1
 
 [node name="MiniCard2" parent="MiniCards" instance=ExtResource( 1 )]
 position = Vector2( 537, -340 )
+texture = ExtResource( 3 )
 
 [node name="MiniCard3" parent="MiniCards" instance=ExtResource( 1 )]
 position = Vector2( 1300, 875 )
+texture = ExtResource( 4 )
 
 [node name="Tween" type="Tween" parent="MiniCards"]
 
 [node name="Timer_start" type="Timer" parent="."]
 one_shot = true
 
-[node name="Timer_midle" type="Timer" parent="."]
+[node name="Timer_middle" type="Timer" parent="."]
+one_shot = true
+
+[node name="Timer_repeat" type="Timer" parent="."]
+one_shot = true
+
+[node name="Timer_start_final_anim" type="Timer" parent="."]
+one_shot = true
 [connection signal="timeout" from="Timer_start" to="." method="_on_Timer_start_timeout"]
-[connection signal="timeout" from="Timer_midle" to="." method="_on_Timer_midle_timeout"]
+[connection signal="timeout" from="Timer_middle" to="." method="_on_Timer_midle_timeout"]
+[connection signal="timeout" from="Timer_repeat" to="." method="_on_Timer_repeat_timeout"]
+[connection signal="timeout" from="Timer_start_final_anim" to="." method="_on_Timer_start_final_anim_timeout"]
