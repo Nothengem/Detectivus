@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/LooseBottomBanditism.png-0ee4ddc1df2af5a2262840d0e980f564.stex"
+path="res://.import/LooseBottomBanditism.PNG-2de42493cd412b036ef7fb708fd7c686.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/GFX/CharacterPortraits/LooseBottomBanditism.png"
-dest_files=[ "res://.import/LooseBottomBanditism.png-0ee4ddc1df2af5a2262840d0e980f564.stex" ]
+source_file="res://Resources/GFX/CharacterPortraits/LooseBottomBanditism.PNG"
+dest_files=[ "res://.import/LooseBottomBanditism.PNG-2de42493cd412b036ef7fb708fd7c686.stex" ]
 
 [params]
 

@@ -31,7 +31,7 @@ var fingerseek #переменная для срабатывания анима�
 
 
 #переменные для облегчения кода
-onready var portrait = get_node("CharacterCard/Character/CharacterPortrait")
+onready var portrait = get_node("CharacterCard/IventPortrait")
 onready var Head = get_node("CharacterCard/Character/Head")
 onready var Neck = get_node("CharacterCard/Character/Neck")
 onready var Shirt = get_node("CharacterCard/Character/Shirt")
@@ -64,23 +64,41 @@ func _ready():
 			
 		elif !Scriptwriter.FirstCard and Scriptwriter.CardType == "Tutorial" and Scriptwriter.CardType != "Characters":
 			Scriptwriter.card_var_generator()
-			Animator.play("Appearance")
+#			Animator.play("Appearance")
 			
 		elif !Scriptwriter.FirstCard and Scriptwriter.CardChoose == "Random":
 			Scriptwriter.card_var_generator()
 			
 		elif !Scriptwriter.FirstCard and !Scriptwriter.CardChoose == "Random" and !Scriptwriter.CardChoose == "Tutorial":
 			Scriptwriter.card_var_generator()
-			Animator.play("Appearance")
+#			Animator.play("Appearance")
 			
 	elif Scriptwriter.Heath_var <= 0 or Scriptwriter.Law_var <= 0 or Scriptwriter.Banditism_var <= 0 or Scriptwriter.Luck_var <= 0 or Scriptwriter.Heath_var >= 100 or Scriptwriter.Law_var >= 100 or Scriptwriter.Banditism_var >= 100 or Scriptwriter.Luck_var >= 100:
 		if !Scriptwriter.NextCardInfo[0] == "LooseScreen":
 			Scriptwriter.card_var_generator()
-			Scriptwriter.NextCardInfo[0] = "LooseScreen"
+			ready_NextCardLose_helper()
 		elif Scriptwriter.NextCardInfo[0] == "LooseScreen":
 			Scriptwriter.CardChoose = "LooseScreen"
 			Scriptwriter.losecard()
 
+
+func ready_NextCardLose_helper():
+	if Scriptwriter.Heath_var <= 0:
+		Scriptwriter.NextCardInfo = Scriptwriter.CardDataBase.DATA.get("LooseTopHealth")
+	elif Scriptwriter.Law_var <= 0:
+		Scriptwriter.NextCardInfo = Scriptwriter.CardDataBase.DATA.get("LooseTopLaw")
+	elif Scriptwriter.Banditism_var <= 0:
+		Scriptwriter.NextCardInfo = Scriptwriter.CardDataBase.DATA.get("LooseTopBanditism")
+	elif Scriptwriter.Luck_var <= 0:
+		Scriptwriter.NextCardInfo = Scriptwriter.CardDataBase.DATA.get("LooseTopLuck")
+	elif Scriptwriter.Heath_var >= 100:
+		Scriptwriter.NextCardInfo = Scriptwriter.CardDataBase.DATA.get("LooseBottomHealth")
+	elif Scriptwriter.Law_var >= 100:
+		Scriptwriter.NextCardInfo = Scriptwriter.CardDataBase.DATA.get("LooseBottomLaw")
+	elif Scriptwriter.Banditism_var >= 100:
+		Scriptwriter.NextCardInfo = Scriptwriter.CardDataBase.DATA.get("LooseBottomBanditism")
+	elif Scriptwriter.Luck_var >= 100:
+		Scriptwriter.NextCardInfo = Scriptwriter.CardDataBase.DATA.get("LooseBottomLuck")
 
 
 func card_generation():
@@ -97,11 +115,13 @@ func card_generation():
 		Mouth.texture = load(Scriptwriter.CharacterMouth)
 		Hair.texture = load(Scriptwriter.CharacterHair)
 		Nose.texture = load(Scriptwriter.CharacterNose)
+		
 	elif Scriptwriter.CardType == "LooseScreen":
 		$CharacterCard/Character.visible = false
-		$CharacterCard/CharacterPortrait.visible = true
-		$CharacterCard/CharacterPortrait.texture = load(Scriptwriter.CharacterPortrait)
+		$CharacterCard/IventPortrait.self_modulate = Color("ffffff")
+		$CharacterCard/IventPortrait.texture = load(Scriptwriter.CharacterPortrait)
 		$CharacterCard/Control.visible = false
+		get_tree().call_group("NextCharacterCard", "hide")
 	
 	if !Scriptwriter.Heath_var <= 0 and !Scriptwriter.Law_var <= 0 and !Scriptwriter.Banditism_var <= 0 and !Scriptwriter.Luck_var <= 0 and !Scriptwriter.Heath_var >= 100 and !Scriptwriter.Law_var >= 100 and !Scriptwriter.Banditism_var >= 100 and !Scriptwriter.Luck_var >= 100:
 		CardRAnswer.text = Scriptwriter.CardRAnswer
@@ -109,19 +129,11 @@ func card_generation():
 	elif Scriptwriter.Heath_var <= 0 or Scriptwriter.Law_var <= 0 or Scriptwriter.Banditism_var <= 0 or Scriptwriter.Luck_var <= 0 or Scriptwriter.Heath_var >= 100 or Scriptwriter.Law_var >= 100 or Scriptwriter.Banditism_var >= 100 or Scriptwriter.Luck_var >= 100:
 		CardRAnswer.text = "Ой, кажется банку конец..."
 		CardLAnswer.text = "У нас случилось ЧП..."
-		
-#	print("Следующая правая: ", Scriptwriter.NextCardRight)
-#	var a = Scriptwriter.CardDataBase.DATA.get(Scriptwriter.NextCardRight)
-#	print("её портрет: ", a[1])
-#	print("----------------------")
-#	print("Следующая левая:", Scriptwriter.NextCardLeft)
-#	var b = Scriptwriter.CardDataBase.DATA.get(Scriptwriter.NextCardLeft)
-#	print("её портрет: ", b[1])
 
 
 
-func _process(delta):
-	choosedone()
+#func _process(delta):
+#	choosedone()
 
 
 
@@ -181,7 +193,11 @@ func choosedone_next_card_right():
 	if Scriptwriter.victory_count < Scriptwriter.count_to_victory:
 			
 		if Scriptwriter.NextCardRight == "Ivent":
-			get_tree().call_group("MainScene", "spawn_dice")
+			if Scriptwriter.IventInfo[0] == "Dice":
+				get_tree().call_group("MainScene", "spawn_dice")
+			elif Scriptwriter.IventInfo[0] == "CardMix":
+				get_tree().call_group("MainScene", "spawn_cardmix")
+				
 		elif Scriptwriter.NextCardRight != "Ivent":
 			get_tree().call_group("MainScene", "spawn")
 		
@@ -206,6 +222,7 @@ func _on_CharacterControl2_input_event(viewport, event, shape_idx):
 			get_tree().set_input_as_handled()
 			previous_mouse_position = event.position
 			is_dragging = true
+
 
 
 
@@ -284,6 +301,8 @@ func chooseanimationReturnToZero():
 	Animator.seek(0, true)
 	Animator.stop()
 
+
+
 func chooseanimationRight():
 	Animator.play("RChooseText")
 	var a = start_position.x
@@ -302,7 +321,6 @@ func chooseanimationLeft():
 	fingerseek = -(position.x - a)/b
 	Animator.stop(false)
 	Animator.seek(fingerseek, true)
-#	get_tree().call_group("BalanceGUI", "yellow_indicatos_color")
 
 
 
@@ -311,7 +329,6 @@ func balance_color_prechoose():
 		get_tree().call_group("BalanceGUI", "yellow_indicatos_color_right")
 		get_tree().call_group("NextCharacterCard", "right_card_appear")
 		if Scriptwriter.NextCardRight == "Ivent":
-			print(Scriptwriter.NextCardRight)
 			get_tree().call_group("NextCharacterCard", "ivent_card_appear")
 	elif left_position:
 		get_tree().call_group("BalanceGUI", "yellow_indicatos_color_left")
@@ -327,17 +344,18 @@ func character_card_released():
 		$Tween.interpolate_property(Card, "position", Card.position, 
 		leftxposition, 0.1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		$Tween.start()
+		$Timer_choosedone.start()
 		
 	if position.x > start_position.x +200:
 		$Tween.interpolate_property(Card, "position", Card.position, 
 		rightxposition, 0.1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		$Tween.start()
+		$Timer_choosedone.start()
 		
 	if position.x < start_position.x +200 and position.x > start_position.x -200:
 		$Tween.interpolate_property(thisnode, "position", thisnode.position, 
 		start_position, 1.2, Tween.TRANS_ELASTIC, Tween.EASE_OUT)
 		$Tween.start()
-		
 		$Tween.interpolate_property(thisnode, "rotation_degrees", thisnode.rotation_degrees, 
 		0, 1.2, Tween.TRANS_ELASTIC, Tween.EASE_OUT)
 		
@@ -348,3 +366,9 @@ func character_card_released():
 func to_see_losecard():
 	$CharacterCard/CharacterPortrait.visible = true
 	$CharacterCard/CharacterPortrait.texture = Scriptwriter.CharacterPortrait
+
+
+
+#как всегда костыльное решение запускает таймер по истечении которого проверяется в какой пози
+func _on_Timer_choosedone_timeout():
+	choosedone()

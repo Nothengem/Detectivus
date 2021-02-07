@@ -9,7 +9,7 @@ enum {
 	Random6, Random7, Random8, Random9, Random10, Random11, Random12, 
 	Random13, Random13a, Random13b, Random14, Random15, Random16, Random17, 
 	Random17a, Random18, Random18a, Random19, Random20, Random21, Random21a, 
-	Random22, Random22a
+	Random22, Random22a, Random23
 	
 	LooseTopHealth, LooseBottomHealth, LooseTopLaw, 
 	LooseBottomLaw, LooseTopBanditism, LooseBottomBanditism, 
@@ -716,6 +716,25 @@ const DATA = {
 		"Random",
 		"CentralBankDice1"],
 		
+		"Random23" : 
+		["Characters",
+		"IlonMask", #кто говорит
+		"Пришел журналист. Ответишь ему на пару вопросов?", #что говорит
+		"Мишель. Маркетинг", #Имя говорящего
+		"Нет, уж увольте...", #Ответ на лево
+		"Конечо, мне есть что рассказать", #ответ на право
+		-10, #Ренессанс на лево 6
+		-10, #Люди на лево 7
+		0, #ЦБ на лево 8
+		0, #Деньги на лево 9
+		0, #Ренессанс на право 10
+		0, #Люди на право 11
+		0, #ЦБ на право 12
+		0, #Деньги на право 13
+		"Ivent",
+		"Random",
+		"MiniCardMix1"],
+		
 	"LooseTopHealth" : 
 		["LooseScreen", #ссылка на папку персонажей 0
 		"LooseTopHealth", #кто говорит 1
@@ -867,4 +886,23 @@ const DATA = {
 		"Random",
 		"Random",
 		"None"],
+		
+		"Ivent" : 
+		["Ivent", #ссылка на папку персонажей 0
+		"Ivent", #кто говорит 1
+		" ", #что говорит 2
+		" ", #Имя говорящего 3
+		" ", #Ответ на лево 4
+		" ", #ответ на право 5
+		0, #Ренессанс на лево 6
+		0, #Люди на лево 7
+		0, #ЦБ на лево 8
+		0, #Деньги на лево 9
+		0, #Ренессанс на право 10
+		0, #Люди на право 11
+		0, #ЦБ на право 12
+		0, #Деньги на право 13
+		"Random",
+		"Random",
+		"None"]
 	}

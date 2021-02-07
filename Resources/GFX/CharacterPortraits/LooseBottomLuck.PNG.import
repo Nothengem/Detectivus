@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/LooseBottomLuck.png-a69ca2f8f83a6f65b15d3a95b3e13b5f.stex"
+path="res://.import/LooseBottomLuck.PNG-1a1e60f4b12fe90a5505d10ab2396272.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/GFX/CharacterPortraits/LooseBottomLuck.png"
-dest_files=[ "res://.import/LooseBottomLuck.png-a69ca2f8f83a6f65b15d3a95b3e13b5f.stex" ]
+source_file="res://Resources/GFX/CharacterPortraits/LooseBottomLuck.PNG"
+dest_files=[ "res://.import/LooseBottomLuck.PNG-1a1e60f4b12fe90a5505d10ab2396272.stex" ]
 
 [params]
 

@@ -9,9 +9,9 @@ func cardupdate_dice():
 	$CharNameCont/CharacterName.text = " "
 	
 func cardupdate_ivent_win():
-	$CardTextCont/CardText.text = Scriptwriter.IventWinText
+	$CardTextCont/CardText.text = Scriptwriter.IventInfo[7]
 	$CharNameCont/CharacterName.text = " "
 	
 func cardupdate_ivent_lose():
-	$CardTextCont/CardText.text = Scriptwriter.IventLoseText
+	$CardTextCont/CardText.text = Scriptwriter.IventInfo[2]
 	$CharNameCont/CharacterName.text = " "

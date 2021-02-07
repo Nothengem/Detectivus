@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/LooseBottomHealth.png-98d416415affb189bae518f2de4dd8a0.stex"
+path="res://.import/LooseBottomHealth.PNG-36250c2c1baf61cd5eec8224589f8f98.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/GFX/CharacterPortraits/LooseBottomHealth.png"
-dest_files=[ "res://.import/LooseBottomHealth.png-98d416415affb189bae518f2de4dd8a0.stex" ]
+source_file="res://Resources/GFX/CharacterPortraits/LooseBottomHealth.PNG"
+dest_files=[ "res://.import/LooseBottomHealth.PNG-36250c2c1baf61cd5eec8224589f8f98.stex" ]
 
 [params]
 

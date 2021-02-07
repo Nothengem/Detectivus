@@ -70,14 +70,15 @@ func find_name_of_portraits():
 		right_choose_portrait = Scriptwriter.CardDataBase.DATA.get(right_choose_portrait)
 		right_choose_portrait = right_choose_portrait[1]
 		right_choose_portrait = Scriptwriter.CharacterPortraitDataBase.DATA.get(right_choose_portrait)
-	
+	$Timer.start()
+
+func _on_Timer_timeout():
 	nextcardupdate()
 
 
 func nextcardupdate():
 	if Scriptwriter.CardChoose == "LooseScreen":
-		LeftPortrait.texture = 1
-		RightPortrait.texture = 1
+		visible = false
 	elif Scriptwriter.CardChoose != "LooseScreen":
 		LeftHead.texture = load (str("res://Resources/GFX/CharacterCotaint/Head", "/", left_choose_portrait[0], ".png"))
 		LeftNeck.texture = load (str ("res://Resources/GFX/CharacterCotaint/Neck", "/", left_choose_portrait[1], ".png"))
@@ -106,27 +107,29 @@ func nextcardupdate():
 		RightNose.texture = load (str ("res://Resources/GFX/CharacterCotaint/Nose", "/", right_choose_portrait[11], ".png"))
 
 func right_card_fade():
-	$Tween.interpolate_property(CharacterCardRight, "self_modulate", CharacterCardRight.self_modulate, Color("00ffffff"), 0.05, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	$Tween.interpolate_property(CharacterCardRight, "modulate", CharacterCardRight.modulate, Color("00ffffff"), 0.05, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	$Tween.start()
 	
-	$Tween.interpolate_property(CharacterCardLeft, "self_modulate", CharacterCardLeft.self_modulate, Color("ffffff"), 0.05, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	$Tween.interpolate_property(CharacterCardLeft, "modulate", CharacterCardLeft.modulate, Color("ffffff"), 0.05, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	$Tween.start()
 	
 func right_card_appear():
-	$Tween.interpolate_property(CharacterCardRight, "self_modulate", CharacterCardRight.self_modulate, Color("ffffff"), 0.05, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	$Tween.interpolate_property(CharacterCardRight, "modulate", CharacterCardRight.modulate, Color("ffffff"), 0.05, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	$Tween.start()
 
-	$Tween.interpolate_property(CharacterCardLeft, "self_modulate", CharacterCardLeft.self_modulate, Color("00ffffff"), 0.05, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	$Tween.interpolate_property(CharacterCardLeft, "modulate", CharacterCardLeft.modulate, Color("00ffffff"), 0.05, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	$Tween.start()
 	
 
 func ivent_card_appear():
-	$Tween.interpolate_property(CharacterCardLeft, "self_modulate", CharacterCardLeft.self_modulate, Color("00ffffff"), 0.05, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	$Tween.interpolate_property(CharacterCardLeft, "modulate", CharacterCardLeft.modulate, Color("00ffffff"), 0.05, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	$Tween.start()
 
-	$Tween.interpolate_property($CharacterCardRight/IventPortrait, "self_modulate", $CharacterCardRight/IventPortrait.modulate, Color("ffffff"), 0.05, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	$Tween.interpolate_property($CharacterCardRight/IventPortrait, "modulate", $CharacterCardRight/IventPortrait.modulate, Color("ffffff"), 0.05, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	$Tween.start()
 
-	$Tween.interpolate_property(CharacterCardRight, "self_modulate", CharacterCardRight.self_modulate, Color("ffffff"), 0.05, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	$Tween.interpolate_property(CharacterCardRight, "modulate", CharacterCardRight.modulate, Color("ffffff"), 0.05, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	$Tween.start()
 
+func hide():
+	visible = false

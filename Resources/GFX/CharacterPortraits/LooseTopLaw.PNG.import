@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/LooseTopLaw.png-54311b520a796692e76c707ffbdfea5d.stex"
+path="res://.import/LooseTopLaw.PNG-cdb78f45b97965bbeb52560a482a6d70.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/GFX/CharacterPortraits/LooseTopLaw.png"
-dest_files=[ "res://.import/LooseTopLaw.png-54311b520a796692e76c707ffbdfea5d.stex" ]
+source_file="res://Resources/GFX/CharacterPortraits/LooseTopLaw.PNG"
+dest_files=[ "res://.import/LooseTopLaw.PNG-cdb78f45b97965bbeb52560a482a6d70.stex" ]
 
 [params]
 

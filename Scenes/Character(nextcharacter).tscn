@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Resources/GFX/CharacterCotaint/Ivent/NextCardIvent.png" type="Texture" id=1]
 [ext_resource path="res://Resources/GFX/LeftTextBack.png" type="Texture" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://Resources/GFX/CharacterCotaint/Hair/Hair3.png" type="Texture" id=14]
 [ext_resource path="res://Resources/GFX/CharacterCotaint/Nose/Nose1.png" type="Texture" id=15]
 [ext_resource path="res://Resources/GFX/CharacterCotaint/Mouth/Mouth5.png" type="Texture" id=16]
+[ext_resource path="res://Resources/GFX/CharacterCotaint/Bage/Bage1.png" type="Texture" id=17]
 
 [node name="CharacterCard" type="Sprite"]
 scale = Vector2( 0.9, 0.9 )
@@ -75,7 +76,7 @@ scale = Vector2( 0.9, 0.9 )
 texture = ExtResource( 16 )
 
 [node name="Hair" type="Sprite" parent="Character"]
-position = Vector2( 2.89938, 27.3713 )
+position = Vector2( 2.89938, 16.8126 )
 scale = Vector2( 0.945, 0.945 )
 texture = ExtResource( 14 )
 
@@ -84,8 +85,13 @@ position = Vector2( -40.3153, 6.53812 )
 scale = Vector2( 0.9, 0.9 )
 texture = ExtResource( 15 )
 
+[node name="Bage" type="Sprite" parent="Character"]
+position = Vector2( 189.43, 355.877 )
+texture = ExtResource( 17 )
+
 [node name="IventPortrait" type="Sprite" parent="."]
 self_modulate = Color( 1, 1, 1, 0 )
+position = Vector2( -3.23541, -3.23554 )
 texture = ExtResource( 1 )
 
 [node name="Control" type="Control" parent="."]

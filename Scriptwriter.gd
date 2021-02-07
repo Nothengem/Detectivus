@@ -83,6 +83,8 @@ onready var IventDataBase = preload ("res://DataBase/IventDataBase.gd")
 onready var CharacterPortraitDataBase = preload("res://DataBase/CharacterPortraitDataBase.gd")
 #предзагрузка БД всех частей портетов персонажей
 onready var PortraitPardDataBase = preload("res://DataBase/PortraitPartDataBase.gd")
+#предзагрузка БД всех мини-карточек
+onready var MiniCardDataBase = preload("res://DataBase/MiniCardDataBase.gd")
 
 func _ready():
 	var Head = PortraitPardDataBase.DATA.get("Head")
@@ -103,15 +105,13 @@ func _ready():
 
 func level_massive_generator():
 	var level_composit
-	for i in range(20, 23):
+	for i in range(1, 24):
 		randomize()
 		level_composit = "Random" + str(i)
 		level_cards.append(level_composit)
-	level_cards = ["Random20", "Random21", "Random22", "Random1", "Random20", "Random21", "Random1"]
-#	level_cards.shuffle()
+	level_cards.shuffle()
 	CardImage = level_cards[1]
-#	NextCardImageLeft = 
-	get_tree().call_group("NextCharacterCard", "got_left_right_choose_portraits")
+#	get_tree().call_group("NextCharacterCard", "got_left_right_choose_portraits")
 	
 	
 	
@@ -148,9 +148,12 @@ func card_var_generator():
 		losecard()
 	elif CardChoose == "Random" or CardChoose == "Tutorial":
 		CardChoose = str(level_cards[0])
+		CardInfo = CardDataBase.DATA.get(CardChoose) #деффект проявился здесь
+		CharacterPortrait = CharacterPortraitDataBase.DATA.get(CardInfo[1])
+	elif CardChoose == "Ivent":
 		CardInfo = CardDataBase.DATA.get(CardChoose)
 		CharacterPortrait = CharacterPortraitDataBase.DATA.get(CardInfo[1])
-	elif CardChoose != "LooseScreen" and CardChoose != "Random":
+	elif !CardChoose == "Ivent" or "LooseScreen" or "Random" or "Tutorial":
 		CardInfo = CardDataBase.DATA.get(CardChoose)
 		CharacterPortrait = CharacterPortraitDataBase.DATA.get(CardInfo[1])
 		
@@ -210,13 +213,3 @@ func card_var_generator():
 
 func ivent_generatior():
 	IventInfo = IventDataBase.DATA[IventDataBase.get(CardIvent)]
-	IventName = IventInfo[0]
-	IventDifficulty = IventInfo[1]
-	IventLoseText = IventInfo[2]
-	IventLoseTeam = IventInfo[3]
-	IventLoseClient = IventInfo[4]
-	IventLoseCentralBank = IventInfo[5]
-	IventLoseMoney = IventInfo[6]
-	IventWinText = IventInfo[7]
-	IventVarCorrection = IventInfo[8]
-	IventCorrectorModificator = IventInfo[9]

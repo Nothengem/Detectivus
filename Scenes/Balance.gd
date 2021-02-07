@@ -55,43 +55,51 @@ func change_proportions_left():
 	
 
 
-func change_proportions_ivent_loose():
-	Scriptwriter.Heath_var = Scriptwriter.Heath_var + Scriptwriter.IventLoseTeam
+func change_proportions_ivent_loose_dice():
+	Scriptwriter.Heath_var = Scriptwriter.Heath_var + Scriptwriter.IventInfo[3]
 	animate_value_health(HealthProgress.value, Scriptwriter.Heath_var)
 	
-	Scriptwriter.Law_var = Scriptwriter.Law_var + Scriptwriter.IventLoseClient
+	Scriptwriter.Law_var = Scriptwriter.Law_var + Scriptwriter.IventInfo[4]
 	animate_value_law(LawProgress.value, Scriptwriter.Law_var)
 	
-	Scriptwriter.Banditism_var = Scriptwriter.Banditism_var + Scriptwriter.IventLoseCentralBank
+	Scriptwriter.Banditism_var = Scriptwriter.Banditism_var + Scriptwriter.IventInfo[5]
 	animate_value_banditism(BanditismProgress.value, Scriptwriter.Banditism_var)
 	
-	Scriptwriter.Luck_var = Scriptwriter.Luck_var + Scriptwriter.IventLoseMoney
+	Scriptwriter.Luck_var = Scriptwriter.Luck_var + Scriptwriter.IventInfo[6]
 	animate_value_luck(LuckProgress.value, Scriptwriter.Luck_var)
-	
 
 
-func change_proportions_ivent_win():
-	Modi = Scriptwriter.IventCorrectorModificator
+
+func change_proportions_ivent_cardmix():
+	animate_value_health(HealthProgress.value, Scriptwriter.Heath_var)
+	animate_value_law(LawProgress.value, Scriptwriter.Law_var)
+	animate_value_banditism(BanditismProgress.value, Scriptwriter.Banditism_var)
+	animate_value_luck(LuckProgress.value, Scriptwriter.Luck_var)
+
+
+
+func change_proportions_ivent_win(): #применение модификатора коррекции
+	Modi = Scriptwriter.IventInfo[9]
 	
-	if Scriptwriter.IventVarCorrection == "Team":
+	if Scriptwriter.IventInfo[8] == "Team":
 		b = Scriptwriter.Heath_var
 		correction_calculating()
 		Scriptwriter.Heath_var = b
 		animate_value_health(HealthProgress.value, Scriptwriter.Heath_var)
 		
-	elif Scriptwriter.IventVarCorrection == "Customers":
+	elif Scriptwriter.IventInfo[8] == "Customers":
 		b = Scriptwriter.Law_var
 		correction_calculating()
 		Scriptwriter.Law_var = b
 		animate_value_law(LawProgress.value, Scriptwriter.Law_var)
 		
-	elif Scriptwriter.IventVarCorrection == "CentralBank":
+	elif Scriptwriter.IventInfo[8] == "CentralBank":
 		b = Scriptwriter.Banditism_var
 		correction_calculating()
 		Scriptwriter.Banditism_var = b
 		animate_value_banditism(BanditismProgress.value, Scriptwriter.Banditism_var)
 		
-	elif Scriptwriter.IventVarCorrection == "Money":
+	elif Scriptwriter.IventInfo[8] == "Money":
 		b = Scriptwriter.Luck_var
 		correction_calculating()
 		Scriptwriter.Luck_var = b
@@ -102,12 +110,9 @@ func change_proportions_ivent_win():
 func correction_calculating():
 	if b < 50:
 		b = b + Modi
-		print("сработала в плюс")
 	elif b > 50:
-		print("сработала в минус")
 		b = b - Modi
 	elif b == 50:
-		print("сработала в молоко")
 		pass
 
 #Когда-нибудь повторить

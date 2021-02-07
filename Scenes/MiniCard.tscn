@@ -1,25 +1,92 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Resources/GFX/mini_cards/Happy.jpg" type="Texture" id=1]
 [ext_resource path="res://Resources/GFX/mini_cards/Сard_holder_shirt.jpg" type="Texture" id=2]
 [ext_resource path="res://Scenes/MiniCard.gd" type="Script" id=3]
 [ext_resource path="res://Resources/GFX/mini_cards/ChooseMinicard.jpg" type="Texture" id=4]
+[ext_resource path="res://Resources/GFX/mini_cards/MiniCard.jpg" type="Texture" id=5]
+[ext_resource path="res://Resources/GFX/mini_cards/BigSuccess.png" type="Texture" id=6]
+[ext_resource path="res://Resources/GFX/Interface/Font/JetBrainsMono-VariableFont_wght.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://Resources/GFX/Interface/Font/MiniCardsName.tres" type="DynamicFont" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+size = 19
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 7 )
 
 [node name="MiniCard" type="Sprite" groups=[
 "MiniCard",
 ]]
+self_modulate = Color( 1, 1, 1, 0 )
 texture = ExtResource( 1 )
 script = ExtResource( 3 )
-
-[node name="Shirt" type="Sprite" parent="."]
-self_modulate = Color( 1, 1, 1, 0 )
-texture = ExtResource( 2 )
 
 [node name="Tween" type="Tween" parent="."]
 
 [node name="TouchScreenButton" type="TouchScreenButton" parent="."]
 visible = false
-self_modulate = Color( 1, 1, 1, 0.498039 )
+self_modulate = Color( 1, 1, 1, 0 )
 position = Vector2( -150, -300 )
 normal = ExtResource( 4 )
+
+[node name="Cardcontainer" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -152.0
+margin_top = -302.0
+margin_right = -152.0
+margin_bottom = -302.0
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Picture" type="TextureRect" parent="Cardcontainer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -145.0
+margin_top = -145.0
+margin_right = 145.0
+margin_bottom = 145.0
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MiniCardName" type="Label" parent="Cardcontainer"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -110.0
+margin_top = 55.0
+margin_right = 110.0
+margin_bottom = 60.0
+rect_pivot_offset = Vector2( 110, 30 )
+custom_fonts/font = ExtResource( 8 )
+align = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="MiniCardDescription" type="Label" parent="Cardcontainer"]
+anchor_left = 0.0394737
+anchor_top = 0.801324
+anchor_right = 0.960526
+anchor_bottom = 0.983444
+rect_min_size = Vector2( 280, 110 )
+rect_pivot_offset = Vector2( 140, 60 )
+custom_fonts/font = SubResource( 1 )
+text = "Вам удалось сневзыскать популярность, среди СМИ. Репутация Банка вне опасности"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Shirt" type="Sprite" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+texture = ExtResource( 2 )
 [connection signal="released" from="TouchScreenButton" to="." method="_on_TouchScreenButton_released"]

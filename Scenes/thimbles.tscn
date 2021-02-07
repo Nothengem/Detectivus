@@ -90,6 +90,7 @@ texture = ExtResource( 4 )
 one_shot = true
 
 [node name="Timer_middle" type="Timer" parent="."]
+wait_time = 0.5
 one_shot = true
 
 [node name="Timer_repeat" type="Timer" parent="."]
@@ -97,7 +98,12 @@ one_shot = true
 
 [node name="Timer_start_final_anim" type="Timer" parent="."]
 one_shot = true
+
+[node name="Timer_fade" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
 [connection signal="timeout" from="Timer_start" to="." method="_on_Timer_start_timeout"]
 [connection signal="timeout" from="Timer_middle" to="." method="_on_Timer_midle_timeout"]
 [connection signal="timeout" from="Timer_repeat" to="." method="_on_Timer_repeat_timeout"]
 [connection signal="timeout" from="Timer_start_final_anim" to="." method="_on_Timer_start_final_anim_timeout"]
+[connection signal="timeout" from="Timer_fade" to="." method="_on_Timer_fade_timeout"]
