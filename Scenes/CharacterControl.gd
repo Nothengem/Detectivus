@@ -216,15 +216,6 @@ func choosedone_loose():
 
 
 
-#событие срабатывающие при касанию пальца по экрану
-func _on_CharacterControl2_input_event(viewport, event, shape_idx):
-		if event.is_action_pressed("ui_touch"):
-			get_tree().set_input_as_handled()
-			previous_mouse_position = event.position
-			is_dragging = true
-
-
-
 
 func _input(event):
 	var a = start_position.x + 100
@@ -372,3 +363,10 @@ func to_see_losecard():
 #как всегда костыльное решение запускает таймер по истечении которого проверяется в какой пози
 func _on_Timer_choosedone_timeout():
 	choosedone()
+
+#срабатывают по касанию пальца
+func _on_CharacterControl_input_event(viewport, event, shape_idx):
+	if event.is_action_pressed("ui_touch"):
+		get_tree().set_input_as_handled()
+		previous_mouse_position = event.position
+		is_dragging = true
