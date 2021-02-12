@@ -9,7 +9,7 @@
 [ext_resource path="res://Resources/GFX/Coins.svg" type="Texture" id=7]
 [ext_resource path="res://Resources/GFX/Eagle.svg" type="Texture" id=8]
 [ext_resource path="res://Resources/GFX/CustomerWhite.svg" type="Texture" id=9]
-[ext_resource path="res://Resources/GFX/NoItem.png" type="Texture" id=10]
+[ext_resource path="res://IventStatusBox.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scenes/Balance.gd" type="Script" id=11]
 [ext_resource path="res://Resources/GFX/Interface/Font/JetBrainsMono-VariableFont_wght.ttf" type="DynamicFontData" id=12]
 
@@ -276,54 +276,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="IventStatusBox" type="CenterContainer" parent="Control2/NinePatchRect"]
-anchor_left = 0.5
-anchor_top = 0.864558
-anchor_right = 0.5
-anchor_bottom = 0.967892
-margin_left = -145.0
-margin_right = 145.0
-mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": true
-}
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Control2/NinePatchRect/IventStatusBox"]
-visible = false
-margin_left = 15.0
-margin_top = 1.0
-margin_right = 275.0
-margin_bottom = 63.0
-mouse_filter = 2
-
-[node name="IventStatus1" type="NinePatchRect" parent="Control2/NinePatchRect/IventStatusBox/HBoxContainer"]
-margin_right = 62.0
-margin_bottom = 62.0
-rect_min_size = Vector2( 62, 62 )
-texture = ExtResource( 10 )
-
-[node name="IventStatus2" type="NinePatchRect" parent="Control2/NinePatchRect/IventStatusBox/HBoxContainer"]
-margin_left = 66.0
-margin_right = 128.0
-margin_bottom = 62.0
-rect_min_size = Vector2( 62, 62 )
-texture = ExtResource( 10 )
-
-[node name="IventStatus3" type="NinePatchRect" parent="Control2/NinePatchRect/IventStatusBox/HBoxContainer"]
-margin_left = 132.0
-margin_right = 194.0
-margin_bottom = 62.0
-rect_min_size = Vector2( 62, 62 )
-texture = ExtResource( 10 )
-
-[node name="IventStatus4" type="NinePatchRect" parent="Control2/NinePatchRect/IventStatusBox/HBoxContainer"]
-margin_left = 198.0
-margin_right = 260.0
-margin_bottom = 62.0
-rect_min_size = Vector2( 62, 62 )
-texture = ExtResource( 10 )
+[node name="IventStatusBox" parent="Control2/NinePatchRect" instance=ExtResource( 10 )]
 
 [node name="Victory_count" type="Label" parent="Control2/NinePatchRect"]
+visible = false
 anchor_left = 0.0689655
 anchor_top = 0.868333
 anchor_right = 0.931035
