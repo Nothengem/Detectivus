@@ -160,6 +160,9 @@ shape = SubResource( 1 )
 [node name="IventPortrait" parent="CharacterCard" index="1"]
 position = Vector2( 10.0979, -16.5688 )
 
+[node name="Control" parent="CharacterCard" index="2"]
+visible = true
+
 [node name="RightChooseRect" parent="CharacterCard/Control" index="0"]
 margin_right = 0.0
 margin_bottom = 0.0

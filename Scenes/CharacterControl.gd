@@ -51,6 +51,7 @@ var left_position = false
 var middle_position = false
 
 
+
 func _ready():
 	start_position = screensize/2
 	leftxposition = Vector2(-start_position.x, 0)
@@ -82,6 +83,7 @@ func _ready():
 			Scriptwriter.losecard()
 
 
+
 func ready_NextCardLose_helper():
 	if Scriptwriter.Heath_var <= 0:
 		Scriptwriter.NextCardInfo = Scriptwriter.CardDataBase.DATA.get("LooseTopHealth")
@@ -99,6 +101,7 @@ func ready_NextCardLose_helper():
 		Scriptwriter.NextCardInfo = Scriptwriter.CardDataBase.DATA.get("LooseBottomBanditism")
 	elif Scriptwriter.Luck_var >= 100:
 		Scriptwriter.NextCardInfo = Scriptwriter.CardDataBase.DATA.get("LooseBottomLuck")
+
 
 
 func card_generation():

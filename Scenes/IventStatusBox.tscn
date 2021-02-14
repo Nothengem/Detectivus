@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/IventStatusBox.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/IventStatus1.tscn" type="PackedScene" id=2]
+
+[node name="IventStatusBox" type="CenterContainer" groups=[
+"IventStatus",
+]]
+anchor_left = 0.5
+anchor_top = 0.864558
+anchor_right = 0.5
+anchor_bottom = 0.967892
+margin_left = -145.0
+margin_right = 145.0
+mouse_filter = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 15.0
+margin_top = 68.0
+margin_right = 275.0
+margin_bottom = 130.0
+mouse_filter = 2
+
+[node name="IventStatus1" parent="HBoxContainer" instance=ExtResource( 2 )]
+
+[node name="IventStatus2" parent="HBoxContainer" instance=ExtResource( 2 )]
+margin_left = 66.0
+margin_right = 128.0
+
+[node name="IventStatus3" parent="HBoxContainer" instance=ExtResource( 2 )]
+margin_left = 132.0
+margin_right = 194.0
+
+[node name="IventStatus4" parent="HBoxContainer" instance=ExtResource( 2 )]
+margin_left = 198.0
+margin_right = 260.0

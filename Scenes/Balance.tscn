@@ -9,7 +9,7 @@
 [ext_resource path="res://Resources/GFX/Coins.svg" type="Texture" id=7]
 [ext_resource path="res://Resources/GFX/Eagle.svg" type="Texture" id=8]
 [ext_resource path="res://Resources/GFX/CustomerWhite.svg" type="Texture" id=9]
-[ext_resource path="res://IventStatusBox.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/IventStatusBox.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scenes/Balance.gd" type="Script" id=11]
 [ext_resource path="res://Resources/GFX/Interface/Font/JetBrainsMono-VariableFont_wght.ttf" type="DynamicFontData" id=12]
 

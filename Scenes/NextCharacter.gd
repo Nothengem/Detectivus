@@ -72,6 +72,8 @@ func find_name_of_portraits():
 		right_choose_portrait = Scriptwriter.CharacterPortraitDataBase.DATA.get(right_choose_portrait)
 	$Timer.start()
 
+
+
 func _on_Timer_timeout():
 	nextcardupdate()
 
