@@ -30,6 +30,7 @@ var CharacterShirt
 
 #переменные для формирования ивента
 var IventInfo #хранение данных ивента
+var StatusInfo #хранение данных статуса
 var IventName
 var IventDifficulty
 var IventLoseText
@@ -85,6 +86,8 @@ onready var CharacterPortraitDataBase = preload("res://DataBase/CharacterPortrai
 onready var PortraitPardDataBase = preload("res://DataBase/PortraitPartDataBase.gd")
 #предзагрузка БД всех мини-карточек
 onready var MiniCardDataBase = preload("res://DataBase/MiniCardDataBase.gd")
+#предзагрузка БД всех статусов
+onready var StatusDataBase = preload("res://DataBase/StatusDataBase.gd")
 
 func _ready():
 #	var Head = PortraitPardDataBase.DATA.get("Head")
@@ -105,7 +108,7 @@ func _ready():
 
 func level_massive_generator():
 	var level_composit
-	for i in range(1, 24):
+	for i in range(20, 25):
 		randomize()
 		level_composit = "Random" + str(i)
 		level_cards.append(level_composit)
@@ -143,17 +146,21 @@ func losecard():
 
 
 
-func card_var_generator():
+func card_var_generator(): #ПОХОЖЕ Я ЭТУ ШТУКУ ЗАПУСКАЮ 2 РАЗА ПРИ ЛУЗ СКРИНЕ (ПРОВЕРИТЬ)
 	if CardChoose == "LooseScreen": #проверяем что следующая карта проигрышная или нет
 		losecard()
 	elif CardChoose == "Random" or CardChoose == "Tutorial":
 		CardChoose = str(level_cards[0])
-		CardInfo = CardDataBase.DATA.get(CardChoose) #деффект проявился здесь
+		CardInfo = CardDataBase.DATA.get(CardChoose) 
 		CharacterPortrait = CharacterPortraitDataBase.DATA.get(CardInfo[1])
 	elif CardChoose == "Ivent":
 		CardInfo = CardDataBase.DATA.get(CardChoose)
 		CharacterPortrait = CharacterPortraitDataBase.DATA.get(CardInfo[1])
-	elif !CardChoose == "Ivent" or "LooseScreen" or "Random" or "Tutorial":
+	elif CardChoose == "Status":
+		status_generator()
+		CardInfo = CardDataBase.DATA.get("Ivent")
+		CharacterPortrait = CharacterPortraitDataBase.DATA.get(CardInfo[1])
+	elif !CardChoose == "Ivent" or "LooseScreen" or "Random" or "Tutorial" or "Status":
 		CardInfo = CardDataBase.DATA.get(CardChoose)
 		CharacterPortrait = CharacterPortraitDataBase.DATA.get(CardInfo[1])
 		
@@ -166,6 +173,8 @@ func card_var_generator():
 		NextCardInfo = CardDataBase.DATA.get(level_cards[0])
 		get_tree().call_group("NextCharacterCard", "got_left_right_choose_portraits")
 	elif CardType == "LooseScreen":
+		get_tree().call_group("NextCharacterCard", "got_left_right_choose_portraits")
+	elif CardType == "StatusScreen":
 		get_tree().call_group("NextCharacterCard", "got_left_right_choose_portraits")
 	
 	
@@ -186,7 +195,7 @@ func card_var_generator():
 		CharacterHair = str ("res://Resources/GFX/CharacterCotaint/Hair", "/", CharacterPortrait[10], ".png")
 		CharacterNose = str ("res://Resources/GFX/CharacterCotaint/Nose", "/", CharacterPortrait[11], ".png")
 		
-	if CardType != "Tutorial" and CardType != "LooseScreen":
+	if CardType != "Tutorial" and "LooseScreen" and "Status":
 		level_cards.remove(0)
 		
 	CardName = CardInfo[3] #Ввели в переменную текстовое значение имени карты из массива БД
@@ -206,6 +215,8 @@ func card_var_generator():
 	CardIvent = CardInfo[16]
 	if NextCardRight == "Ivent":
 		ivent_generatior()
+	elif NextCardRight == "Status":
+		status_generator()
 	get_tree().call_group("CharacterControl", "card_generation")
 	get_tree().call_group("IventCard", "cardupdate")
 
@@ -213,3 +224,10 @@ func card_var_generator():
 
 func ivent_generatior():
 	IventInfo = IventDataBase.DATA[IventDataBase.get(CardIvent)]
+
+
+
+func status_generator():
+	print(CardIvent)
+	StatusInfo = StatusDataBase.DATA[StatusDataBase.get(CardIvent)]
+	print(StatusInfo)

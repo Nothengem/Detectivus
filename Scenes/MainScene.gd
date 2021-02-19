@@ -6,11 +6,12 @@ var is_dragging = false
 func _ready():
 	spawn()
 
+
+
 func spawn():
 	var scene = load("res://Scenes/CharacterControl.tscn")
 	var card = scene.instance()
 	add_child_below_node($Control, card, true)
-#	get_tree().call_group("NextCharacterCard", "got_left_right_choose_portraits")
 
 
 
@@ -23,6 +24,13 @@ func spawn_dice():
 
 func spawn_cardmix():
 	var scene = load("res://Scenes/thimbles.tscn")
+	var card = scene.instance()
+	add_child_below_node($Control, card, true)
+
+
+
+func spawn_status():
+	var scene = load("res://Scenes/Dice.tscn")
 	var card = scene.instance()
 	add_child_below_node($Control, card, true)
 
