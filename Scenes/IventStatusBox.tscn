@@ -27,14 +27,38 @@ mouse_filter = 2
 
 [node name="IventStatus1" parent="HBoxContainer" instance=ExtResource( 2 )]
 
+[node name="StatusDuration1" type="Timer" parent="HBoxContainer/IventStatus1"]
+
+[node name="EverySecChanger1" type="Timer" parent="HBoxContainer/IventStatus1"]
+
 [node name="IventStatus2" parent="HBoxContainer" instance=ExtResource( 2 )]
 margin_left = 66.0
 margin_right = 128.0
+
+[node name="StatusDuration2" type="Timer" parent="HBoxContainer/IventStatus2"]
+
+[node name="EverySecChanger2" type="Timer" parent="HBoxContainer/IventStatus2"]
 
 [node name="IventStatus3" parent="HBoxContainer" instance=ExtResource( 2 )]
 margin_left = 132.0
 margin_right = 194.0
 
+[node name="StatusDuration3" type="Timer" parent="HBoxContainer/IventStatus3"]
+
+[node name="EverySecChanger3" type="Timer" parent="HBoxContainer/IventStatus3"]
+
 [node name="IventStatus4" parent="HBoxContainer" instance=ExtResource( 2 )]
 margin_left = 198.0
 margin_right = 260.0
+
+[node name="StatusDuration4" type="Timer" parent="HBoxContainer/IventStatus4"]
+
+[node name="EverySecChanger4" type="Timer" parent="HBoxContainer/IventStatus4"]
+[connection signal="timeout" from="HBoxContainer/IventStatus1/StatusDuration1" to="." method="_on_StatusDuration1_timeout"]
+[connection signal="timeout" from="HBoxContainer/IventStatus2/StatusDuration2" to="." method="_on_StatusDuration2_timeout"]
+[connection signal="timeout" from="HBoxContainer/IventStatus3/StatusDuration3" to="." method="_on_StatusDuration3_timeout"]
+[connection signal="timeout" from="HBoxContainer/IventStatus4/StatusDuration4" to="." method="_on_StatusDuration4_timeout"]
+
+[editable path="HBoxContainer/IventStatus1"]
+
+[editable path="HBoxContainer/IventStatus2"]

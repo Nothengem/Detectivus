@@ -1,7 +1,14 @@
 extends Node
 
 enum { 
-	Dictor
+	Dictor, AlexeyKochanov, AnastasiyaMalkova, AnastasiyaCherevatkina, AlexeySilkin, Bman, CBomjMan,
+	DmitriyOvsyannikov, Chechen, BArtem, KristinaStepanova, Babylia, IlonMask, Mafiosi, GrishaGrachev, 
+	BitKogan, InvestorJunior, OstapBender, OlegTinkoff, BillGates, Putin, MegaBomj, RomanShabanov, 
+	CBreviewer, Ivent, Status,
+	
+	TeamUp, CustomersUp, CentralBankUp, MoneyUp, 
+	TeamDown, CustomersDown, CentralBankDown, MoneyDown
+	
 	}
 
 const DATA = {
@@ -54,5 +61,24 @@ const DATA = {
 	"CBreviewer" : [ "Head4", "Neck1", "Shirt2", "Eyebrows2", "Eyes4", "Forehead1", "Ears1", "Jowls1", "Glasses1", "Mouth2", "Hair3", "Nose2"],
 	
 	"Ivent" : [ "Head0", "Neck0", "Shirt0", "Eyebrows0", "Eyes0", "Forehead0", "Ears0", "Jowls0", "Glasses0", "Mouth0", "Hair0", "Nose0"],
+	
+	"Status" : [ "Head0", "Neck0", "Shirt0", "Eyebrows0", "Eyes0", "Forehead0", "Ears0", "Jowls0", "Glasses0", "Mouth0", "Hair0", "Nose0"],
+	
+	"TeamUp" : [ "Head0", "Neck0", "Shirt0", "Eyebrows0", "Eyes0", "Forehead0", "Ears0", "Jowls0", "Glasses0", "Mouth0", "Hair0", "Nose0"],
+	
+	"CustomersUp" : [ "Head0", "Neck0", "Shirt0", "Eyebrows0", "Eyes0", "Forehead0", "Ears0", "Jowls0", "Glasses0", "Mouth0", "Hair0", "Nose0"],
+	
+	"CentralBankUp" : [ "Head0", "Neck0", "Shirt0", "Eyebrows0", "Eyes0", "Forehead0", "Ears0", "Jowls0", "Glasses0", "Mouth0", "Hair0", "Nose0"],
+	
+	"MoneyUp" : [ "Head0", "Neck0", "Shirt0", "Eyebrows0", "Eyes0", "Forehead0", "Ears0", "Jowls0", "Glasses0", "Mouth0", "Hair0", "Nose0"],
+	
+	"TeamDown" : [ "Head0", "Neck0", "Shirt0", "Eyebrows0", "Eyes0", "Forehead0", "Ears0", "Jowls0", "Glasses0", "Mouth0", "Hair0", "Nose0"],
+	
+	"CustomersDown" : [ "Head0", "Neck0", "Shirt0", "Eyebrows0", "Eyes0", "Forehead0", "Ears0", "Jowls0", "Glasses0", "Mouth0", "Hair0", "Nose0"],
+	
+	"CentralBankDown" : [ "Head0", "Neck0", "Shirt0", "Eyebrows0", "Eyes0", "Forehead0", "Ears0", "Jowls0", "Glasses0", "Mouth0", "Hair0", "Nose0"],
+	
+	"MoneyDown" : [ "Head0", "Neck0", "Shirt0", "Eyebrows0", "Eyes0", "Forehead0", "Ears0", "Jowls0", "Glasses0", "Mouth0", "Hair0", "Nose0"],
+
 }
  

@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Resources/GFX/StatusBars/NoItem.png" type="Texture" id=1]
 
-[node name="IventStatus1" type="NinePatchRect"]
+[node name="IventStatus" type="NinePatchRect"]
 margin_right = 62.0
 margin_bottom = 62.0
 rect_min_size = Vector2( 62, 62 )

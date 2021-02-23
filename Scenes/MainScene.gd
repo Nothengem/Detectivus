@@ -58,7 +58,3 @@ func _on_CharacterControl_input_event(viewport, event, shape_idx):
 		previous_mouse_position = event.position
 		is_dragging = true
 
-
-
-
-

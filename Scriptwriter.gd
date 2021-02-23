@@ -90,20 +90,7 @@ onready var MiniCardDataBase = preload("res://DataBase/MiniCardDataBase.gd")
 onready var StatusDataBase = preload("res://DataBase/StatusDataBase.gd")
 
 func _ready():
-#	var Head = PortraitPardDataBase.DATA.get("Head")
-#	var Neck = PortraitPardDataBase.DATA.get("Neck")
-#	var Shirt = PortraitPardDataBase.DATA.get("Shirt")
-#	var Eyebrows = PortraitPardDataBase.DATA.get("Eyebrows")
-#	var Eyes = PortraitPardDataBase.DATA.get("Eyes")
-#	var Forehead = PortraitPardDataBase.DATA.get("Forehead")
-#	var Ears = PortraitPardDataBase.DATA.get("Ears")
-#	var Jowls = PortraitPardDataBase.DATA.get("Jowls")
-#	var Glasses = PortraitPardDataBase.DATA.get("Glasses")
-#	var Mouth = PortraitPardDataBase.DATA.get("Mouth")
-#	var Hair = PortraitPardDataBase.DATA.get("Hair")
-#	var Nose = PortraitPardDataBase.DATA.get("Nose")
 	level_massive_generator()
-	#присваивание переменным частей портретов их значений
 
 
 func level_massive_generator():
@@ -113,11 +100,11 @@ func level_massive_generator():
 		level_composit = "Random" + str(i)
 		level_cards.append(level_composit)
 	level_cards.shuffle()
+	level_cards = ["Random24", "Random25", "Random26", "Random27", "Random23", "Random22"]
 	CardImage = level_cards[1]
-#	get_tree().call_group("NextCharacterCard", "got_left_right_choose_portraits")
-	
-	
-	
+
+
+
 func losecard():
 	if Scriptwriter.Heath_var <= 0:
 		CardChoose = "LooseBottomHealth"
@@ -145,22 +132,28 @@ func losecard():
 		card_var_generator()
 
 
+func status_name():
+	CardChoose = CardInfo[16]
+
 
 func card_var_generator(): #ПОХОЖЕ Я ЭТУ ШТУКУ ЗАПУСКАЮ 2 РАЗА ПРИ ЛУЗ СКРИНЕ (ПРОВЕРИТЬ)
+	#кусок в котором присваиваем портрет карты
 	if CardChoose == "LooseScreen": #проверяем что следующая карта проигрышная или нет
 		losecard()
+	elif CardChoose == "StatusScreen":
+		CardChoose = CardInfo[16]
+		CardInfo = CardDataBase.DATA.get(CardChoose)
 	elif CardChoose == "Random" or CardChoose == "Tutorial":
 		CardChoose = str(level_cards[0])
 		CardInfo = CardDataBase.DATA.get(CardChoose) 
 		CharacterPortrait = CharacterPortraitDataBase.DATA.get(CardInfo[1])
-	elif CardChoose == "Ivent":
-		CardInfo = CardDataBase.DATA.get(CardChoose)
-		CharacterPortrait = CharacterPortraitDataBase.DATA.get(CardInfo[1])
-	elif CardChoose == "Status":
-		status_generator()
+	elif CardChoose == "Ivent": #если выбранная карта ивент, то
+		CardInfo = CardDataBase.DATA.get(CardChoose) #присваиваем кардинфо переменную ивента
+		CharacterPortrait = CharacterPortraitDataBase.DATA.get(CardInfo[1]) #потрет при этом равен ivent (всё на нуль)
+	elif CardChoose == "StatusScreen": #если следующая карточка статус
 		CardInfo = CardDataBase.DATA.get("Ivent")
 		CharacterPortrait = CharacterPortraitDataBase.DATA.get(CardInfo[1])
-	elif !CardChoose == "Ivent" or "LooseScreen" or "Random" or "Tutorial" or "Status":
+	elif !CardChoose == "Ivent" or "LooseScreen" or "Random" or "Tutorial" or "StatusScreen":
 		CardInfo = CardDataBase.DATA.get(CardChoose)
 		CharacterPortrait = CharacterPortraitDataBase.DATA.get(CardInfo[1])
 		
@@ -181,6 +174,9 @@ func card_var_generator(): #ПОХОЖЕ Я ЭТУ ШТУКУ ЗАПУСКАЮ 2
 	if CardType == "LooseScreen":
 		CardImage = str ("res://Resources/GFX/CharacterPortraits", "/", CardInfo[1], ".png")
 		CharacterPortrait = CardImage
+	elif CardType == "StatusScreen":
+		CardImage = str ("res://Resources/GFX/StatusCards", "/", CardInfo[1], ".png")
+		CharacterPortrait = CardImage
 	elif CardType == "Characters" or CardType == "Tutorial":
 		CharacterHead = str ("res://Resources/GFX/CharacterCotaint/Head", "/", CharacterPortrait[0], ".png")
 		CharacterNeck = str ("res://Resources/GFX/CharacterCotaint/Neck", "/", CharacterPortrait[1], ".png")
@@ -195,7 +191,7 @@ func card_var_generator(): #ПОХОЖЕ Я ЭТУ ШТУКУ ЗАПУСКАЮ 2
 		CharacterHair = str ("res://Resources/GFX/CharacterCotaint/Hair", "/", CharacterPortrait[10], ".png")
 		CharacterNose = str ("res://Resources/GFX/CharacterCotaint/Nose", "/", CharacterPortrait[11], ".png")
 		
-	if CardType != "Tutorial" and "LooseScreen" and "Status":
+	if CardType != "Tutorial" and "LooseScreen" and "StatusScreen":
 		level_cards.remove(0)
 		
 	CardName = CardInfo[3] #Ввели в переменную текстовое значение имени карты из массива БД
@@ -215,7 +211,7 @@ func card_var_generator(): #ПОХОЖЕ Я ЭТУ ШТУКУ ЗАПУСКАЮ 2
 	CardIvent = CardInfo[16]
 	if NextCardRight == "Ivent":
 		ivent_generatior()
-	elif NextCardRight == "Status":
+	elif NextCardRight == "StatusScreen":
 		status_generator()
 	get_tree().call_group("CharacterControl", "card_generation")
 	get_tree().call_group("IventCard", "cardupdate")
@@ -228,6 +224,5 @@ func ivent_generatior():
 
 
 func status_generator():
-	print(CardIvent)
 	StatusInfo = StatusDataBase.DATA[StatusDataBase.get(CardIvent)]
 	print(StatusInfo)

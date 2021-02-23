@@ -55,6 +55,10 @@ __meta__ = {
 
 [node name="BalanceGUI" parent="Control" instance=ExtResource( 5 )]
 
+[node name="HBoxContainer" parent="Control/BalanceGUI/Control2/NinePatchRect/IventStatusBox" index="0"]
+margin_top = 1.0
+margin_bottom = 63.0
+
 [node name="CardTemplate" parent="Control" instance=ExtResource( 1 )]
 anchor_top = 0.151042
 anchor_bottom = 0.817708
@@ -79,6 +83,14 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/FadeBackGround = SubResource( 1 )
+[connection signal="timeout" from="Control/BalanceGUI/Control2/NinePatchRect/IventStatusBox/HBoxContainer/IventStatus1/EverySecChanger1" to="Control/BalanceGUI" method="_on_EverySecChanger1_timeout"]
+[connection signal="timeout" from="Control/BalanceGUI/Control2/NinePatchRect/IventStatusBox/HBoxContainer/IventStatus2/EverySecChanger2" to="Control/BalanceGUI" method="_on_EverySecChanger2_timeout"]
+[connection signal="timeout" from="Control/BalanceGUI/Control2/NinePatchRect/IventStatusBox/HBoxContainer/IventStatus3/EverySecChanger3" to="Control/BalanceGUI" method="_on_EverySecChanger3_timeout"]
+[connection signal="timeout" from="Control/BalanceGUI/Control2/NinePatchRect/IventStatusBox/HBoxContainer/IventStatus4/EverySecChanger4" to="Control/BalanceGUI" method="_on_EverySecChanger4_timeout"]
+
+[editable path="Control/BalanceGUI"]
+
+[editable path="Control/BalanceGUI/Control2/NinePatchRect/IventStatusBox"]
 
 [editable path="Control/Control/NextCharacter"]
 

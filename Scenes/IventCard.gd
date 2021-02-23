@@ -5,7 +5,7 @@ func cardupdate():
 	$CharNameCont/CharacterName.text = Scriptwriter.CardName
 
 func cardupdate_dice():
-	$CardTextCont/CardText.text = "Для прохождения проверки, нужно выкинуть " + str(Scriptwriter.IventDifficulty) + " или выше"
+	$CardTextCont/CardText.text = "Для прохождения проверки, нужно выкинуть " + str(Scriptwriter.IventInfo[1]) + " или выше"
 	$CharNameCont/CharacterName.text = " "
 	
 func cardupdate_ivent_win():

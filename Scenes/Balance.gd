@@ -10,11 +10,24 @@ var scale_max = Vector2(1.2, 1.2)
 var scale_norm = Vector2(1, 1)
 var scale_speed = 0.3
 
-
 #переменные для коррекции после победы в ивентах
 var Modi
 var a
 var b
+
+#переменные для фиксации статусов
+var IventSlot1
+var IventSlot1Speed
+var IventUpSlot1
+var IventSlot2
+var IventSlot2Speed
+var IventUpSlot2
+var IventSlot3
+var IventSlot3Speed
+var IventUpSlot3
+var IventSlot4
+var IventSlot4Speed
+var IventUpSlot4
 
 func _ready():
 	Scriptwriter.Heath_var = 50
@@ -56,7 +69,7 @@ func change_proportions_left():
 
 
 func change_proportions_ivent_loose_dice():
-	Scriptwriter.Heath_var = Scriptwriter.Heath_var + Scriptwriter.IventInfo[3]
+	Scriptwriter.Heath_var = int(Scriptwriter.Heath_var + Scriptwriter.IventInfo[3])
 	animate_value_health(HealthProgress.value, Scriptwriter.Heath_var)
 	
 	Scriptwriter.Law_var = Scriptwriter.Law_var + Scriptwriter.IventInfo[4]
@@ -130,6 +143,9 @@ func correction_calculating():
 #			Modi -=1
 
 func animate_value_health(start, end):
+	print("Start = ", HealthProgress.value)
+	print("End = ", Scriptwriter.Heath_var)
+	print("--------------------------------------")
 	if HealthProgress.value > Scriptwriter.Heath_var:
 		$AnimPlayerHealth.play("HealthMinus")
 		
@@ -266,3 +282,144 @@ func yellow_indicatos_color_middle():
 		$Tween.interpolate_property(LuckProgress, "self_modulate", LuckProgress.self_modulate, Color("ffffff"), scale_speed, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 		$Tween.start()
 
+#ШМАТОК КОДА ДЛЯ ИЗМЕНЕНИЯ БАЛАНСА ПО СТАТУСУ
+
+func StatusFixingVariablesSlotOne():
+	IventSlot1 = Scriptwriter.StatusInfo[2]
+	IventSlot1Speed = Scriptwriter.StatusInfo[4]
+	IventUpSlot1 = Scriptwriter.StatusInfo[5]
+	
+func StatusFixingVariablesSlotTwo():
+	IventSlot2 = Scriptwriter.StatusInfo[2]
+	IventSlot2Speed = Scriptwriter.StatusInfo[4]
+	IventUpSlot2 = Scriptwriter.StatusInfo[5]
+	
+func StatusFixingVariablesSlotThree():
+	IventSlot3 = Scriptwriter.StatusInfo[2]
+	IventSlot3Speed = Scriptwriter.StatusInfo[4]
+	IventUpSlot3 = Scriptwriter.StatusInfo[5]
+	
+func StatusFixingVariablesSlotFour():
+	IventSlot4 = Scriptwriter.StatusInfo[2]
+	IventSlot4Speed = Scriptwriter.StatusInfo[4]
+	IventUpSlot4 = Scriptwriter.StatusInfo[5]
+	
+	
+func _on_EverySecChanger1_timeout():
+	if IventUpSlot1 == "Up":
+		if IventSlot1 == "Scriptwriter.Heath_var":
+			Scriptwriter.Heath_var = Scriptwriter.Heath_var + IventSlot1Speed
+			animate_value_health(HealthProgress.value, Scriptwriter.Heath_var)
+		elif IventSlot1 == "Scriptwriter.Law_var":
+			Scriptwriter.Law_var = Scriptwriter.Law_var + IventSlot1Speed
+			animate_value_law(LawProgress.value, Scriptwriter.Law_var)
+		elif IventSlot1 == "Scriptwriter.Banditism_var":
+			Scriptwriter.Banditism_var = Scriptwriter.Banditism_var + IventSlot1Speed
+			animate_value_banditism(BanditismProgress.value, Scriptwriter.Banditism_var)
+		elif IventSlot1 == "Scriptwriter.Luck_var":
+			Scriptwriter.Luck_var = Scriptwriter.Luck_var + IventSlot1Speed
+			animate_value_luck(LuckProgress.value, Scriptwriter.Luck_var)
+			
+	elif IventUpSlot1 == "Down":
+		if IventSlot1 == "Scriptwriter.Heath_var":
+			Scriptwriter.Heath_var = Scriptwriter.Heath_var - IventSlot1Speed
+			animate_value_health(HealthProgress.value, Scriptwriter.Heath_var)
+		elif IventSlot1 == "Scriptwriter.Law_var":
+			Scriptwriter.Law_var = Scriptwriter.Law_var - IventSlot1Speed
+			animate_value_law(LawProgress.value, Scriptwriter.Law_var)
+		elif IventSlot1 == "Scriptwriter.Banditism_var":
+			Scriptwriter.Banditism_var = Scriptwriter.Banditism_var - IventSlot1Speed
+			animate_value_banditism(BanditismProgress.value, Scriptwriter.Banditism_var)
+		elif IventSlot1 == "Scriptwriter.Luck_var":
+			Scriptwriter.Luck_var = Scriptwriter.Luck_var - IventSlot1Speed
+			animate_value_luck(LuckProgress.value, Scriptwriter.Luck_var)
+
+
+func _on_EverySecChanger2_timeout():
+	if IventUpSlot2 == "Up":
+		if IventSlot2 == "Scriptwriter.Heath_var":
+			Scriptwriter.Heath_var = Scriptwriter.Heath_var + IventSlot2Speed
+			animate_value_health(HealthProgress.value, Scriptwriter.Heath_var)
+		elif IventSlot2 == "Scriptwriter.Law_var":
+			Scriptwriter.Law_var = Scriptwriter.Law_var + IventSlot2Speed
+			animate_value_law(LawProgress.value, Scriptwriter.Law_var)
+		elif IventSlot2 == "Scriptwriter.Banditism_var":
+			Scriptwriter.Banditism_var = Scriptwriter.Banditism_var + IventSlot2Speed
+			animate_value_banditism(BanditismProgress.value, Scriptwriter.Banditism_var)
+		elif IventSlot2 == "Scriptwriter.Luck_var":
+			Scriptwriter.Luck_var = Scriptwriter.Luck_var + IventSlot2Speed
+			animate_value_luck(LuckProgress.value, Scriptwriter.Luck_var)
+			
+	elif IventUpSlot2 == "Down":
+		if IventSlot2 == "Scriptwriter.Heath_var":
+			Scriptwriter.Heath_var = Scriptwriter.Heath_var - IventSlot2Speed
+			animate_value_health(HealthProgress.value, Scriptwriter.Heath_var)
+		elif IventSlot2 == "Scriptwriter.Law_var":
+			Scriptwriter.Law_var = Scriptwriter.Law_var - IventSlot2Speed
+			animate_value_law(LawProgress.value, Scriptwriter.Law_var)
+		elif IventSlot2 == "Scriptwriter.Banditism_var":
+			Scriptwriter.Banditism_var = Scriptwriter.Banditism_var - IventSlot2Speed
+			animate_value_banditism(BanditismProgress.value, Scriptwriter.Banditism_var)
+		elif IventSlot2 == "Scriptwriter.Luck_var":
+			Scriptwriter.Luck_var = Scriptwriter.Luck_var - IventSlot2Speed
+			animate_value_luck(LuckProgress.value, Scriptwriter.Luck_var)
+
+
+func _on_EverySecChanger3_timeout():
+	if IventUpSlot3 == "Up":
+		if IventSlot3 == "Scriptwriter.Heath_var":
+			Scriptwriter.Heath_var = Scriptwriter.Heath_var + IventSlot3Speed
+			animate_value_health(HealthProgress.value, Scriptwriter.Heath_var)
+		elif IventSlot3 == "Scriptwriter.Law_var":
+			Scriptwriter.Law_var = Scriptwriter.Law_var + IventSlot3Speed
+			animate_value_law(LawProgress.value, Scriptwriter.Law_var)
+		elif IventSlot3 == "Scriptwriter.Banditism_var":
+			Scriptwriter.Banditism_var = Scriptwriter.Banditism_var + IventSlot3Speed
+			animate_value_banditism(BanditismProgress.value, Scriptwriter.Banditism_var)
+		elif IventSlot3 == "Scriptwriter.Luck_var":
+			Scriptwriter.Luck_var = Scriptwriter.Luck_var + IventSlot3Speed
+			animate_value_luck(LuckProgress.value, Scriptwriter.Luck_var)
+			
+	elif IventUpSlot3 == "Down":
+		if IventSlot3 == "Scriptwriter.Heath_var":
+			Scriptwriter.Heath_var = Scriptwriter.Heath_var - IventSlot3Speed
+			animate_value_health(HealthProgress.value, Scriptwriter.Heath_var)
+		elif IventSlot3 == "Scriptwriter.Law_var":
+			Scriptwriter.Law_var = Scriptwriter.Law_var - IventSlot3Speed
+			animate_value_law(LawProgress.value, Scriptwriter.Law_var)
+		elif IventSlot3 == "Scriptwriter.Banditism_var":
+			Scriptwriter.Banditism_var = Scriptwriter.Banditism_var - IventSlot3Speed
+			animate_value_banditism(BanditismProgress.value, Scriptwriter.Banditism_var)
+		elif IventSlot3 == "Scriptwriter.Luck_var":
+			Scriptwriter.Luck_var = Scriptwriter.Luck_var - IventSlot3Speed
+			animate_value_luck(LuckProgress.value, Scriptwriter.Luck_var)
+
+
+func _on_EverySecChanger4_timeout():
+	if IventUpSlot4 == "Up":
+		if IventSlot4 == "Scriptwriter.Heath_var":
+			Scriptwriter.Heath_var = Scriptwriter.Heath_var + IventSlot4Speed
+			animate_value_health(HealthProgress.value, Scriptwriter.Heath_var)
+		elif IventSlot4 == "Scriptwriter.Law_var":
+			Scriptwriter.Law_var = Scriptwriter.Law_var + IventSlot4Speed
+			animate_value_law(LawProgress.value, Scriptwriter.Law_var)
+		elif IventSlot4 == "Scriptwriter.Banditism_var":
+			Scriptwriter.Banditism_var = Scriptwriter.Banditism_var + IventSlot4Speed
+			animate_value_banditism(BanditismProgress.value, Scriptwriter.Banditism_var)
+		elif IventSlot4 == "Scriptwriter.Luck_var":
+			Scriptwriter.Luck_var = Scriptwriter.Luck_var + IventSlot4Speed
+			animate_value_luck(LuckProgress.value, Scriptwriter.Luck_var)
+			
+	elif IventUpSlot4 == "Down":
+		if IventSlot4 == "Scriptwriter.Heath_var":
+			Scriptwriter.Heath_var = Scriptwriter.Heath_var - IventSlot4Speed
+			animate_value_health(HealthProgress.value, Scriptwriter.Heath_var)
+		elif IventSlot4 == "Scriptwriter.Law_var":
+			Scriptwriter.Law_var = Scriptwriter.Law_var - IventSlot4Speed
+			animate_value_law(LawProgress.value, Scriptwriter.Law_var)
+		elif IventSlot4 == "Scriptwriter.Banditism_var":
+			Scriptwriter.Banditism_var = Scriptwriter.Banditism_var - IventSlot4Speed
+			animate_value_banditism(BanditismProgress.value, Scriptwriter.Banditism_var)
+		elif IventSlot4 == "Scriptwriter.Luck_var":
+			Scriptwriter.Luck_var = Scriptwriter.Luck_var - IventSlot4Speed
+			animate_value_luck(LuckProgress.value, Scriptwriter.Luck_var)

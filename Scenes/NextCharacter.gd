@@ -42,7 +42,10 @@ onready var CharacterCardRight = get_node("CharacterCardRight/Character")
 func got_left_right_choose_portraits():
 	left_choose_portrait = Scriptwriter.NextCardLeft
 	right_choose_portrait = Scriptwriter.NextCardRight
+	if right_choose_portrait == "StatusScreen":
+		right_choose_portrait = Scriptwriter.CardInfo[16]
 	find_name_of_portraits()
+
 
 
 func find_name_of_portraits():
@@ -50,7 +53,7 @@ func find_name_of_portraits():
 		left_choose_portrait = Scriptwriter.CardDataBase.DATA.get(left_choose_portrait)
 		left_choose_portrait = left_choose_portrait[1]
 		left_choose_portrait = Scriptwriter.CharacterPortraitDataBase.DATA.get(left_choose_portrait)
-	
+		
 	elif left_choose_portrait == "Random":
 		left_choose_portrait = Scriptwriter.level_cards[0]
 		left_choose_portrait = Scriptwriter.CardDataBase.DATA.get(left_choose_portrait)
@@ -58,13 +61,14 @@ func find_name_of_portraits():
 		left_choose_portrait = Scriptwriter.CharacterPortraitDataBase.DATA.get(left_choose_portrait)
 		
 	if !right_choose_portrait == "Random":
-		if !right_choose_portrait == "Ivent":
+		if !right_choose_portrait == "Ivent" and !right_choose_portrait == "StatusScreen":
 			right_choose_portrait = Scriptwriter.CardDataBase.DATA.get(right_choose_portrait)
 			right_choose_portrait = right_choose_portrait[1]
 			right_choose_portrait = Scriptwriter.CharacterPortraitDataBase.DATA.get(right_choose_portrait)
-		elif right_choose_portrait == "Ivent":
-			right_choose_portrait = Scriptwriter.CharacterPortraitDataBase.DATA.get(right_choose_portrait)
-			#написать скрипт для портрета ивента
+			
+		elif right_choose_portrait == "Ivent" or Scriptwriter.CardIvent == "StatusScreen":
+			right_choose_portrait = Scriptwriter.CharacterPortraitDataBase.DATA.get("Ivent")
+	
 	elif right_choose_portrait == "Random":
 		right_choose_portrait = Scriptwriter.level_cards[0]
 		right_choose_portrait = Scriptwriter.CardDataBase.DATA.get(right_choose_portrait)
@@ -115,23 +119,33 @@ func right_card_fade():
 	$Tween.interpolate_property(CharacterCardLeft, "modulate", CharacterCardLeft.modulate, Color("ffffff"), 0.05, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	$Tween.start()
 	
+	if $CharacterCardRight/IventPortrait.self_modulate == Color("ffffff"):
+		$Tween.interpolate_property($CharacterCardRight/IventPortrait, "self_modulate", $CharacterCardRight/IventPortrait.self_modulate, Color("00ffffff"), 0.05, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+		$Tween.start()
+	
 func right_card_appear():
 	$Tween.interpolate_property(CharacterCardRight, "modulate", CharacterCardRight.modulate, Color("ffffff"), 0.05, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	$Tween.start()
-
+	
 	$Tween.interpolate_property(CharacterCardLeft, "modulate", CharacterCardLeft.modulate, Color("00ffffff"), 0.05, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	$Tween.start()
+	
+	if $CharacterCardRight/IventPortrait.self_modulate == Color("ffffff"):
+		$Tween.interpolate_property($CharacterCardRight/IventPortrait, "self_modulate", $CharacterCardRight/IventPortrait.self_modulate, Color("00ffffff"), 0.05, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+		$Tween.start()
 	
 
 func ivent_card_appear():
 	$Tween.interpolate_property(CharacterCardLeft, "modulate", CharacterCardLeft.modulate, Color("00ffffff"), 0.05, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	$Tween.start()
-
-	$Tween.interpolate_property($CharacterCardRight/IventPortrait, "modulate", $CharacterCardRight/IventPortrait.modulate, Color("ffffff"), 0.05, Tween.TRANS_LINEAR, Tween.EASE_OUT)
-	$Tween.start()
-
+	
 	$Tween.interpolate_property(CharacterCardRight, "modulate", CharacterCardRight.modulate, Color("ffffff"), 0.05, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	$Tween.start()
+	
+	$Tween.interpolate_property($CharacterCardRight/IventPortrait, "self_modulate", $CharacterCardRight/IventPortrait.self_modulate, Color("ffffff"), 0.05, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	$Tween.start()
+
+
 
 func hide():
 	visible = false

@@ -66,9 +66,10 @@ func _ready():
 		elif !Scriptwriter.FirstCard and Scriptwriter.CardType == "Tutorial" and Scriptwriter.CardType != "Characters":
 			Scriptwriter.card_var_generator()
 #			Animator.play("Appearance")
-
-		elif !Scriptwriter.FirstCard and Scriptwriter.CardType == "StatusScreen":
+			
+		elif !Scriptwriter.FirstCard and Scriptwriter.CardChoose == "StatusScreen":
 			Scriptwriter.card_var_generator()
+			Animator.play("Appearance")
 			
 		elif !Scriptwriter.FirstCard and Scriptwriter.CardChoose == "Random":
 			Scriptwriter.card_var_generator()
@@ -122,12 +123,13 @@ func card_generation():
 		Hair.texture = load(Scriptwriter.CharacterHair)
 		Nose.texture = load(Scriptwriter.CharacterNose)
 		
-	elif Scriptwriter.CardType == "LooseScreen" or "StatusScreen":
+	elif Scriptwriter.CardType == "LooseScreen" or Scriptwriter.CardType == "StatusScreen":
 		$CharacterCard/Character.visible = false
 		$CharacterCard/IventPortrait.self_modulate = Color("ffffff")
 		$CharacterCard/IventPortrait.texture = load(Scriptwriter.CharacterPortrait)
 		$CharacterCard/Control.visible = false
-		get_tree().call_group("NextCharacterCard", "hide")
+		if Scriptwriter.CardType == "LooseScreen":
+			get_tree().call_group("NextCharacterCard", "hide")
 		
 	if !Scriptwriter.Heath_var <= 0 and !Scriptwriter.Law_var <= 0 and !Scriptwriter.Banditism_var <= 0 and !Scriptwriter.Luck_var <= 0 and !Scriptwriter.Heath_var >= 100 and !Scriptwriter.Law_var >= 100 and !Scriptwriter.Banditism_var >= 100 and !Scriptwriter.Luck_var >= 100:
 		CardRAnswer.text = Scriptwriter.CardRAnswer
@@ -138,11 +140,6 @@ func card_generation():
 
 
 
-#func _process(delta):
-#	choosedone()
-
-
-
 func choosedone():
 	get_tree().call_group("BalanceGUI", "white_indicatos_color")
 	if $CharacterCard.position == leftxposition:
@@ -150,7 +147,7 @@ func choosedone():
 			Scriptwriter.CardChoose = Scriptwriter.NextCardLeft
 			choosedone_next_card_left()
 			
-		elif Scriptwriter.CardType == "Characters" or Scriptwriter.CardType == "Tutorial" or Scriptwriter.CardType == "Resuilt":
+		elif Scriptwriter.CardType == "Characters" or Scriptwriter.CardType == "Tutorial" or Scriptwriter.CardType == "StatusScreen":
 			if Scriptwriter.CardType == "Characters":
 				Scriptwriter.victory_count += 1
 			Scriptwriter.CardChoose = Scriptwriter.NextCardLeft
@@ -166,7 +163,7 @@ func choosedone():
 			Scriptwriter.CardChoose = Scriptwriter.NextCardRight
 			choosedone_next_card_right()
 			
-		elif Scriptwriter.CardType == "Characters" or Scriptwriter.CardType == "Tutorial" or Scriptwriter.CardType == "Resuilt":
+		elif Scriptwriter.CardType == "Characters" or Scriptwriter.CardType == "Tutorial" or Scriptwriter.CardType == "StatusScreen":
 			if Scriptwriter.CardType == "Characters":
 				Scriptwriter.victory_count += 1
 			Scriptwriter.CardChoose = Scriptwriter.NextCardRight
@@ -181,14 +178,8 @@ func choosedone():
 
 func choosedone_next_card_left():
 	if Scriptwriter.victory_count < Scriptwriter.count_to_victory:
-			
-		if Scriptwriter.NextCardLeft == "Ivent":
-			get_tree().call_group("MainScene", "spawn_dice")
-		elif Scriptwriter.NextCardLeft == "Status":
-			get_tree().call_group("MainScene", "spawn_status") # в прошлый раз остановился здесь
-		elif Scriptwriter.NextCardLeft != "Ivent":
-			get_tree().call_group("MainScene", "spawn")
-		
+		if Scriptwriter.NextCardLeft != "Ivent":
+				get_tree().call_group("MainScene", "spawn")
 	elif Scriptwriter.victory_count == Scriptwriter.count_to_victory:
 		get_tree().call_group("MainScene", "win_the_game")
 	get_tree().call_group("BalanceGUI", "yellow_indicatos_color_middle")
@@ -197,7 +188,6 @@ func choosedone_next_card_left():
 
 
 func choosedone_next_card_right():
-	get_tree().call_group("BalanceGIU", "debug_print")
 	if Scriptwriter.victory_count < Scriptwriter.count_to_victory:
 			
 		if Scriptwriter.NextCardRight == "Ivent":
@@ -205,6 +195,8 @@ func choosedone_next_card_right():
 				get_tree().call_group("MainScene", "spawn_dice")
 			elif Scriptwriter.IventInfo[0] == "CardMix":
 				get_tree().call_group("MainScene", "spawn_cardmix")
+			elif Scriptwriter.IventInfo[0] == "Status":
+				get_tree().call_group("MainScene", "spawn")
 				
 		elif Scriptwriter.NextCardRight != "Ivent":
 			get_tree().call_group("MainScene", "spawn")
@@ -327,7 +319,7 @@ func balance_color_prechoose():
 	if right_position:
 		get_tree().call_group("BalanceGUI", "yellow_indicatos_color_right")
 		get_tree().call_group("NextCharacterCard", "right_card_appear")
-		if Scriptwriter.NextCardRight == "Ivent":
+		if Scriptwriter.NextCardRight == "Ivent" or Scriptwriter.NextCardRight == "StatusScreen":
 			get_tree().call_group("NextCharacterCard", "ivent_card_appear")
 	elif left_position:
 		get_tree().call_group("BalanceGUI", "yellow_indicatos_color_left")
@@ -370,7 +362,10 @@ func to_see_losecard():
 
 #как всегда костыльное решение запускает таймер по истечении которого проверяется в какой пози
 func _on_Timer_choosedone_timeout():
+	if Scriptwriter.CardType == "StatusScreen" and Scriptwriter.StatusInfo[0] == "Status":
+		get_tree().call_group("IventStatus", "start_new_status")
 	choosedone()
+
 
 #срабатывают по касанию пальца
 func _on_CharacterControl_input_event(viewport, event, shape_idx):
