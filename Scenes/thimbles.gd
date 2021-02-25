@@ -34,7 +34,10 @@ var choosen_picture
 var easy = ["SmallSuccess", "Nothing", "SmallLose"]
 var middle = ["BigSuccess", "Nothing", "BigLose"]
 var hard = ["SmallSuccess", "SmallLose", "BigLose"]
-var difficult = [easy, middle, hard]
+var easyMoneyUp = ["SmallSuccess", "MoneyUp", "SmallLose"]
+var middleTeamDown = ["BigSuccess", "TeamDown", "BigLose"]
+var HardCustomersDown = ["SmallSuccess", "CustomersDown", "BigLose"]
+var difficult = [easy, middle, hard, easyMoneyUp, middleTeamDown, HardCustomersDown]
 
 #присваивание переменных ивента
 onready var IventName = Scriptwriter.IventInfo[0]
@@ -71,13 +74,10 @@ func MiniCardsGeneration():
 func MiniCardsGeneration_helper(a, b):
 	if a == "SmallLose" or a == "BigLose":
 		b.text = CardBadText
-		print(b)
 	elif a == "SmallSuccess" or a == "BigSuccess":
 		b.text = CardGoodText
-		print(b)
-	elif a == "Nothing":
+	elif a == "Nothing" or a != "SmallLose" or a != "BigLose":
 		b.text = CardNeutralText
-		print(b)
 
 func randomazer():
 	var rng = RandomNumberGenerator.new()
@@ -197,12 +197,15 @@ func _on_Timer_fade_timeout():
 
 func result():
 	choosen_picture = Scriptwriter.MiniCardDataBase.DATA.get(choosen_picture)
-	choosen_picture = choosen_picture[1]
-	if BallanceChange == "Team":
-		Scriptwriter.Heath_var = Scriptwriter.Heath_var + choosen_picture
-	elif BallanceChange == "Customers":
-		Scriptwriter.Law_var = Scriptwriter.Law_var + choosen_picture
-	elif BallanceChange == "CentralBank":
-		Scriptwriter.Banditism_var = Scriptwriter.Banditism_var + choosen_picture
-	elif BallanceChange == "Money":
-		Scriptwriter.Luck_var = Scriptwriter.Luck_var + choosen_picture
+	if choosen_picture[0] == "ChangeBalance":
+		choosen_picture = choosen_picture[1]
+		if BallanceChange == "Team":
+			Scriptwriter.Heath_var = Scriptwriter.Heath_var + choosen_picture
+		elif BallanceChange == "Customers":
+			Scriptwriter.Law_var = Scriptwriter.Law_var + choosen_picture
+		elif BallanceChange == "CentralBank":
+			Scriptwriter.Banditism_var = Scriptwriter.Banditism_var + choosen_picture
+		elif BallanceChange == "Money":
+			Scriptwriter.Luck_var = Scriptwriter.Luck_var + choosen_picture
+	elif choosen_picture[0] == "Status":
+		pass

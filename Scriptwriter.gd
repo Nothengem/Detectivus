@@ -100,7 +100,7 @@ func level_massive_generator():
 		level_composit = "Random" + str(i)
 		level_cards.append(level_composit)
 	level_cards.shuffle()
-	level_cards = ["Random24", "Random25", "Random26", "Random27", "Random23", "Random22"]
+	level_cards = ["Random14", "Random15", "Random24", "Random25", "Random26", "Random27", "Random23", "Random22", "Random21", "Random20", "Random21"]
 	CardImage = level_cards[1]
 
 
@@ -132,9 +132,6 @@ func losecard():
 		card_var_generator()
 
 
-func status_name():
-	CardChoose = CardInfo[16]
-
 
 func card_var_generator(): #ПОХОЖЕ Я ЭТУ ШТУКУ ЗАПУСКАЮ 2 РАЗА ПРИ ЛУЗ СКРИНЕ (ПРОВЕРИТЬ)
 	#кусок в котором присваиваем портрет карты
@@ -158,7 +155,6 @@ func card_var_generator(): #ПОХОЖЕ Я ЭТУ ШТУКУ ЗАПУСКАЮ 2
 		CharacterPortrait = CharacterPortraitDataBase.DATA.get(CardInfo[1])
 		
 	CardType = CardInfo[0]
-		
 	if CardType == "Characters":
 		NextCardInfo = CardDataBase.DATA.get(level_cards[1])
 		get_tree().call_group("NextCharacterCard", "got_left_right_choose_portraits")
@@ -191,7 +187,7 @@ func card_var_generator(): #ПОХОЖЕ Я ЭТУ ШТУКУ ЗАПУСКАЮ 2
 		CharacterHair = str ("res://Resources/GFX/CharacterCotaint/Hair", "/", CharacterPortrait[10], ".png")
 		CharacterNose = str ("res://Resources/GFX/CharacterCotaint/Nose", "/", CharacterPortrait[11], ".png")
 		
-	if CardType != "Tutorial" and "LooseScreen" and "StatusScreen":
+	if CardType != "Tutorial" and CardType != "LooseScreen" and CardType != "StatusScreen":
 		level_cards.remove(0)
 		
 	CardName = CardInfo[3] #Ввели в переменную текстовое значение имени карты из массива БД
@@ -211,7 +207,7 @@ func card_var_generator(): #ПОХОЖЕ Я ЭТУ ШТУКУ ЗАПУСКАЮ 2
 	CardIvent = CardInfo[16]
 	if NextCardRight == "Ivent":
 		ivent_generatior()
-	elif NextCardRight == "StatusScreen":
+	elif CardType == "StatusScreen":
 		status_generator()
 	get_tree().call_group("CharacterControl", "card_generation")
 	get_tree().call_group("IventCard", "cardupdate")
@@ -225,4 +221,3 @@ func ivent_generatior():
 
 func status_generator():
 	StatusInfo = StatusDataBase.DATA[StatusDataBase.get(CardIvent)]
-	print(StatusInfo)
