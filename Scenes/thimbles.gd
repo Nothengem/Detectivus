@@ -208,4 +208,5 @@ func result():
 		elif BallanceChange == "Money":
 			Scriptwriter.Luck_var = Scriptwriter.Luck_var + choosen_picture
 	elif choosen_picture[0] == "Status":
-		pass
+		Scriptwriter.CardChoose = choosen_picture[2]
+		get_tree().call_group("MainScene", "spawn")
