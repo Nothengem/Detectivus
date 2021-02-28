@@ -100,7 +100,7 @@ func level_massive_generator():
 		level_composit = "Random" + str(i)
 		level_cards.append(level_composit)
 	level_cards.shuffle()
-	level_cards = ["Random14", "Random15", "Random24", "Random25", "Random26", "Random27", "Random23", "Random22", "Random21", "Random20", "Random21"]
+	level_cards = ["Random28", "Random14", "Random15", "Random24", "Random25", "Random26", "Random27", "Random23", "Random22", "Random21", "Random20", "Random21"]
 	CardImage = level_cards[1]
 
 

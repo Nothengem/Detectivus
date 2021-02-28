@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/MiniCard.tscn" type="PackedScene" id=1]
+
+[node name="Roulette" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 540, 960 )
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MiniCard" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1389.16, 1388.06 )
+
+[node name="MiniCard2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1389.16, 1388.06 )
+
+[node name="MiniCard3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1389.16, 1388.06 )
+
+[node name="MiniCard4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1389.16, 1388.06 )
+
+[node name="MiniCard5" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1389.16, 1388.06 )
+
+[node name="MiniCard6" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1300, 1300 )

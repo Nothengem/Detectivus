@@ -189,7 +189,6 @@ func _on_Timer_fade_timeout():
 	Twee.start()
 	result()
 	get_tree().call_group("BalanceGUI", "change_proportions_ivent_cardmix") #ну на самом деле это не луз. Просто эта функция подходит для выполнения поставленной задачи
-	Scriptwriter.CardChoose = Scriptwriter.NextCardLeft
 	get_tree().call_group("MainScene", "spawn")
 	queue_free()
 
@@ -207,6 +206,7 @@ func result():
 			Scriptwriter.Banditism_var = Scriptwriter.Banditism_var + choosen_picture
 		elif BallanceChange == "Money":
 			Scriptwriter.Luck_var = Scriptwriter.Luck_var + choosen_picture
+		Scriptwriter.CardChoose = Scriptwriter.NextCardLeft
 	elif choosen_picture[0] == "Status":
-		Scriptwriter.CardChoose = choosen_picture[2]
-		get_tree().call_group("MainScene", "spawn")
+		Scriptwriter.CardChoose = choosen_picture[1]
+

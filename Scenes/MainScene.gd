@@ -30,7 +30,7 @@ func spawn_cardmix():
 
 
 func spawn_status():
-	var scene = load("res://Scenes/Dice.tscn")
+	var scene = load("res://Scenes/CharacterControl.tscn")
 	var card = scene.instance()
 	add_child_below_node($Control, card, true)
 

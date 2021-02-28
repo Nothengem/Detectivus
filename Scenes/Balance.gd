@@ -282,25 +282,21 @@ func yellow_indicatos_color_middle():
 #ШМАТОК КОДА ДЛЯ ИЗМЕНЕНИЯ БАЛАНСА ПО СТАТУСУ
 
 func StatusFixingVariablesSlotOne():
-	print("fix1")
 	IventSlot1 = Scriptwriter.StatusInfo[2]
 	IventSlot1Speed = Scriptwriter.StatusInfo[4]
 	IventUpSlot1 = Scriptwriter.StatusInfo[5]
 	
 func StatusFixingVariablesSlotTwo():
-	print("fix2")
 	IventSlot2 = Scriptwriter.StatusInfo[2]
 	IventSlot2Speed = Scriptwriter.StatusInfo[4]
 	IventUpSlot2 = Scriptwriter.StatusInfo[5]
 	
 func StatusFixingVariablesSlotThree():
-	print("fix3")
 	IventSlot3 = Scriptwriter.StatusInfo[2]
 	IventSlot3Speed = Scriptwriter.StatusInfo[4]
 	IventUpSlot3 = Scriptwriter.StatusInfo[5]
 	
 func StatusFixingVariablesSlotFour():
-	print("fix4")
 	IventSlot4 = Scriptwriter.StatusInfo[2]
 	IventSlot4Speed = Scriptwriter.StatusInfo[4]
 	IventUpSlot4 = Scriptwriter.StatusInfo[5]
