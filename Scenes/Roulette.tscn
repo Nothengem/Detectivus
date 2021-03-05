@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/MiniCard.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Roulette.gd" type="Script" id=2]
+[ext_resource path="res://Resources/GFX/StartScreenBackGround.png" type="Texture" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Appear"
 length = 2.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("MiniCard6:position")
+tracks/0/path = NodePath("OldRoulete/MiniCard6:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -18,7 +20,7 @@ tracks/0/keys = {
 "values": [ Vector2( 1300, 1300 ), Vector2( 492.62, 1300 ), Vector2( 552.138, 1561.36 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("MiniCard5:position")
+tracks/1/path = NodePath("OldRoulete/MiniCard5:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -30,7 +32,7 @@ tracks/1/keys = {
 "values": [ Vector2( 1320, 1320 ), Vector2( 512.62, 1320 ), Vector2( 207.265, 1320 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("MiniCard4:position")
+tracks/2/path = NodePath("OldRoulete/MiniCard4:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -42,7 +44,7 @@ tracks/2/keys = {
 "values": [ Vector2( 1340, 1340 ), Vector2( 532.62, 1340 ), Vector2( 881.967, 1340 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("MiniCard3:position")
+tracks/3/path = NodePath("OldRoulete/MiniCard3:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -54,7 +56,7 @@ tracks/3/keys = {
 "values": [ Vector2( 1360, 1360 ), Vector2( 552.62, 1360 ), Vector2( 218.8, 777.755 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("MiniCard2:position")
+tracks/4/path = NodePath("OldRoulete/MiniCard2:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -66,7 +68,7 @@ tracks/4/keys = {
 "values": [ Vector2( 1380, 1380 ), Vector2( 572.62, 1380 ), Vector2( 885.739, 797.755 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("MiniCard1:position")
+tracks/5/path = NodePath("OldRoulete/MiniCard1:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -78,7 +80,7 @@ tracks/5/keys = {
 "values": [ Vector2( 1400, 1400 ), Vector2( 592.62, 1400 ), Vector2( 548.628, 558.979 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("MiniCard3:scale")
+tracks/6/path = NodePath("OldRoulete/MiniCard3:scale")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -90,7 +92,7 @@ tracks/6/keys = {
 "values": [ Vector2( 0.7, 0.7 ) ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("MiniCard2:scale")
+tracks/7/path = NodePath("OldRoulete/MiniCard2:scale")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -102,37 +104,245 @@ tracks/7/keys = {
 "values": [ Vector2( 0.7, 0.7 ) ]
 }
 
+[sub_resource type="Animation" id=2]
+resource_name = "Appearance"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1600, 1000 ), Vector2( 540, 1000 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MiniCard1:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.6, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 100, 100 ), Vector2( 0, -630 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("MiniCard1:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.6, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 180.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("MiniCard2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.6, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 80, 80 ), Vector2( 540, -350 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("MiniCard2:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.6, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -125.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("MiniCard3:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.6, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 60, 60 ), Vector2( -540, -350 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("MiniCard3:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.6, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 125.0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("MiniCard4:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.6, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 40, 40 ), Vector2( 540, 350 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("MiniCard4:rotation_degrees")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.6, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -55.0 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("MiniCard5:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0.6, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 20, 20 ), Vector2( -540, 350 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("MiniCard5:rotation_degrees")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0.6, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 55.0 ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("MiniCard6:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0.6, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 630 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("MiniCard6:rotation_degrees")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0.6 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
 [node name="Roulette" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 540, 960 )
 mouse_filter = 2
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MiniCard1" parent="." instance=ExtResource( 1 )]
-position = Vector2( 548.628, 558.979 )
+[node name="OldRoulete" type="Sprite" parent="."]
+visible = false
+position = Vector2( -1721.65, -356.514 )
+
+[node name="MiniCard1" parent="OldRoulete" instance=ExtResource( 1 )]
+position = Vector2( 1400, 1400 )
 scale = Vector2( 0.6, 0.6 )
 
-[node name="MiniCard2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 885.739, 797.755 )
+[node name="MiniCard2" parent="OldRoulete" instance=ExtResource( 1 )]
+position = Vector2( 1380, 1380 )
 scale = Vector2( 0.7, 0.7 )
 
-[node name="MiniCard3" parent="." instance=ExtResource( 1 )]
-position = Vector2( 218.8, 777.755 )
+[node name="MiniCard3" parent="OldRoulete" instance=ExtResource( 1 )]
+position = Vector2( 1360, 1360 )
 scale = Vector2( 0.7, 0.7 )
 
-[node name="MiniCard4" parent="." instance=ExtResource( 1 )]
-position = Vector2( 881.967, 1340 )
+[node name="MiniCard4" parent="OldRoulete" instance=ExtResource( 1 )]
+position = Vector2( 1340, 1340 )
 scale = Vector2( 0.8, 0.8 )
 
-[node name="MiniCard5" parent="." instance=ExtResource( 1 )]
-position = Vector2( 207.265, 1320 )
+[node name="MiniCard5" parent="OldRoulete" instance=ExtResource( 1 )]
+position = Vector2( 1320, 1320 )
 scale = Vector2( 0.8, 0.8 )
 
-[node name="MiniCard6" parent="." instance=ExtResource( 1 )]
-position = Vector2( 552.138, 1561.36 )
+[node name="MiniCard6" parent="OldRoulete" instance=ExtResource( 1 )]
+position = Vector2( 1300, 1300 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="OldRoulete"]
 anims/Appear = SubResource( 1 )
+
+[node name="RouletteController" type="Sprite" parent="."]
+position = Vector2( 1600, 1000 )
+scale = Vector2( 0.8, 0.8 )
+
+[node name="MiniCard1" parent="RouletteController" instance=ExtResource( 1 )]
+position = Vector2( 100, 100 )
+
+[node name="MiniCard2" parent="RouletteController" instance=ExtResource( 1 )]
+position = Vector2( 80, 80 )
+
+[node name="MiniCard3" parent="RouletteController" instance=ExtResource( 1 )]
+position = Vector2( 60, 60 )
+
+[node name="MiniCard4" parent="RouletteController" instance=ExtResource( 1 )]
+position = Vector2( 40, 40 )
+
+[node name="MiniCard5" parent="RouletteController" instance=ExtResource( 1 )]
+position = Vector2( 20, 20 )
+
+[node name="MiniCard6" parent="RouletteController" instance=ExtResource( 1 )]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="RouletteController"]
+anims/Appearance = SubResource( 2 )
+
+[node name="Tween" type="Tween" parent="RouletteController"]
+
+[node name="Timer" type="Timer" parent="RouletteController"]
+wait_time = 1.5
+
+[node name="UpdateVarY" type="Timer" parent="RouletteController"]
+wait_time = 3.01
+one_shot = true
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+visible = false
+self_modulate = Color( 1, 1, 1, 0.572549 )
+position = Vector2( -156.205, -47.7292 )
+normal = ExtResource( 3 )
+[connection signal="animation_finished" from="RouletteController/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="timeout" from="RouletteController/Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="RouletteController/UpdateVarY" to="." method="_on_UpdateVarY_timeout"]
+[connection signal="released" from="TouchScreenButton" to="." method="_on_TouchScreenButton_released"]
