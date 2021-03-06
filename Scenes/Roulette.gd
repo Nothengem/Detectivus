@@ -1,11 +1,11 @@
 extends Control
 
-onready var CardY1 = $RouletteController/MiniCard1.position.y
-onready var CardY2 = $RouletteController/MiniCard2.position.y
-onready var CardY3 = $RouletteController/MiniCard3.position.y
-onready var CardY4 = $RouletteController/MiniCard4.position.y
-onready var CardY5 = $RouletteController/MiniCard5.position.y
-onready var CardY6 = $RouletteController/MiniCard6.position.y
+onready var CardY1 = $RouletteController/MiniCard1.global_position.y
+onready var CardY2 = $RouletteController/MiniCard2.global_position.y
+onready var CardY3 = $RouletteController/MiniCard3.global_position.y
+onready var CardY4 = $RouletteController/MiniCard4.global_position.y
+onready var CardY5 = $RouletteController/MiniCard5.global_position.y
+onready var CardY6 = $RouletteController/MiniCard6.global_position.y
 var AllYPositions
 
 #переменные сложности в данной мини-игре
@@ -75,7 +75,6 @@ func MiniCardsGeneration():
 func _on_Timer_timeout():
 	$RouletteController/Tween.interpolate_property($RouletteController, "rotation_degrees", $RouletteController.rotation_degrees, int($RouletteController.rotation_degrees+360), $RouletteController/Timer.wait_time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$RouletteController/Tween.start()
-	print("work")
 	
 
 
@@ -98,28 +97,38 @@ func roulette_stop():
 	$RouletteController/UpdateVarY.start()
 
 
-
 func _on_UpdateVarY_timeout():
-	CardY1 = $RouletteController/MiniCard1.position.y
-	CardY2 = $RouletteController/MiniCard2.position.y
-	CardY3 = $RouletteController/MiniCard3.position.y
-	CardY4 = $RouletteController/MiniCard4.position.y
-	CardY5 = $RouletteController/MiniCard5.position.y
-	CardY6 = $RouletteController/MiniCard6.position.y
+	CardY1 = $RouletteController/MiniCard1.global_position.y
+	CardY2 = $RouletteController/MiniCard2.global_position.y
+	CardY3 = $RouletteController/MiniCard3.global_position.y
+	CardY4 = $RouletteController/MiniCard4.global_position.y
+	CardY5 = $RouletteController/MiniCard5.global_position.y
+	CardY6 = $RouletteController/MiniCard6.global_position.y
 	AllYPositions = [CardY1, CardY2, CardY3, CardY4, CardY5, CardY6]
-	print($RouletteController/MiniCard1.position.y)
+	print(AllYPositions)
 	position_calculate()
 
 func position_calculate():
 	ChoosenCardY = AllYPositions[0]
-	print(AllYPositions)
 	var uno = 0
 	for i in 6:
-		if ChoosenCard >= AllYPositions[uno]:
-			ChoosenCard = AllYPositions[uno]
-			print(ChoosenCard)
-			uno += 1
-#	if ChoosenCardY == CardY1:
-#		ChoosenCard = 
-#		, CardY2, CardY3, CardY4, CardY5, CardY6
+		print(ChoosenCardY)
+		print(uno)
+		if ChoosenCardY >= AllYPositions[uno]:
+			ChoosenCardY = AllYPositions[uno]
+		uno += 1
+			
+	if ChoosenCardY == CardY1:
+		ChoosenCard = Difficulty[0]
+	elif ChoosenCardY == CardY2:
+		ChoosenCard = Difficulty[1]
+	elif ChoosenCardY == CardY3:
+		ChoosenCard = Difficulty[2]
+	elif ChoosenCardY == CardY4:
+		ChoosenCard = Difficulty[3]
+	elif ChoosenCardY == CardY5:
+		ChoosenCard = Difficulty[4]
+	elif ChoosenCardY == CardY6:
+		ChoosenCard = Difficulty[5]
+	print(ChoosenCard)
 	
