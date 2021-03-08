@@ -7,6 +7,7 @@ onready var CardY4 = $RouletteController/MiniCard4.global_position.y
 onready var CardY5 = $RouletteController/MiniCard5.global_position.y
 onready var CardY6 = $RouletteController/MiniCard6.global_position.y
 var AllYPositions
+onready var BallanceChange = Scriptwriter.IventInfo[5]
 
 #переменные сложности в данной мини-игре
 var easy = ["SmallSuccess", "Nothing", "SmallLose", "SmallSuccess", "Nothing", "SmallLose"]
@@ -19,7 +20,7 @@ var difficult = [easy, middle, hard, easyMoneyUp, middleTeamDown, HardCustomersD
 var Difficulty = 3
 
 var ChoosenCardY
-var ChoosenCard
+var choosen_picture
 
 func _ready():
 	Difficulty = difficult[Difficulty]
@@ -27,6 +28,14 @@ func _ready():
 	$RouletteController/AnimationPlayer.play("Appearance")
 	MiniCardsGeneration()
 
+func _process(delta):
+	$RouletteController/MiniCard1/Coords.text = str($RouletteController/MiniCard1.global_position.y)
+	$RouletteController/MiniCard2/Coords.text = str($RouletteController/MiniCard2.global_position.y)
+	$RouletteController/MiniCard3/Coords.text = str($RouletteController/MiniCard3.global_position.y)
+	$RouletteController/MiniCard4/Coords.text = str($RouletteController/MiniCard4.global_position.y)
+	$RouletteController/MiniCard5/Coords.text = str($RouletteController/MiniCard5.global_position.y)
+	$RouletteController/MiniCard6/Coords.text = str($RouletteController/MiniCard6.global_position.y)
+	
 
 func MiniCardsGeneration():
 	#применяем свойства к первой карточке
@@ -105,8 +114,11 @@ func _on_UpdateVarY_timeout():
 	CardY5 = $RouletteController/MiniCard5.global_position.y
 	CardY6 = $RouletteController/MiniCard6.global_position.y
 	AllYPositions = [CardY1, CardY2, CardY3, CardY4, CardY5, CardY6]
-	print(AllYPositions)
 	position_calculate()
+	result()
+	get_tree().call_group("BalanceGUI", "change_proportions_ivent_cardmix") #ну на самом деле это не луз. Просто эта функция подходит для выполнения поставленной задачи
+	get_tree().call_group("MainScene", "spawn")
+	queue_free()
 
 func position_calculate():
 	ChoosenCardY = AllYPositions[0]
@@ -114,21 +126,44 @@ func position_calculate():
 	for i in 6:
 		print(ChoosenCardY)
 		print(uno)
-		if ChoosenCardY >= AllYPositions[uno]:
+		if ChoosenCardY <= AllYPositions[uno]:
 			ChoosenCardY = AllYPositions[uno]
 		uno += 1
 			
 	if ChoosenCardY == CardY1:
-		ChoosenCard = Difficulty[0]
+		choosen_picture = Difficulty[0]
 	elif ChoosenCardY == CardY2:
-		ChoosenCard = Difficulty[1]
+		choosen_picture = Difficulty[1]
 	elif ChoosenCardY == CardY3:
-		ChoosenCard = Difficulty[2]
+		choosen_picture = Difficulty[2]
 	elif ChoosenCardY == CardY4:
-		ChoosenCard = Difficulty[3]
+		choosen_picture = Difficulty[3]
 	elif ChoosenCardY == CardY5:
-		ChoosenCard = Difficulty[4]
+		choosen_picture = Difficulty[4]
 	elif ChoosenCardY == CardY6:
-		ChoosenCard = Difficulty[5]
-	print(ChoosenCard)
-	
+		choosen_picture = Difficulty[5]
+	print(choosen_picture)
+
+
+
+func result():
+	choosen_picture = Scriptwriter.MiniCardDataBase.DATA.get(choosen_picture)
+	print(choosen_picture)
+	print(BallanceChange)
+	if choosen_picture[0] == "ChangeBalance":
+		choosen_picture = choosen_picture[1]
+		print(choosen_picture)
+		if BallanceChange == "Team":
+			Scriptwriter.Heath_var = Scriptwriter.Heath_var + choosen_picture
+		elif BallanceChange == "Customers":
+			Scriptwriter.Law_var = Scriptwriter.Law_var + choosen_picture
+		elif BallanceChange == "CentralBank":
+			Scriptwriter.Banditism_var = Scriptwriter.Banditism_var + choosen_picture
+		elif BallanceChange == "Money":
+			print("1. Money = ", Scriptwriter.Luck_var)
+			Scriptwriter.Luck_var = Scriptwriter.Luck_var + choosen_picture
+			print("2. Money = ", Scriptwriter.Luck_var)
+		Scriptwriter.CardChoose = Scriptwriter.NextCardLeft
+	elif choosen_picture[0] == "Status":
+		Scriptwriter.CardChoose = choosen_picture[1]
+

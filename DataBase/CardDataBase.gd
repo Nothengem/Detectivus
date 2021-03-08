@@ -9,7 +9,8 @@ enum {
 	Random6, Random7, Random8, Random9, Random10, Random11, Random12, 
 	Random13, Random13a, Random13b, Random14, Random15, Random16, Random17, 
 	Random17a, Random18, Random18a, Random19, Random20, Random21, Random21a, 
-	Random22, Random22a, Random23, Random24, Random25, Random26, Random27,
+	Random22, Random22a, Random23, Random24, Random25, Random26, Random27, 
+	Random28, Random29,
 	
 	TeamUp, CustomersUp, CentralBankUp, MoneyUp, 
 	TeamDown, CustomersDown, CentralBankDown, MoneyDown,
@@ -832,6 +833,25 @@ const DATA = {
 		"Ivent",
 		"Random",
 		"MiniCardMix2"],
+		
+	"Random29" : 
+		["Characters",
+		"CBreviewer", #кто говорит
+		"К нам заглянул наш инвестор. Обычно его визит приводит к непредсказуемым вещам", #что говорит
+		"Гарфилд. Секреталь", #Имя говорящего
+		"Гарфилд, отвлеки его на себя пожалуйста", #Ответ на лево
+		"Пусть ходит, вреда он не принесёт", #ответ на право
+		0, #Ренессанс на лево 6
+		0, #Люди на лево 7
+		-10, #ЦБ на лево 8
+		-10, #Деньги на лево 9
+		0, #Ренессанс на право 10
+		0, #Люди на право 11
+		0, #ЦБ на право 12
+		0, #Деньги на право 13
+		"Ivent",
+		"Random",
+		"Roulette1"],
 		
 	"TeamUp" : 
 		["StatusScreen", #ссылка на папку персонажей 0

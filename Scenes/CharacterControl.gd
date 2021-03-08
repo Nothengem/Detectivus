@@ -197,6 +197,8 @@ func choosedone_next_card_right():
 				get_tree().call_group("MainScene", "spawn_cardmix")
 			elif Scriptwriter.IventInfo[0] == "Status":
 				get_tree().call_group("MainScene", "spawn")
+			elif Scriptwriter.IventInfo[0] == "Roulette":
+				get_tree().call_group("MainScene", "spawn_roulette")
 				
 		elif Scriptwriter.NextCardRight != "Ivent":
 			get_tree().call_group("MainScene", "spawn")

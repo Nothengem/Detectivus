@@ -29,8 +29,8 @@ func spawn_cardmix():
 
 
 
-func spawn_status():
-	var scene = load("res://Scenes/CharacterControl.tscn")
+func spawn_roulette():
+	var scene = load("res://Scenes/Roulette.tscn")
 	var card = scene.instance()
 	add_child_below_node($Control, card, true)
 
@@ -38,7 +38,6 @@ func spawn_status():
 
 func background_fade():
 	$AnimationPlayer.play("FadeBackGround")
-
 
 
 func restart_game():
