@@ -26,68 +26,57 @@ position = Vector2( 7.40204, -17.8251 )
 texture = ExtResource( 3 )
 
 [node name="Ears" type="Sprite" parent="Character"]
-position = Vector2( 9.1262, 52.4378 )
 scale = Vector2( 1.05, 1.05 )
 texture = ExtResource( 5 )
 
 [node name="Neck" type="Sprite" parent="Character"]
-position = Vector2( 1.70599, 207.373 )
 scale = Vector2( 1.05, 1.05 )
 texture = ExtResource( 7 )
 
 [node name="Head" type="Sprite" parent="Character"]
-position = Vector2( 5.43298, 17.4589 )
 scale = Vector2( 1.05, 1.05 )
 texture = ExtResource( 8 )
 
 [node name="Shirt" type="Sprite" parent="Character"]
-position = Vector2( 1.63678, 317.539 )
 scale = Vector2( 1.05, 1.05 )
 texture = ExtResource( 11 )
 
 [node name="Eyebrows" type="Sprite" parent="Character"]
-position = Vector2( 6.0112, -10.4624 )
 scale = Vector2( 1.05, 1.05 )
 texture = ExtResource( 12 )
 
 [node name="Eyes" type="Sprite" parent="Character"]
-position = Vector2( 6.74908, 20.6683 )
 scale = Vector2( 1.05, 1.05 )
 texture = ExtResource( 10 )
 
 [node name="Forehead" type="Sprite" parent="Character"]
-position = Vector2( -4.55548, -65.2498 )
 scale = Vector2( 1.05, 1.05 )
 texture = ExtResource( 6 )
 
 [node name="Jowls" type="Sprite" parent="Character"]
-position = Vector2( 8.1384, 81.383 )
 scale = Vector2( 1.05, 1.05 )
 texture = ExtResource( 13 )
 
 [node name="Glasses" type="Sprite" parent="Character"]
-position = Vector2( 2.09027, 9.64786 )
+position = Vector2( 7.48308, -37.4154 )
 scale = Vector2( 1.05, 1.05 )
 texture = ExtResource( 9 )
 
 [node name="Mouth" type="Sprite" parent="Character"]
-position = Vector2( 10.658, 143.417 )
 scale = Vector2( 1.05, 1.05 )
 texture = ExtResource( 14 )
 
 [node name="Hair" type="Sprite" parent="Character"]
-position = Vector2( 0.235077, -117.648 )
 scale = Vector2( 1.05, 1.05 )
 texture = ExtResource( 16 )
 
 [node name="Nose" type="Sprite" parent="Character"]
-position = Vector2( 6.53589, 82.324 )
 scale = Vector2( 1.05, 1.05 )
 texture = ExtResource( 15 )
 
 [node name="Bage" type="Sprite" parent="Character"]
 visible = false
-position = Vector2( 207.145, 282.585 )
+position = Vector2( 285.732, 338.646 )
 scale = Vector2( 1.05, 1.05 )
 texture = ExtResource( 17 )
 
