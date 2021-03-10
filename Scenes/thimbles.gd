@@ -89,12 +89,10 @@ func randomazer():
 func _on_Timer_start_timeout():
 	get_tree().call_group("MiniCard", "flip_the_shirt")
 	cards_mix_generate()
-#	all_minicard_centre()
 
 
 
 func _on_Timer_midle_timeout():
-#		all_minicard_parse()
 		cards_mix_generate()
 		$MiniCards/MiniCard1.z_index = card_layer_position[0]
 		$MiniCards/MiniCard2.z_index = card_layer_position[1]

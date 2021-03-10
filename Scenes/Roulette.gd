@@ -21,20 +21,14 @@ var Difficulty = 3
 
 var ChoosenCardY
 var choosen_picture
+var ChoosenCard
 
 func _ready():
 	Difficulty = difficult[Difficulty]
 	$RouletteController/Timer.start()
 	$RouletteController/AnimationPlayer.play("Appearance")
 	MiniCardsGeneration()
-
-func _process(delta):
-	$RouletteController/MiniCard1/Coords.text = str($RouletteController/MiniCard1.global_position.y)
-	$RouletteController/MiniCard2/Coords.text = str($RouletteController/MiniCard2.global_position.y)
-	$RouletteController/MiniCard3/Coords.text = str($RouletteController/MiniCard3.global_position.y)
-	$RouletteController/MiniCard4/Coords.text = str($RouletteController/MiniCard4.global_position.y)
-	$RouletteController/MiniCard5/Coords.text = str($RouletteController/MiniCard5.global_position.y)
-	$RouletteController/MiniCard6/Coords.text = str($RouletteController/MiniCard6.global_position.y)
+#	get_tree().call_group("MiniCard", "deactivate_shirt")
 	
 
 func MiniCardsGeneration():
@@ -70,17 +64,6 @@ func MiniCardsGeneration():
 
 
 
-
-#func MiniCardsGeneration_helper(a, b):
-#	if a == "SmallLose" or a == "BigLose":
-#		b.text = CardBadText
-#	elif a == "SmallSuccess" or a == "BigSuccess":
-#		b.text = CardGoodText
-#	elif a == "Nothing" or a != "SmallLose" or a != "BigLose":
-#		b.text = CardNeutralText
-
-
-
 func _on_Timer_timeout():
 	$RouletteController/Tween.interpolate_property($RouletteController, "rotation_degrees", $RouletteController.rotation_degrees, int($RouletteController.rotation_degrees+360), $RouletteController/Timer.wait_time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$RouletteController/Tween.start()
@@ -89,13 +72,19 @@ func _on_Timer_timeout():
 
 
 func _on_TouchScreenButton_released():
+	$RouletteController/FinalTimer.start()
 	roulette_stop()
+
+
+
+func _on_FinalTimer_timeout():
+	ChoosenCard.visible = false
+	get_tree().call_group("MiniCard", "fade_that_no_choosen_roulette")
 
 
 
 func _on_AnimationPlayer_animation_finished(Appearance):
 	$TouchScreenButton.visible = true
-
 
 
 func roulette_stop():
@@ -118,7 +107,7 @@ func _on_UpdateVarY_timeout():
 	result()
 	get_tree().call_group("BalanceGUI", "change_proportions_ivent_cardmix") #ну на самом деле это не луз. Просто эта функция подходит для выполнения поставленной задачи
 	get_tree().call_group("MainScene", "spawn")
-	queue_free()
+#	queue_free()
 
 func position_calculate():
 	ChoosenCardY = AllYPositions[0]
@@ -132,16 +121,22 @@ func position_calculate():
 			
 	if ChoosenCardY == CardY1:
 		choosen_picture = Difficulty[0]
+		ChoosenCard = $RouletteController/MiniCard1/Shirt
 	elif ChoosenCardY == CardY2:
 		choosen_picture = Difficulty[1]
+		ChoosenCard = $RouletteController/MiniCard2/Shirt
 	elif ChoosenCardY == CardY3:
 		choosen_picture = Difficulty[2]
+		ChoosenCard = $RouletteController/MiniCard3/Shirt
 	elif ChoosenCardY == CardY4:
 		choosen_picture = Difficulty[3]
+		ChoosenCard = $RouletteController/MiniCard4/Shirt
 	elif ChoosenCardY == CardY5:
 		choosen_picture = Difficulty[4]
+		ChoosenCard = $RouletteController/MiniCard5/Shirt
 	elif ChoosenCardY == CardY6:
 		choosen_picture = Difficulty[5]
+		ChoosenCard = $RouletteController/MiniCard6/Shirt
 	print(choosen_picture)
 
 
@@ -167,3 +162,10 @@ func result():
 	elif choosen_picture[0] == "Status":
 		Scriptwriter.CardChoose = choosen_picture[1]
 
+
+func Timer_start_final_anim():
+	$RouletteController/Timer_start_final_anim.start()
+
+
+func _on_Timer_start_final_anim_timeout():
+	pass # Replace with function body.

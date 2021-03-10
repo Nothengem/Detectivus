@@ -6,7 +6,7 @@
 [ext_resource path="res://Resources/GFX/StatusBars/NoItem.png" type="Texture" id=4]
 [ext_resource path="res://Resources/GFX/Interface/Font/Card.tres" type="DynamicFont" id=5]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "Appearance"
 length = 1.5
 tracks/0/type = "value"
@@ -166,7 +166,9 @@ tracks/12/keys = {
 "values": [ 0.0 ]
 }
 
-[node name="Roulette" type="Control"]
+[node name="Roulette" type="Control" groups=[
+"Roulette",
+]]
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 540, 960 )
@@ -270,7 +272,7 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="RouletteController"]
-anims/Appearance = SubResource( 2 )
+anims/Appearance = SubResource( 1 )
 
 [node name="Tween" type="Tween" parent="RouletteController"]
 
@@ -280,6 +282,12 @@ wait_time = 1.5
 [node name="UpdateVarY" type="Timer" parent="RouletteController"]
 wait_time = 3.01
 one_shot = true
+
+[node name="FinalTimer" type="Timer" parent="RouletteController"]
+wait_time = 4.0
+one_shot = true
+
+[node name="Timer_start_final_anim" type="Timer" parent="RouletteController"]
 
 [node name="TouchScreenButton" type="TouchScreenButton" parent="."]
 visible = false
@@ -294,4 +302,8 @@ texture = ExtResource( 4 )
 [connection signal="animation_finished" from="RouletteController/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="timeout" from="RouletteController/Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="RouletteController/UpdateVarY" to="." method="_on_UpdateVarY_timeout"]
+[connection signal="timeout" from="RouletteController/FinalTimer" to="." method="_on_FinalTimer_timeout"]
+[connection signal="timeout" from="RouletteController/Timer_start_final_anim" to="." method="_on_Timer_start_final_anim_timeout"]
 [connection signal="released" from="TouchScreenButton" to="." method="_on_TouchScreenButton_released"]
+
+[editable path="RouletteController/MiniCard1"]
